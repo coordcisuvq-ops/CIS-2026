@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CIS · Clase 3</title>
+<style>
+:root{
+  --fondo:#f4f5f7;
+  --blanco:#ffffff;
+  --texto:#1f2a37;
+  --texto-suave:#5b6676;
+  --borde:#d9dee5;
+  --acento:#9f283b;
+  --acento-oscuro:#7f1f2f;
+  --acento-claro:#f7e9ec;
+  --unidad1:#9f283b;
+  --unidad2:#7a3246;
+  --unidad3:#b15b6b;
+  --unidad4:#c98793;
+  --unidad5:#4f4e50;
+  --sombra:0 8px 24px rgba(15,35,55,.08);
+  --radio:20px;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:"Aptos","Segoe UI",Arial,sans-serif;
+  background:var(--fondo);
+  color:var(--texto);
+}
+.wrap{
+  width:min(1320px, calc(100% - 32px));
+  margin:20px auto;
+  background:var(--blanco);
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:var(--sombra);
+}
+.hero{
+  position:relative;
+  min-height:420px;
+  display:flex;
+  align-items:flex-end;
+  padding:34px;
+  background:
+    linear-gradient(rgba(20,14,16,.54), rgba(20,14,16,.68)),
+    url('https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+}
+.hero-content{
+  max-width:1120px;
+}
+.hero-panel{
+  max-width:900px;
+  background:rgba(159,40,59,.94);
+  color:#fff;
+  padding:22px 24px;
+  box-shadow:0 10px 30px rgba(0,0,0,.18);
+}
+.hero-text-box{
+  margin-top:18px;
+  max-width:1080px;
+  background:rgba(20,14,16,.46);
+  border:1px solid rgba(255,255,255,.16);
+  padding:20px 22px;
+  box-shadow:0 10px 30px rgba(0,0,0,.16);
+  backdrop-filter:blur(3px);
+  -webkit-backdrop-filter:blur(3px);
+}
+.hero-kicker{
+  margin:0 0 10px;
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:.4px;
+  text-transform:uppercase;
+  opacity:.95;
+}
+.hero h1{
+  margin:0;
+  font-size:clamp(34px, 4.8vw, 58px);
+  line-height:1.02;
+  letter-spacing:-1px;
+  font-weight:800;
+}
+.hero-sub{
+  margin-top:16px;
+  max-width:950px;
+  color:#ffffff;
+  font-size:18px;
+  line-height:1.55;
+  text-shadow:0 1px 4px rgba(0,0,0,.25);
+}
+.hero-authors{
+  margin-top:12px;
+  max-width:960px;
+  color:#f9edf0;
+  font-size:13px;
+  line-height:1.5;
+}
+.hero-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:18px;
+}
+.hero-meta span{
+  display:inline-block;
+  padding:10px 16px;
+  background:rgba(255,255,255,.86);
+  border:1px solid rgba(255,255,255,.96);
+  color:#3a1920;
+  font-size:13px;
+  font-weight:700;
+  border-radius:999px;
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  box-shadow:0 2px 8px rgba(0,0,0,.10);
+}
+.layout{
+  display:grid;
+  grid-template-columns:300px 1fr;
+  gap:22px;
+  padding:24px;
+}
+.menu{
+  background:#f4eef0;
+  border-radius:20px;
+  padding:18px;
+  align-self:start;
+  position:sticky;
+  top:16px;
+}
+.menu h3{
+  margin:0 0 14px;
+  font-size:14px;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+  color:#5a3b42;
+}
+.menu ul{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+.menu li{
+  margin-bottom:10px;
+  padding:12px 14px;
+  border-radius:14px;
+  background:#fff;
+  border:1px solid #eadce0;
+  color:#4b3439;
+  font-size:14px;
+  line-height:1.35;
+  cursor:pointer;
+  transition:all .2s ease;
+  font-weight:700;
+}
+.menu li:hover{
+  transform:translateX(2px);
+  border-color:#d7b6bf;
+}
+.menu li.active{
+  background:var(--acento);
+  color:#fff;
+  border-color:var(--acento);
+}
+.content{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+.section{
+  display:none;
+}
+.section.active{
+  display:block;
+}
+.section.grid-2{
+  display:none;
+}
+.section.active.grid-2{
+  display:grid;
+}
+.card{
+  background:#fff;
+  border:1px solid var(--borde);
+  border-radius:20px;
+  padding:26px;
+}
+.card h2{
+  margin:0 0 16px;
+  font-size:30px;
+  line-height:1.1;
+  letter-spacing:-.5px;
+  color:#34171e;
+}
+.card h3{
+  margin:0 0 12px;
+  font-size:22px;
+  line-height:1.2;
+  color:#5a2430;
+}
+.card h4{
+  margin:0 0 10px;
+  font-size:18px;
+  line-height:1.25;
+  color:#6f2c3b;
+}
+.card p{
+  margin:0 0 14px;
+  font-size:16px;
+  line-height:1.72;
+  color:var(--texto-suave);
+}
+.card ul{margin:0; padding-left:20px}
+.card li{
+  margin-bottom:10px;
+  font-size:16px;
+  line-height:1.65;
+  color:var(--texto-suave);
+}
+.destacado{
+  margin-top:16px;
+  padding:18px 20px;
+  border-left:6px solid var(--acento);
+  background:var(--acento-claro);
+  border-radius:14px;
+  font-size:15px;
+  line-height:1.65;
+  color:#5a3942;
+}
+.kpis{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:12px;
+  margin-top:16px;
+}
+.kpi{
+  border:1px solid var(--borde);
+  border-radius:16px;
+  padding:16px;
+  background:#faf8f8;
+}
+.kpi .et{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.4px;
+  color:#7e6670;
+  margin-bottom:8px;
+}
+.kpi .va{
+  font-size:18px;
+  font-weight:800;
+  color:#34171e;
+}
+.grid-2{
+  grid-template-columns:1.08fr .92fr;
+  gap:20px;
+}
+.idea-grid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:16px;
+}
+.idea{
+  border:1px solid #eadce0;
+  background:#fcfafb;
+  border-radius:18px;
+  padding:18px;
+}
+.quote{
+  margin:18px 0;
+  padding:20px 22px;
+  background:#fcfafb;
+  border:1px solid #eadce0;
+  border-left:6px solid #c97b8a;
+  border-radius:18px;
+  color:#52343d;
+  font-size:17px;
+  line-height:1.75;
+}
+.badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:10px;
+}
+.badges span{
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:700;
+  background:#f2ecee;
+  color:#5b434b;
+}
+.actividad{
+  margin-top:16px;
+  padding:18px 20px;
+  background:#fcfafb;
+  border:1px solid #eadce0;
+  border-radius:18px;
+}
+.biblio p{
+  margin-bottom:10px;
+}
+.biblio ul{
+  margin:10px 0 0 0;
+  padding-left:22px;
+}
+.biblio li{
+  margin-bottom:10px;
+  font-size:15px;
+  line-height:1.7;
+  color:#5b6676;
+}
+.biblio .destacado p{
+  margin-bottom:10px;
+}
+.subsection{
+  margin-top:16px;
+  padding-top:8px;
+}
+.subsection h4{
+  margin-top:0;
+}
+.mini-note{
+  font-size:14px;
+  color:#7a646b;
+  line-height:1.6;
+}
+
+/* Acceso a la clase */
+.acceso-box{
+  background:linear-gradient(180deg,#fcf7f8,#f8eef1);
+  border:1px solid #eadce0;
+  border-radius:20px;
+  padding:18px;
+}
+.class-link-card{
+  position:relative;
+  display:block;
+  min-height:290px;
+  border-radius:22px;
+  overflow:hidden;
+  text-decoration:none;
+  background:
+    linear-gradient(rgba(49,18,25,.35), rgba(49,18,25,.52)),
+    url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+  box-shadow:0 14px 28px rgba(15,35,55,.12);
+  transition:transform .22s ease, box-shadow .22s ease;
+}
+.class-link-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 18px 34px rgba(15,35,55,.18);
+}
+.link-overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  gap:14px;
+  padding:26px;
+}
+.link-icon{
+  width:84px;
+  height:84px;
+  border-radius:50%;
+  background:rgba(255,255,255,.94);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  box-shadow:0 10px 24px rgba(0,0,0,.18);
+}
+.link-overlay h4{
+  margin:0;
+  font-size:24px;
+  line-height:1.2;
+  color:#fff;
+  text-shadow:0 2px 10px rgba(0,0,0,.20);
+}
+.link-overlay p{
+  margin:0;
+  color:#f9edf0;
+  max-width:390px;
+  font-size:15px;
+  line-height:1.65;
+}
+.pdf-actions{
+  margin-top:14px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.pdf-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:10px 14px;
+  border-radius:999px;
+  background:#ffffff;
+  border:1px solid #eadce0;
+  color:#7f1f2f;
+  font-size:13px;
+  font-weight:800;
+  text-decoration:none;
+  box-shadow:0 4px 10px rgba(15,35,55,.06);
+  transition:all .2s ease;
+}
+.pdf-button:hover{
+  background:#fcf3f5;
+  border-color:#d7b6bf;
+  transform:translateY(-1px);
+}
+.link-note{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top:14px;
+  padding:8px 12px;
+  border-radius:999px;
+  background:#fff;
+  border:1px solid #eadce0;
+  color:#7f1f2f;
+  font-size:13px;
+  font-weight:800;
+}
+
+.boton-biblio{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin-top:12px;
+  padding:12px 18px;
+  background:var(--acento);
+  color:#fff !important;
+  text-decoration:none;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:900;
+  letter-spacing:.2px;
+  box-shadow:0 8px 18px rgba(159,40,59,.22);
+  transition:all .2s ease;
+}
+.boton-biblio:hover{
+  background:var(--acento-oscuro);
+  transform:translateY(-1px);
+}
+
+@media (max-width:1080px){
+  .layout{grid-template-columns:1fr}
+  .menu{position:relative; top:0}
+  .kpis,.grid-2,.idea-grid{grid-template-columns:1fr}
+}
+@media (max-width:720px){
+  .wrap{width:100%; margin:0; border-radius:0}
+  .hero{min-height:360px; padding:18px}
+  .hero-panel{padding:18px}
+  .hero-text-box{padding:16px}
+  .layout{padding:16px}
+  .card{padding:18px}
+  .card h2{font-size:24px}
+  .class-link-card{min-height:230px;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="hero-content">
+      <div class="hero-panel">
+        <p class="hero-kicker">CIS · Clase 3 · Unidad 3</p>
+        <h1>Escribir en la universidad</h1>
+      </div>
+      <div class="hero-text-box">
+        <p class="hero-sub">
+          En esta clase se aborda la escritura académica como una práctica central del trabajo universitario. Se propone un recorrido que va desde el surgimiento de una idea hasta la elaboración final de un texto, incluyendo las normas de citación, la comprensión del plagio, el uso de tecnologías y la honestidad intelectual.
+        </p>
+        <p class="hero-authors">
+          Autores: Calo Magalí · Casella Néstor · Consigliere Aldana · Consigliere Bárbara · Peuriot Julieta
+        </p>
+        <div class="hero-meta">
+          <span>Clase 3</span>
+          <span>Escritura académica</span>
+          <span>Normas APA</span>
+          <span>Uso ético de tecnologías</span>
+          <span>Honestidad intelectual</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="menu">
+      <h3>Recorrido de la clase</h3>
+      <ul>
+        <li data-target="presentacion">Presentación</li>
+        <li data-target="acceso">Acceso a la clase</li>
+        <li data-target="objetivos">Objetivos</li>
+        <li data-target="escritura">La escritura académica</li>
+        <li data-target="citas">Citación y referencias</li>
+        <li data-target="tecnologias">Tecnologías y prácticas indebidas</li>
+        <li data-target="honestidad">Honestidad intelectual</li>
+        <li data-target="cierre">Cierre</li>
+        <li data-target="bibliografia">Bibliografía</li>
+      </ul>
+    </aside>
+
+    <main class="content">
+
+      <section class="card section" id="presentacion">
+        <h2>Presentación de la clase</h2>
+        <p>
+          La escritura en el ámbito universitario constituye una práctica fundamental para la construcción y transmisión del conocimiento. A diferencia de otros contextos, escribir en la universidad no implica únicamente expresar ideas personales, sino también dialogar con teorías, autores y marcos conceptuales preexistentes.
+        </p>
+        <p>
+          En este sentido, la escritura académica se configura como una herramienta clave para el desarrollo del pensamiento crítico, la argumentación y la producción de saberes. La clase propone un recorrido por los principales aspectos que intervienen en este proceso: la idea inicial, la planificación, el borrador, la revisión, la mejora del texto, las normas de citación, el uso de tecnologías y la honestidad intelectual.
+        </p>
+
+        <div class="quote">
+          Escribir en la universidad no es solo redactar un texto: es producir conocimiento en diálogo con otras voces y hacerlo de manera rigurosa, clara y responsable.
+        </div>
+
+        <div class="kpis">
+          <div class="kpi">
+            <div class="et">Clase</div>
+            <div class="va">3</div>
+          </div>
+          <div class="kpi">
+            <div class="et">Unidad</div>
+            <div class="va">Escribir</div>
+          </div>
+          <div class="kpi">
+            <div class="et">Recorrido</div>
+            <div class="va">Texto y citación</div>
+          </div>
+          <div class="kpi">
+            <div class="et">Modalidad</div>
+            <div class="va">Asincrónica</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid-2 section" id="acceso">
+        <section class="card acceso-box">
+          <h3>Acceso a la clase</h3>
+          <a class="class-link-card"
+             href="clases/clase3"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="Abrir enlace de la clase 3">
+            <div class="link-overlay">
+              <div class="link-icon">↗</div>
+              <h4>Ingresar al contenido de la clase</h4>
+              <p>Accedé al recurso completo de la clase 3 desde este enlace. Se abrirá en una nueva pestaña.</p>
+            </div>
+          </a>
+          <div class="link-note">Enlace externo · Clase 3</div>
+          <div class="pdf-actions">
+            <a class="pdf-button"
+               href="https://drive.google.com/file/d/15s-o1BkNmHZ1-obQCIAvykCl2R963CTV/view?usp=drive_link"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Descargar versión imprimible en PDF de la clase 3">
+               Descargar versión imprimible en PDF
+            </a>
+          </div>
+        </section>
+
+        <section class="card">
+          <h3>Temas para orientar la lectura</h3>
+          <ul>
+            <li>¿Qué caracteriza a la escritura académica en el ámbito universitario?</li>
+            <li>¿Qué etapas intervienen en la producción de un texto?</li>
+            <li>¿Cómo se citan y referencian correctamente las fuentes en formato APA?</li>
+            <li>¿Qué diferencia existe entre uso asistido de tecnologías y prácticas indebidas?</li>
+            <li>¿Por qué la honestidad intelectual es central en la producción de conocimiento?</li>
+          </ul>
+        </section>
+      </section>
+
+      <section class="card section" id="objetivos">
+        <h2>Objetivos</h2>
+        <div class="idea-grid">
+          <article class="idea">
+            <h4>Objetivos de la clase</h4>
+            <ul>
+              <li>Introducir a los estudiantes en los fundamentos de la escritura académica.</li>
+              <li>Comprender las etapas del proceso de producción escrita.</li>
+              <li>Reconocer la importancia de las normas de citación en el ámbito universitario.</li>
+              <li>Identificar y problematizar el plagio y sus implicancias.</li>
+              <li>Analizar el uso de tecnologías en la producción académica.</li>
+              <li>Promover la honestidad intelectual como valor central en la producción de conocimiento.</li>
+            </ul>
+          </article>
+          <article class="idea">
+            <h4>Objetivos de los/as estudiantes</h4>
+            <ul>
+              <li>Comprender el proceso de escritura académica en sus distintas etapas.</li>
+              <li>Diferenciar conceptos clave como lengua, lenguaje, enunciado y discurso.</li>
+              <li>Aplicar correctamente normas básicas de citación en formato APA.</li>
+              <li>Reconocer distintas formas de plagio y evitarlas.</li>
+              <li>Utilizar tecnologías de manera ética en la producción académica.</li>
+              <li>Valorar la honestidad intelectual como principio fundamental del trabajo universitario.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="destacado">
+          La clase propone pensar la escritura académica como un proceso complejo, situado y ético, en el que escribir supone construir sentido, organizar ideas y responsabilizarse por lo que se produce.
+        </div>
+      </section>
+
+      <section class="card section" id="escritura">
+        <h2>La escritura académica</h2>
+        <p>
+          Escribir en la universidad implica mucho más que poner palabras en una página. Supone transformar una idea en un texto capaz de comunicar con claridad, sostener argumentos y dialogar con conocimientos previos. En este marco, la escritura académica funciona como una herramienta para elaborar pensamiento y participar de una comunidad discursiva.
+        </p>
+
+        <div class="subsection">
+          <h3>El big bang: la idea</h3>
+          <p>
+            Toda escritura comienza con una idea. Esa idea puede ser inicial, difusa o incluso provisoria, pero constituye el punto de partida desde el cual se empieza a construir el texto. La clase recupera esta dimensión para subrayar que escribir también es intentar traducir de la manera más fiel posible una reflexión, una inquietud o una hipótesis.
+          </p>
+        </div>
+
+        <div class="quote">
+          Toda práctica escrita nace de una idea. El desafío consiste en traducirla, desarrollarla y volverla comunicable en el ámbito universitario.
+        </div>
+
+        <div class="subsection">
+          <h3>Diferencias entre lengua y lenguaje</h3>
+          <p>
+            La distinción entre lengua y lenguaje permite comprender que no solo se escribe con palabras, sino también desde marcos culturales, instituciones y prácticas sociales que organizan el sentido de lo que decimos. Esta diferencia ayuda a pensar la escritura como una actividad situada.
+          </p>
+        </div>
+
+        <div class="subsection">
+          <h3>El lenguaje académico como factor de poder</h3>
+          <p>
+            El lenguaje académico funciona también como un factor de poder, ya que habilita ciertas formas de participación y legitimación dentro de la universidad. Aprender a escribir en este registro no implica solo cumplir una formalidad, sino apropiarse de modos de expresión que permiten intervenir en el ámbito universitario.
+          </p>
+        </div>
+
+        <div class="subsection">
+          <h3>Diferencia entre enunciado y discurso</h3>
+          <p>
+            Comprender la diferencia entre enunciado y discurso permite advertir que un texto no es solo una suma de frases, sino una producción situada en determinadas condiciones, dirigida a ciertos destinatarios y atravesada por propósitos y marcos de sentido.
+          </p>
+        </div>
+
+        <div class="subsection">
+          <h3>La planificación</h3>
+          <p>
+            La planificación es una etapa central del proceso de escritura. En este momento se define qué se quiere decir, cómo se lo va a organizar, qué estrategias se utilizarán y qué bibliografía resultará pertinente. También es una instancia para anticipar dificultades, formular preguntas y decidir el recorte del tema.
+          </p>
+        </div>
+
+        <div class="box">
+          <div class="box-title">En esta etapa conviene</div>
+          <ul>
+            <li>Delimitar el tema y el propósito del texto.</li>
+            <li>Pensar quién será el lector.</li>
+            <li>Seleccionar bibliografía adecuada.</li>
+            <li>Organizar ideas principales y secundarias.</li>
+            <li>Anticipar dudas e inconvenientes.</li>
+          </ul>
+        </div>
+
+        <div class="subsection">
+          <h3>Borrador</h3>
+          <p>
+            El borrador constituye la primera formulación del texto. Allí comienzan a plasmarse ideas, referencias y articulaciones todavía provisorias. No se espera perfección, sino una primera puesta en palabras que permita avanzar y, luego, revisar.
+          </p>
+        </div>
+
+        <div class="subsection">
+          <h3>Revisión</h3>
+          <p>
+            La revisión permite volver sobre lo escrito para mejorar claridad, coherencia y organización. Es una etapa de ajuste en la que se redefinen expresiones, se ordenan argumentos y se cuida que el texto resulte comprensible para el lector.
+          </p>
+        </div>
+
+        <div class="subsection">
+          <h3>Mejora del texto</h3>
+          <p>
+            En esta etapa final se integran las decisiones tomadas a lo largo del proceso. El texto se pule, se afina y se fortalece, buscando que la idea inicial quede expresada del modo más claro, riguroso y pertinente posible.
+          </p>
+        </div>
+
+        <div class="destacado">
+          Escribir implica planificar, redactar, revisar y mejorar. No se trata de un acto instantáneo, sino de un proceso de elaboración progresiva.
+        </div>
+      </section>
+
+      <section class="card section" id="citas">
+        <h2>Normas básicas de citación y referencia</h2>
+        <p>
+          En la universidad, escribir también significa dialogar con ideas producidas por otras personas. Por eso, citar correctamente no es una cuestión meramente formal: permite reconocer las fuentes utilizadas, evitar el plagio y sostener el trabajo con respaldo conceptual.
+        </p>
+
+        <div class="subsection">
+          <h3>Tipos de citas en APA</h3>
+          <p>
+            Las normas APA distinguen entre citas directas e indirectas. Las citas directas reproducen textualmente las palabras de un autor. Si tienen menos de 40 palabras, se incorporan entre comillas dentro del párrafo; si superan esa extensión, se presentan en un bloque independiente con sangría.
+          </p>
+          <p>
+            Las citas indirectas o paráfrasis expresan con palabras propias una idea tomada de otra fuente. Aunque no llevan comillas, igualmente deben indicar el apellido del autor y el año de publicación.
+          </p>
+        </div>
+
+        <div class="box white">
+          <div class="box-title">Recordatorio APA</div>
+          <ul>
+            <li>Cita directa breve: dentro del párrafo y entre comillas.</li>
+            <li>Cita directa extensa: en bloque independiente, sin comillas y con sangría.</li>
+            <li>Cita indirecta: sin comillas, pero con referencia al autor y año.</li>
+            <li>La cita puede ser narrativa o parentética.</li>
+          </ul>
+        </div>
+
+        <div class="subsection">
+          <h3>Referencias según el tipo de fuente</h3>
+          <p>
+            Todo trabajo académico debe incluir una lista de referencias al final. En ese apartado se detallan las fuentes utilizadas, de modo que puedan identificarse y localizarse. El formato de la referencia varía según se trate de libros, artículos, páginas web, videos, imágenes u otros materiales.
+          </p>
+        </div>
+
+        <div class="subsection">
+          <h3>Presentación de información en trabajos académicos</h3>
+          <p>
+            La escritura académica también supone organizar y presentar información de manera clara. En este sentido, el uso de tablas, figuras y notas al pie requiere criterios específicos. Las tablas y figuras deben numerarse, titularse y ser mencionadas dentro del texto. Las notas al pie, por su parte, permiten agregar aclaraciones, pero no reemplazan las citas autor-fecha propias del estilo APA.
+          </p>
+        </div>
+
+        <div class="quote">
+          Citar correctamente no solo mejora la calidad del trabajo: también expresa una posición ética frente al conocimiento y frente a quienes lo produjeron.
+        </div>
+      </section>
+
+      <section class="card section" id="tecnologias">
+        <h2>Tecnologías y prácticas indebidas</h2>
+        <p>
+          En el contexto universitario actual, atravesado por tecnologías digitales e inteligencia artificial, resulta necesario diferenciar entre el uso legítimo de herramientas tecnológicas como apoyo al aprendizaje y su uso indebido como forma de fraude académico.
+        </p>
+
+        <div class="idea-grid">
+          <article class="idea">
+            <h4>Uso asistido de tecnologías</h4>
+            <p>
+              El uso asistido refiere a la utilización de herramientas tecnológicas como apoyo al aprendizaje, sin reemplazar la producción intelectual del estudiante. La tecnología puede colaborar en la organización de ideas, la revisión o la consulta, siempre que no sustituya el pensamiento crítico ni la elaboración propia.
+            </p>
+          </article>
+          <article class="idea">
+            <h4>Prácticas indebidas</h4>
+            <p>
+              El uso no ético de la tecnología incluye conductas fraudulentas que afectan la integridad, la responsabilidad y la honestidad de la producción intelectual. Estas prácticas otorgan ventajas injustas y comprometen la validez de las evaluaciones.
+            </p>
+          </article>
+        </div>
+
+        <div class="destacado">
+          La tecnología no constituye un problema en sí misma. El problema aparece cuando reemplaza el trabajo intelectual en lugar de acompañarlo.
+        </div>
+      </section>
+
+      <section class="card section" id="honestidad">
+        <h2>Honestidad intelectual y responsabilidad en la producción de conocimiento</h2>
+        <p>
+          La honestidad intelectual puede entenderse como un compromiso activo con la verdad y con la producción responsable de conocimiento. Este compromiso se apoya en valores como honestidad, confianza, equidad, respeto, responsabilidad y valentía, reconocidos por distintas comunidades académicas.
+        </p>
+
+        <div class="box white">
+          <div class="box-title">Valores centrales</div>
+          <ul>
+            <li><strong>Honestidad:</strong> actuar con veracidad, reconocer autorías y evitar engaños.</li>
+            <li><strong>Confianza:</strong> sostener vínculos académicos basados en el trabajo genuino.</li>
+            <li><strong>Equidad:</strong> respetar reglas comunes y evitar ventajas injustas.</li>
+            <li><strong>Respeto:</strong> escuchar, argumentar y reconocer otros puntos de vista.</li>
+            <li><strong>Responsabilidad:</strong> asumir las consecuencias del propio trabajo.</li>
+            <li><strong>Valentía:</strong> sostener prácticas íntegras incluso en situaciones difíciles.</li>
+          </ul>
+        </div>
+
+        <p>
+          En el recorrido universitario, estos valores no se reducen a una cuestión individual. También forman parte de una cultura académica que busca resguardar la calidad del conocimiento y fortalecer la confianza pública en su producción.
+        </p>
+
+        <div class="quote">
+          Aprender a escribir en la universidad no es solo adquirir una técnica: implica asumir una posición ética frente al conocimiento.
+        </div>
+      </section>
+
+      <section class="card section" id="cierre">
+        <h2>Cierre</h2>
+        <p>
+          La escritura en la universidad es un proceso complejo que va más allá de la simple redacción. Implica construir ideas, organizar el texto, revisar lo producido, dialogar con otras voces y asumir responsabilidad sobre lo que se escribe.
+        </p>
+        <p>
+          A lo largo de esta clase se recorrieron etapas y herramientas fundamentales para producir textos académicos: desde la idea inicial hasta la mejora del escrito, pasando por la citación de fuentes, el reconocimiento del plagio, el uso ético de las tecnologías y la honestidad intelectual.
+        </p>
+        <p>
+          En este marco, escribir en la universidad supone no solo aprender una técnica, sino también formarse como estudiante capaz de producir conocimiento de manera rigurosa, reflexiva y responsable.
+        </p>
+
+        <div class="quote">
+          En la próxima clase se retomarán los desafíos de la ciudadanía universitaria digital, la participación en entornos virtuales y los usos responsables de la inteligencia artificial en el estudio.
+        </div>
+      </section>
+
+      <section class="card biblio section" id="bibliografia">
+        <h2>Bibliografía</h2>
+
+        <p><strong>Bretag, T. (Ed.).</strong> (2016). <em>Handbook of academic integrity</em>. Springer.</p>
+        <p><strong>Carson, T.</strong> (2010). <em>Lying and deception. Theory and practice</em>. Oxford University Press.</p>
+        <p><strong>International Center for Academic Integrity.</strong> (2025). <em>About</em>.</p>
+        <p><strong>Normas APA.</strong> (2023). <em>Guía completa de citación en APA 7ª edición</em>.</p>
+        <p><strong>Puche Villalobos, D. J.</strong> (2025). La inteligencia artificial y el fraude académico en el contexto universitario. <em>Revista Digital de Investigación y Postgrado, 6</em>(11), 73–93.</p>
+
+        <a class="boton-biblio"
+           href="#"
+           onclick="return false;"
+           aria-label="Acceder a la bibliografía de la clase 3">
+           Acceder a la bibliografía
+        </a>
+
+        <div class="destacado">
+          <p><strong>Esta bibliografía acompaña los contenidos de la clase y permite profundizar en:</strong></p>
+          <ul>
+            <li>Escritura académica y ética universitaria.</li>
+            <li>Normas de citación y referencias.</li>
+            <li>Integridad académica y honestidad intelectual.</li>
+            <li>Uso de tecnologías e inteligencia artificial en educación superior.</li>
+          </ul>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<script>
+const menuItems = document.querySelectorAll('.menu li');
+const sections = document.querySelectorAll('.section');
+
+function showSection(id, item){
+  sections.forEach(s => s.classList.remove('active'));
+  menuItems.forEach(i => i.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  item.classList.add('active');
+}
+
+menuItems.forEach(item => {
+  item.addEventListener('click', () => showSection(item.dataset.target, item));
+});
+
+if(menuItems.length){
+  showSection(menuItems[0].dataset.target, menuItems[0]);
+}
+</script>
+</body>
+</html>

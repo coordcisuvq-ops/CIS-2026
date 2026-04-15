@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CIS 2026</title>
+  <style>
+    :root{
+      --fondo:#f4f5f7;
+      --blanco:#ffffff;
+      --texto:#1f2a37;
+      --texto-suave:#5b6676;
+      --borde:#d9dee5;
+      --acento:#9f283b;
+      --acento-oscuro:#7f1f2f;
+      --acento-claro:#f7e9ec;
+      --sombra:0 8px 24px rgba(15,35,55,.08);
+      --radio:20px;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:"Aptos","Segoe UI",Arial,sans-serif;
+      background:var(--fondo);
+      color:var(--texto);
+    }
+
+    .wrap{
+      width:min(1100px, calc(100% - 32px));
+      margin:24px auto;
+      background:var(--blanco);
+      border-radius:24px;
+      overflow:hidden;
+      box-shadow:var(--sombra);
+    }
+
+    .hero{
+      padding:40px 36px;
+      background:
+        linear-gradient(rgba(20,14,16,.46), rgba(20,14,16,.60)),
+        url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      color:#fff;
+    }
+
+    .hero-panel{
+      max-width:760px;
+      background:rgba(159,40,59,.94);
+      padding:22px 24px;
+      box-shadow:0 10px 30px rgba(0,0,0,.18);
+    }
+
+    .hero-kicker{
+      margin:0 0 10px 0;
+      font-size:14px;
+      font-weight:700;
+      letter-spacing:.5px;
+      text-transform:uppercase;
+      opacity:.95;
+    }
+
+    .hero h1{
+      margin:0;
+      font-size:clamp(34px, 5vw, 58px);
+      line-height:1.03;
+      letter-spacing:-1px;
+    }
+
+    .hero-text-box{
+      margin-top:18px;
+      max-width:900px;
+      background:rgba(20,14,16,.46);
+      border:1px solid rgba(255,255,255,.16);
+      padding:20px 22px;
+      box-shadow:0 10px 30px rgba(0,0,0,.16);
+      backdrop-filter:blur(3px);
+      -webkit-backdrop-filter:blur(3px);
+    }
+
+    .hero-sub{
+      margin:0;
+      font-size:18px;
+      line-height:1.6;
+      color:#fff;
+    }
+
+    .content{
+      padding:28px;
+    }
+
+    .card{
+      background:#fff;
+      border:1px solid var(--borde);
+      border-radius:20px;
+      padding:24px;
+    }
+
+    .card h2{
+      margin:0 0 14px 0;
+      font-size:28px;
+      line-height:1.1;
+      color:#34171e;
+    }
+
+    .card p{
+      margin:0 0 14px 0;
+      font-size:16px;
+      line-height:1.7;
+      color:var(--texto-suave);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:16px;
+      margin-top:18px;
+    }
+
+    .link-card{
+      display:block;
+      text-decoration:none;
+      border:1px solid var(--borde);
+      border-radius:18px;
+      padding:20px;
+      background:#fcfafb;
+      transition:all .2s ease;
+      color:inherit;
+    }
+
+    .link-card:hover{
+      transform:translateY(-2px);
+      border-color:#d7b6bf;
+      box-shadow:0 8px 18px rgba(159,40,59,.08);
+    }
+
+    .tag{
+      display:inline-block;
+      margin-bottom:10px;
+      padding:6px 10px;
+      border-radius:999px;
+      background:var(--acento-claro);
+      color:#7f1f2f;
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.2px;
+      text-transform:uppercase;
+    }
+
+    .link-card h3{
+      margin:0 0 8px 0;
+      font-size:22px;
+      line-height:1.2;
+      color:#5a2430;
+    }
+
+    .link-card p{
+      margin:0;
+      font-size:15px;
+      line-height:1.6;
+      color:var(--texto-suave);
+    }
+
+    .note{
+      margin-top:18px;
+      padding:16px 18px;
+      border-left:6px solid var(--acento);
+      background:var(--acento-claro);
+      border-radius:14px;
+      color:#5a3942;
+      font-size:15px;
+      line-height:1.65;
+    }
+
+    @media (max-width:800px){
+      .grid{grid-template-columns:1fr}
+      .wrap{
+        width:100%;
+        margin:0;
+        border-radius:0;
+      }
+      .hero{padding:20px}
+      .content{padding:16px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div class="hero-panel">
+        <p class="hero-kicker">CIS 2026</p>
+        <h1>Curso Inicial de Socialización</h1>
+      </div>
+
+      <div class="hero-text-box">
+        <p class="hero-sub">
+          En esta página vas a encontrar los enlaces de acceso a los materiales del Bloque 0 y de las clases del curso.
+        </p>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="card">
+        <h2>Enlaces del curso</h2>
+        <p>
+          Se actualizarán estos botones a medida que se suban nuevos archivos HTML al repositorio.
+        </p>
+
+        <div class="grid">
+          <a class="link-card" href="bloque0.html">
+            <span class="tag">Inicio</span>
+            <h3>Bloque 0</h3>
+            <p>Presentación general del curso, objetivos, modalidad de trabajo, evaluación y plan de trabajo.</p>
+          </a>
+
+          <a class="link-card" href="clase1.html">
+            <span class="tag">Unidad 1</span>
+            <h3>Clase 1</h3>
+            <p>La universidad, la vida universitaria y el campus virtual.</p>
+          </a>
+
+          <a class="link-card" href="clase2.html">
+            <span class="tag">Unidad 2</span>
+            <h3>Clase 2</h3>
+            <p>Agregar enlace y descripción cuando subas el archivo correspondiente.</p>
+          </a>
+
+          <a class="link-card" href="clase3.html">
+            <span class="tag">Unidad 3</span>
+            <h3>Clase 3</h3>
+            <p>Agregar enlace y descripción cuando subas el archivo correspondiente.</p>
+          </a>
+        </div>
+
+        <div class="note">
+          Importante: para que estos enlaces funcionen, los archivos deben estar subidos al mismo repositorio con esos nombres exactos: <strong>bloque0.html</strong>, <strong>clase1.html</strong>, <strong>clase2.html</strong>, etc.
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

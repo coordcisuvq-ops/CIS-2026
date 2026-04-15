@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clase 1 · La universidad</title>
+  <style>
+    body{
+      margin:0;
+      padding:24px;
+      background:#f3eef0;
+      font-family: Arial, Helvetica, sans-serif;
+      color:#3b2f34;
+    }
+    .wrap{
+      max-width:820px;
+      margin:0 auto;
+      background:#ffffff;
+      border:1px solid #e5d7db;
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:0 6px 18px rgba(0,0,0,0.06);
+    }
+    .hero{
+      background: linear-gradient(135deg, #f3dfe4 0%, #fbf5f7 100%);
+      padding: 28px 32px 20px 32px;
+      border-bottom: 1px solid #eadce0;
+    }
+    .kicker{
+      font-size: 13px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: #8a5a66;
+      margin-bottom: 10px;
+    }
+    h1{
+      margin:0;
+      font-size: 30px;
+      line-height: 1.2;
+      color: #7f1f2f;
+      font-weight: 700;
+    }
+    .sub{
+      margin: 10px 0 0 0;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #6f4d56;
+    }
+    .authors{
+      margin: 8px 0 0 0;
+      font-size: 12px;
+      line-height: 1.4;
+      color: #8a6a72;
+      letter-spacing: 0.3px;
+    }
+    .content{
+      padding: 30px 3cm 34px 3cm;
+      background: #ffffff;
+    }
+    h2{
+      margin: 0 0 14px 0;
+      font-size: 20px;
+      line-height:1.3;
+      color:#8a2235;
+    }
+    p{
+      margin: 0 0 18px 0;
+      font-size: 17px;
+      line-height: 1.8;
+      text-align: justify;
+    }
+    .box{
+      margin: 24px 0;
+      padding: 18px 20px;
+      background: #fbf6f7;
+      border-left: 4px solid #9f283b;
+      border-radius: 10px;
+    }
+    .box.white{
+      background:#fdfbfc;
+      border:1px solid #eadce0;
+      border-left:none;
+    }
+    .box-title{
+      font-size: 14px;
+      font-weight: 700;
+      color: #8a2235;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 8px;
+    }
+    .box p:last-child{margin-bottom:0;}
+    ul{
+      margin:0;
+      padding-left:22px;
+    }
+    li{
+      margin-bottom:10px;
+      font-size:16px;
+      line-height:1.8;
+      text-align: justify;
+    }
+    .small{
+      font-size:15px;
+      color:#6b575d;
+    }
+
+    .quote-balloon{
+      position:relative;
+      margin: 28px 0;
+      padding: 24px 24px 22px 24px;
+      background: linear-gradient(135deg, #faf2f4 0%, #fdf9fa 100%);
+      border: 1px solid #eadce0;
+      border-left: 6px solid #9f283b;
+      border-radius: 18px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.04);
+    }
+    .quote-balloon::before{
+      content: "“";
+      position:absolute;
+      top:-8px;
+      left:16px;
+      font-size:58px;
+      line-height:1;
+      color:#9f283b;
+      font-family: Georgia, "Times New Roman", serif;
+      opacity:.95;
+    }
+    .quote-balloon p{
+      margin:0;
+      padding-left:18px;
+      font-size:18px;
+      line-height:1.85;
+      color:#4a3c41;
+      text-align: justify;
+    }
+
+    .data-highlight{
+      margin: 28px 0;
+      padding: 22px 24px;
+      background: linear-gradient(135deg, #faf2f4 0%, #fdf9fa 100%);
+      border: 1px solid #eadce0;
+      border-left: 6px solid #9f283b;
+      border-radius: 18px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.04);
+    }
+    .data-highlight p{
+      margin:0;
+      font-size:18px;
+      line-height:1.8;
+      color:#4a3c41;
+      text-align: justify;
+    }
+
+    .section-divider{
+      margin:32px 0 24px;
+      border:none;
+      border-top:1px solid #eadce0;
+    }
+
+    .button-row{
+      margin: 22px 0 36px 0;
+    }
+    .boton-biblio{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 18px;
+      background:#9f283b;
+      color:#fff !important;
+      text-decoration:none;
+      border-radius:999px;
+      font-size:14px;
+      font-weight:700;
+      letter-spacing:.2px;
+      box-shadow:0 8px 18px rgba(159,40,59,.18);
+      transition:all .2s ease;
+    }
+    .boton-biblio:hover{
+      background:#7f1f2f;
+      transform:translateY(-1px);
+    }
+
+    .image-duo{
+      margin: 22px 0 24px 0;
+    }
+    .image-duo img{
+      display:block;
+      width:100%;
+      height:auto;
+      border-radius:14px;
+      border:1px solid #eadce0;
+      box-shadow:0 6px 16px rgba(0,0,0,0.06);
+    }
+    .image-duo figcaption{
+      margin-top:10px;
+      font-size:14px;
+      line-height:1.6;
+      color:#6b575d;
+      text-align:left;
+    }
+
+    .ref-figure{
+      margin-top:16px;
+      border:1px solid #eadce0;
+      border-radius:18px;
+      background:#fcfafb;
+      overflow:hidden;
+      box-shadow:0 6px 16px rgba(0,0,0,0.04);
+    }
+    .ref-figure-head{
+      padding:14px 18px;
+      background:linear-gradient(135deg, #f7e9ec 0%, #fcf6f8 100%);
+      border-bottom:1px solid #eadce0;
+      color:#7f1f2f;
+      font-size:14px;
+      font-weight:800;
+      letter-spacing:.3px;
+      text-transform:uppercase;
+    }
+    .ref-figure-body{
+      padding:18px 20px;
+    }
+    .ref-figure-body p{
+      margin:0 0 12px 0;
+      font-size:15px;
+      line-height:1.75;
+      color:#5b6676;
+      text-align:left;
+      padding-left:1.4em;
+      text-indent:-1.4em;
+    }
+    .ref-figure-body p:last-child{
+      margin-bottom:0;
+    }
+    .ref-note{
+      margin-top:14px;
+      font-size:13px;
+      line-height:1.6;
+      color:#7a646b;
+      text-align:left;
+    }
+
+    @media (max-width: 900px){
+      .content{
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <div class="kicker">Clase 1 · Unidad 1</div>
+      <h1>La universidad</h1>
+      <p class="sub">Curso Inicial de Socialización</p>
+      <p class="authors">Clase 1 · 2026</p>
+    </div>
+
+    <div class="content">
+      <h2>Objetivos de enseñanza</h2>
+      <div class="box white">
+        <ul>
+          <li>Presentar la Universidad Nacional de Quilmes y su propuesta de formación bajo entornos virtuales.</li>
+          <li>Introducir a la educación superior como derecho y bien público.</li>
+          <li>Promover la comprensión del rol del estudiante en entornos virtuales.</li>
+        </ul>
+      </div>
+
+      <h2>Objetivos de aprendizaje</h2>
+      <div class="box white">
+        <p>Se espera que los y las estudiantes puedan:</p>
+        <ul>
+          <li>Comprender la educación superior como un derecho garantizado socialmente y como bien público.</li>
+          <li>Reconocer las características de la formación bajo entornos virtuales.</li>
+          <li>Identificar su rol como estudiantes en la universidad.</li>
+        </ul>
+      </div>
+
+      <p>En esta primera clase abordaremos el sentido de la universidad como institución social, su carácter de derecho y el lugar que ocupa en el contexto actual. Asimismo, comenzaremos a pensar qué implica ser estudiante en la modalidad virtual.</p>
+
+      <h2>Bibliografía de lectura obligatoria</h2>
+      <p><strong>Material Didactico Digital (MDM)</strong> (2026).</p>
+
+      <div class="button-row">
+        <a class="boton-biblio" href="https://drive.google.com/file/d/1r-BBWEoJYQaac_8jtXyE2aC4ucjGbjZO/view?usp=sharing" target="_blank" rel="noopener noreferrer">Acceder a la bibliografía</a>
+      </div>
+
+      <h2>Ingresar a la universidad pública</h2>
+
+      <p>El Curso Inicial de Socialización constituye tu primer espacio de encuentro con la universidad. Este inicio no implica únicamente comenzar una carrera, sino también incorporarte a una institución con características propias, en la que se organizan de manera particular la enseñanza, el conocimiento y la vida académica.</p>
+
+      <p>Estás ingresando a la Universidad Nacional de Quilmes (UNQ), una universidad pública ubicada en el conurbano bonaerense que, a través de su modalidad virtual, amplía sus alcances y posibilita el acceso a estudiantes de distintas regiones del país. Esto es de gran importancia, ya que forma parte de un proyecto institucional que busca democratizar el conocimiento y reconocer la diversidad de trayectorias de quienes la habitan.</p>
+
+      <div class="quote-balloon">
+        <p>Ingresar a la universidad es, al mismo tiempo, una experiencia individual y colectiva. Es una oportunidad para formarse, pero también para comprender el mundo que nos rodea, participar en una comunidad y construir un recorrido propio.</p>
+      </div>
+
+      <h2>La universidad como derecho y bien público</h2>
+
+      <p>En Argentina, la educación superior es concebida como un bien público social y un derecho humano. Esto significa que no se trata de un servicio ni de un privilegio individual, sino de una responsabilidad del Estado y de las universidades de generar condiciones para que las personas puedan acceder, sostener sus estudios y graduarse.</p>
+
+      <p>Sin embargo, esta concepción no ha sido siempre igual ni se presenta hoy como un consenso incuestionado. En el escenario actual, la educación como derecho vuelve a colocarse en el centro del debate público, particularmente en relación con el rol del Estado en su garantía. En muchos casos, estas discusiones se sostienen desde perspectivas que no solo interpelan el financiamiento del sistema universitario, sino que también pueden poner en tensión la autonomía de las universidades. Lo que hoy se expresa como un debate sobre recursos también abre interrogantes más profundos: quiénes acceden a la universidad, quiénes logran sostener sus trayectorias y quiénes finalmente egresan.</p>
+
+      <p>En este sentido, es importante reconocer que el ingreso a la universidad no depende únicamente de decisiones individuales. Forma parte de procesos sociales más amplios, vinculados con políticas públicas que han ampliado el sistema universitario, diversificado las propuestas de formación y desarrollado modalidades que permiten que la universidad esté presente donde antes no llegaba.</p>
+
+      <p>Una forma sencilla de comenzar a pensar esto es mirar nuestra propia historia: ¿cuántas personas de tu familia accedieron a estudios universitarios? Para muchos y muchas de ustedes, este puede ser el primer acercamiento a la universidad. Ese hecho, lejos de ser solo individual, también expresa transformaciones en el sistema educativo y en la sociedad.</p>
+
+      <div class="box">
+        <div class="box-title">Idea central</div>
+        <p>La universidad pública no se reduce a una oferta de carreras: es una institución social que amplía derechos, democratiza el acceso al conocimiento y acompaña trayectorias diversas.</p>
+      </div>
+
+      <h2>La función social de la universidad: ciencia y territorio</h2>
+
+      <p>Comprender la universidad implica también reconocer que su función no se limita a la formación profesional. Las universidades producen conocimiento, investigan, intervienen en problemáticas sociales y contribuyen a la construcción de sociedades más justas.</p>
+
+      <p>Tal como plantea la Declaración de la Conferencia Regional de Educación Superior, la universidad no solo forma profesionales, sino que también debe contribuir a la convivencia democrática, promover la cooperación social y participar en la transformación de la realidad.</p>
+
+      <p>Este compromiso se ha hecho visible en distintos momentos, como durante la pandemia, cuando muchas universidades participaron activamente en el desarrollo de conocimiento aplicado, brindaron apoyo técnico y colaboraron en instancias de detección del COVID-19, mostrando su capacidad de dar respuesta frente a situaciones críticas.</p>
+
+      <figure class="image-duo">
+        <img src="img/2.png" alt="Recortes periodísticos sobre aportes de universidades públicas y del sistema científico argentino: producción de kits de testeo por parte de UNSAM y UNQ, y evaluación de estrategias del CONICET para mejorar la productividad de los pastizales sin amenazar la biodiversidad." />
+        
+      </figure>
+
+      <div class="data-highlight">
+        <p>Las experiencias de articulación entre universidad, sistema científico y territorio permiten comprender que la formación universitaria no se agota en la preparación para el mercado laboral: también supone la formación de ciudadanos y ciudadanas comprometidos con el bienestar colectivo.</p>
+      </div>
+
+      <p>En este sentido, resulta importante destacar el papel del CONICET (Consejo Nacional de Investigaciones Científicas y Técnicas), principal organismo público de promoción de la ciencia y la tecnología en Argentina, ya que su trabajo se desarrolla en estrecha articulación con las universidades nacionales. A través de sus equipos de investigación, contribuye a la generación de conocimiento con anclaje local y proyección social.</p>
+
+      <p>Al mismo tiempo, este escenario plantea desafíos para las universidades. En un contexto en el que cada vez más estudiantes acceden a la educación superior con trayectorias diversas, atravesadas por expectativas, incertidumbres y el deseo de construir un futuro con mayores oportunidades, sostener la enseñanza, acompañar esas trayectorias y, al mismo tiempo, responder a demandas sociales más amplias, forma parte de las tensiones propias del sistema universitario actual.</p>
+
+      <h2>Las universidades hoy</h2>
+
+      <p>Las universidades no se encuentran aisladas del contexto actual. Por el contrario, forman parte de procesos sociales, económicos, culturales y tecnológicos más amplios.</p>
+
+      <p>En la actualidad, por ejemplo, circulan discursos que cuestionan el sentido de estudiar, señalando que las tecnologías digitales, como la inteligencia artificial, podrían reemplazar ciertas tareas humanas. Frente a estas afirmaciones, resulta necesario comprender que se trata de transformaciones que atraviesan a la sociedad en su conjunto, y que también interpelan a las instituciones educativas.</p>
+
+      <p>En este marco, la educación superior adquiere un papel central. En sociedades cada vez más atravesadas por el conocimiento, la ciencia y la tecnología, su desarrollo y fortalecimiento resultan fundamentales para el progreso social, la generación de riqueza, la construcción de identidades culturales, la reducción de desigualdades y la promoción de sociedades más justas.</p>
+
+      <hr class="section-divider" />
+
+      <h2>Estudiar en la modalidad virtual</h2>
+
+      <p>La modalidad virtual constituye una de las características distintivas de la Universidad Nacional de Quilmes. Esta propuesta no surge únicamente como una alternativa tecnológica, sino como una política orientada a ampliar el acceso y reconocer la diversidad de situaciones de quienes estudian.</p>
+
+      <p>Estudiar en esta modalidad implica organizar el tiempo de manera autónoma, sostener una participación activa en el aula virtual y desarrollar formas de comunicación mediadas por las tecnologías. A diferencia de la presencialidad, donde los tiempos suelen estar más estructurados, aquí cada estudiante es quien debe planificar su recorrido y tomar decisiones sobre su formación.</p>
+
+      <p>Esto no significa estudiar en soledad. Por el contrario, implica integrarse a una comunidad en la que docentes, tutores y estudiantes construyen espacios de intercambio, acompañamiento y aprendizaje.</p>
+
+      <div class="box white">
+        <div class="box-title">Claves de la modalidad virtual</div>
+        <ul>
+          <li>Organización autónoma del tiempo.</li>
+          <li>Participación activa en el aula virtual.</li>
+          <li>Comunicación mediada por tecnologías.</li>
+          <li>Integración a una comunidad de aprendizaje.</li>
+        </ul>
+      </div>
+
+      <h2>Ser estudiante en la universidad</h2>
+
+      <p>Finalmente, es importante señalar que ser estudiante universitario no se reduce a cumplir con plazos o manejar herramientas tecnológicas. Implica un proceso que lleva tiempo y requiere adaptación, en el que se van construyendo de manera progresiva nuevas formas de estudiar y participar en la vida académica.</p>
+
+      <p>Este recorrido también supone apropiarse de modos específicos de producir conocimiento, propios del ámbito universitario, que no siempre son inmediatos ni evidentes, sino que se desarrollan con la práctica, la reflexión y el acompañamiento.</p>
+
+      <p>Hoy no solo iniciás una carrera: comenzás a formar parte de una comunidad universitaria. Esto implica involucrarte, participar y construir este espacio junto a otros y otras, desde el respeto y el compromiso. La universidad es también un lugar que podés hacer propio.</p>
+
+      <h2>Actividad 1 · Presentación en el foro</h2>
+
+      <div class="box">
+        <div class="box-title">Objetivo</div>
+        <p>Reconocernos como parte de un grupo diverso, con historias, recorridos y expectativas diferentes, pero que comparten el acceso a la educación superior como un derecho.</p>
+      </div>
+
+      <p>Tal como se desarrolló en el primer eje de la clase, ingresar a la Universidad Nacional de Quilmes (UNQ) no es solo una decisión individual, sino también la expresión de un derecho humano y social. La universidad, desde su creación, se propone ampliar el acceso al conocimiento y reconocer la diversidad de trayectorias de quienes la habitan.</p>
+
+      <p>En este primer foro los invitamos a presentarte y a comenzar a construir este espacio compartido con tus compañeros/as y docentes. Para ello, podés incluir en tu intervención algunos aspectos que nos permitan conocerte.</p>
+
+      <div class="box white">
+        <div class="box-title">Sugerencias para tu presentación</div>
+        <ul>
+          <li>Contanos quién sos, de dónde sos y qué carrera elegiste.</li>
+          <li>Compartí cómo fue tu recorrido hasta llegar a la universidad.</li>
+          <li>Comentá qué significa este ingreso para tu proceso de formación.</li>
+          <li>Explicá por qué elegiste la modalidad virtual y cómo se articula con otras dimensiones de tu vida.</li>
+        </ul>
+      </div>
+
+      <h2>Funciones y recursos del campus virtual como entorno institucional de aprendizaje</h2>
+
+      <p>El Campus Virtual de la UNQ constituye el entorno central donde se desarrolla la propuesta educativa en modalidad virtual, basada en un modelo de formación integrador que utiliza las Tecnologías de la Información y la Comunicación (TIC) para facilitar el acceso al conocimiento. A través de la plataforma Moodle se organizan las actividades de enseñanza y aprendizaje, promoviendo la interacción entre estudiantes, docentes, tutores y el conjunto de la comunidad académica.</p>
+
+      <p>Es fundamental para el correcto desempeño académico poder acceder al campus periódicamente. En el Campus se accede a las aulas virtuales de cada asignatura, donde se encuentran los contenidos, actividades y espacios de intercambio. La cursada se organiza de manera asincrónica, lo que permite administrar los tiempos de estudio con flexibilidad y autonomía.</p>
+
+      <p>Además, el entorno ofrece un repositorio de materiales didácticos que centraliza la bibliografía de las materias y facilita su búsqueda y descarga. El acompañamiento institucional se realiza a través de las Salas de Tutorías, donde un/a tutor/a académico/a orienta en la organización de la trayectoria, la elección de materias y el uso del campus, además de brindar información relevante sobre la vida universitaria. A su vez, el Sistema de Autogestión Guaraní permite realizar inscripciones, consultar la historia académica y gestionar trámites administrativos.</p>
+
+      <h2>Estrategias de organización del estudio en entornos virtuales de educación</h2>
+
+      <p>La organización del tiempo constituye un aspecto central en el desempeño del rol del estudiante en entornos virtuales, ya que se trata de un recurso limitado que debe ser administrado de manera eficiente para sostener una trayectoria académica productiva. En este sentido, el aprendizaje implica no solo la apropiación de contenidos, sino también el desarrollo de estrategias personales de planificación del tiempo.</p>
+
+      <p>Asimismo, la optimización del tiempo de estudio requiere la incorporación de hábitos y prácticas como la definición de prioridades, el uso de cronogramas y el diseño de estrategias personales que apunten a fortalecer el cumplimiento de objetivos académicos.</p>
+
+      <div class="quote-balloon">
+        <p>Aprender en la virtualidad supone también aprender a organizarse: administrar tiempos, priorizar tareas y construir hábitos de estudio forma parte de la experiencia universitaria.</p>
+      </div>
+
+      <h2>Comunicación académica en espacios institucionales virtuales desde una perspectiva de convivencia y respeto de derechos</h2>
+
+      <p>La comunicación en la UNQ Virtual es un componente fundamental del proceso educativo, ya que se basa en la interacción entre estudiantes, docentes, tutores y otros actores institucionales en el marco del diálogo didáctico mediado propio de la educación a distancia. Este intercambio permite sostener el aprendizaje en entornos virtuales y construir una experiencia formativa compartida.</p>
+
+      <p>Como en toda institución, la comunicación debe adecuarse a determinadas normas preestablecidas que promueven un uso responsable de los espacios de comunicación. Estas interacciones se desarrollan sobre la base del respeto por la diversidad de opiniones, la libertad de expresión y los valores de la educación pública, como la democracia y los derechos humanos.</p>
+
+      <h2>Conclusión</h2>
+
+      <p>Esta primera clase permitió reconocer que la Universidad Nacional de Quilmes no es solo un espacio de formación, sino una institución que garantiza el derecho a la educación superior. Ingresar a la universidad pública implica comprender que el conocimiento es un bien público, atravesado por debates y desafíos actuales.</p>
+
+      <p>Estudiar en la modalidad virtual supone construir progresivamente el oficio de estudiante, organizar el propio recorrido y participar en una comunidad que produce conocimiento.</p>
+
+      <p>Asimismo, se presentó el modelo pedagógico en el cual se enmarca la UNQ Virtual, indicando los principales actores y herramientas del Campus Moodle involucrados en el proceso educativo. También se mostraron los diferentes modos de comunicación que pueden existir en el Campus Virtual y específicamente dentro del aula.</p>
+
+      <div class="data-highlight">
+        <p>Esperamos que los temas abordados en esta primera clase les permitan integrarse a nuestra comunidad universitaria. Les damos la bienvenida a la Universidad Nacional de Quilmes y les deseamos un excelente inicio.</p>
+      </div>
+
+      <h2>Actividades de resolución obligatoria</h2>
+
+      <div class="box white">
+        <div class="box-title">Las actividades propuestas para la clase 1</div>
+        <ul>
+          <li>Conocer las herramientas del campus virtual desde la edición del perfil personal.</li>
+          <li>Participar en un foro de tipo social.</li>
+        </ul>
+      </div>
+
+      <h2>1. Perfil del Campus</h2>
+
+      <p>Deberá completar el perfil y subir su foto personal al Campus. De este modo, toda la comunidad universitaria tendrá posibilidad de conocerlo si alguien pulsa su nombre en la lista de participantes.</p>
+
+      <p>Para realizar la tarea deberá posicionarse sobre el círculo que contendría la foto de perfil. Puede acceder a la misma desde el inicio del campus o bien ubicarla en la parte superior de la pantalla al lado del botón “Ayuda”. Al presionar se habilitará un menú general y para resolver la actividad deberá ingresar en la opción “Mi cuenta”, donde podrá editar su foto y descripción accediendo al ítem “Editar mi cuenta”.</p>
+
+      <div class="box white">
+        <div class="box-title">Es importante que complete, al menos, dos secciones</div>
+        <ul>
+          <li>Subir una fotografía personal en primer plano.</li>
+          <li>Completar el espacio de descripción con una presentación amable y abierta.</li>
+        </ul>
+      </div>
+
+      <p class="small"><strong>Aclaración:</strong> no es obligatorio publicar el Curriculum Vitae dentro del espacio Información, completar “Mis perfiles académicos” ni “Redes Sociales”.</p>
+
+      <h2>2. Presentación en el foro</h2>
+
+      <p>Deben participar en el Foro “Me presento” que se encuentra en el bloque central del aula bajo el título Actividades. En el foro encontrarán la consigna guía con la indicación de uso de hilo de discusión y formas de intervención.</p>
+
+      <h2>Actividades de autodiagnóstico</h2>
+
+      <p>A continuación, se proponen una serie de actividades de resolución individual. No tienen devolución ni corrección por parte del/de la docente porque son totalmente de exploración y navegación, pero son altamente recomendadas para familiarizarse con espacios centrales del campus y con las primeras acciones de un estudiante virtual.</p>
+
+      <div class="box white">
+        <div class="box-title">Autoevaluación 1 · Acercamiento al Campus Virtual</div>
+        <ul>
+          <li>Ubique la sala de Tutorías, visite sus instructivos, avisos del/de la tutor/a y lista de participantes.</li>
+          <li>Ubique Autogestión Guaraní y allí: Inscripción a Materias, Inscripción a Finales y Trámites.</li>
+        </ul>
+      </div>
+
+      <div class="box white">
+        <div class="box-title">Autoevaluación 2 · Uso del Correo Electrónico</div>
+        <p>Ubique el espacio de Correo Electrónico. Vea las opciones que ofrece: dirección, asunto/título y cuerpo del mensaje. Redacte un correo para su tutor/a comentando que está probando dicho recurso y que intenta comenzar a conocer una de las formas de comunicarse.</p>
+      </div>
+
+      <div class="box white">
+        <div class="box-title">Autoevaluación 3 · Búsqueda en el repositorio de materiales didácticos</div>
+        <p>La tarea propuesta tiene como objetivo acercarlos al repositorio de materiales didácticos, espacio donde encontrarán toda la bibliografía digitalizada propuesta por los docentes. Deberán buscar algún libro o capítulo relacionado con su carrera, utilizando todos los filtros posibles y realizando diversos intentos.</p>
+      </div>
+
+      <div class="ref-figure">
+        <div class="ref-figure-head">Referencias bibliográficas</div>
+        <div class="ref-figure-body">
+          <p>Argentina.gob.ar. (2020, 12 de junio). <em>COVID-19: UNSAM y UNQ estiman que para agosto se podrían producir hasta 3 mil kits de testeo por mes</em> [Imagen 1].</p>
+
+          <p>Conferencia Regional de Educación Superior en América Latina y el Caribe (CRES). (2018). <em>Declaración de la Conferencia Regional de Educación Superior en América Latina y el Caribe</em>. Córdoba, Argentina.</p>
+
+          <p>CONICET. (s.f.). <em>Científicos del CONICET evalúan estrategias para mejorar la productividad de los pastizales sin amenazar la biodiversidad</em> [Imagen 2].</p>
+        </div>
+      </div>
+
+      <p class="ref-note">Estas referencias acompañan los materiales y ejemplos trabajados en la clase.</p>
+    </div>
+  </div>
+</body>
+</html>

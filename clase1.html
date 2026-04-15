@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CIS · Clase 1</title>
+<style>
+:root{
+  --fondo:#f4f5f7;
+  --blanco:#ffffff;
+  --texto:#1f2a37;
+  --texto-suave:#5b6676;
+  --borde:#d9dee5;
+  --acento:#9f283b;
+  --acento-oscuro:#7f1f2f;
+  --acento-claro:#f7e9ec;
+  --unidad1:#9f283b;
+  --unidad2:#7a3246;
+  --unidad3:#b15b6b;
+  --unidad4:#c98793;
+  --unidad5:#4f4e50;
+  --sombra:0 8px 24px rgba(15,35,55,.08);
+  --radio:20px;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:"Aptos","Segoe UI",Arial,sans-serif;
+  background:var(--fondo);
+  color:var(--texto);
+}
+.wrap{
+  width:min(1320px, calc(100% - 32px));
+  margin:20px auto;
+  background:var(--blanco);
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:var(--sombra);
+}
+.hero{
+  position:relative;
+  min-height:420px;
+  display:flex;
+  align-items:flex-end;
+  padding:34px;
+  background:
+    linear-gradient(rgba(20,14,16,.54), rgba(20,14,16,.68)),
+    url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+}
+.hero-content{
+  max-width:1120px;
+}
+.hero-panel{
+  max-width:900px;
+  background:rgba(159,40,59,.94);
+  color:#fff;
+  padding:22px 24px;
+  box-shadow:0 10px 30px rgba(0,0,0,.18);
+}
+.hero-text-box{
+  margin-top:18px;
+  max-width:1080px;
+  background:rgba(20,14,16,.46);
+  border:1px solid rgba(255,255,255,.16);
+  padding:20px 22px;
+  box-shadow:0 10px 30px rgba(0,0,0,.16);
+  backdrop-filter:blur(3px);
+  -webkit-backdrop-filter:blur(3px);
+}
+.hero-kicker{
+  margin:0 0 10px;
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:.4px;
+  text-transform:uppercase;
+  opacity:.95;
+}
+.hero h1{
+  margin:0;
+  font-size:clamp(34px, 4.8vw, 58px);
+  line-height:1.02;
+  letter-spacing:-1px;
+  font-weight:800;
+}
+.hero-sub{
+  margin-top:16px;
+  max-width:950px;
+  color:#ffffff;
+  font-size:18px;
+  line-height:1.55;
+  text-shadow:0 1px 4px rgba(0,0,0,.25);
+}
+.hero-authors{
+  margin-top:12px;
+  max-width:960px;
+  color:#f9edf0;
+  font-size:13px;
+  line-height:1.5;
+}
+.hero-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:18px;
+}
+.hero-meta span{
+  display:inline-block;
+  padding:10px 16px;
+  background:rgba(255,255,255,.86);
+  border:1px solid rgba(255,255,255,.96);
+  color:#3a1920;
+  font-size:13px;
+  font-weight:700;
+  border-radius:999px;
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  box-shadow:0 2px 8px rgba(0,0,0,.10);
+}
+.layout{
+  display:grid;
+  grid-template-columns:300px 1fr;
+  gap:22px;
+  padding:24px;
+}
+.menu{
+  background:#f4eef0;
+  border-radius:20px;
+  padding:18px;
+  align-self:start;
+  position:sticky;
+  top:16px;
+}
+.menu h3{
+  margin:0 0 14px;
+  font-size:14px;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+  color:#5a3b42;
+}
+.menu ul{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+.menu li{
+  margin-bottom:10px;
+  padding:12px 14px;
+  border-radius:14px;
+  background:#fff;
+  border:1px solid #eadce0;
+  color:#4b3439;
+  font-size:14px;
+  line-height:1.35;
+  cursor:pointer;
+  transition:all .2s ease;
+  font-weight:700;
+}
+.menu li:hover{
+  transform:translateX(2px);
+  border-color:#d7b6bf;
+}
+.menu li.active{
+  background:var(--acento);
+  color:#fff;
+  border-color:var(--acento);
+}
+.content{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+.section{
+  display:none;
+}
+.section.active{
+  display:block;
+}
+.section.grid-2{
+  display:none;
+}
+.section.active.grid-2{
+  display:grid;
+}
+.card{
+  background:#fff;
+  border:1px solid var(--borde);
+  border-radius:20px;
+  padding:26px;
+}
+.card h2{
+  margin:0 0 16px;
+  font-size:30px;
+  line-height:1.1;
+  letter-spacing:-.5px;
+  color:#34171e;
+}
+.card h3{
+  margin:0 0 12px;
+  font-size:22px;
+  line-height:1.2;
+  color:#5a2430;
+}
+.card h4{
+  margin:0 0 10px;
+  font-size:18px;
+  line-height:1.25;
+  color:#6f2c3b;
+}
+.card p{
+  margin:0 0 14px;
+  font-size:16px;
+  line-height:1.72;
+  color:var(--texto-suave);
+}
+.card ul{margin:0; padding-left:20px}
+.card li{
+  margin-bottom:10px;
+  font-size:16px;
+  line-height:1.65;
+  color:var(--texto-suave);
+}
+.destacado{
+  margin-top:16px;
+  padding:18px 20px;
+  border-left:6px solid var(--acento);
+  background:var(--acento-claro);
+  border-radius:14px;
+  font-size:15px;
+  line-height:1.65;
+  color:#5a3942;
+}
+.kpis{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:12px;
+  margin-top:16px;
+}
+.kpi{
+  border:1px solid var(--borde);
+  border-radius:16px;
+  padding:16px;
+  background:#faf8f8;
+}
+.kpi .et{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.4px;
+  color:#7e6670;
+  margin-bottom:8px;
+}
+.kpi .va{
+  font-size:18px;
+  font-weight:800;
+  color:#34171e;
+}
+.grid-2{
+  grid-template-columns:1.08fr .92fr;
+  gap:20px;
+}
+.idea-grid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:16px;
+}
+.idea{
+  border:1px solid #eadce0;
+  background:#fcfafb;
+  border-radius:18px;
+  padding:18px;
+}
+.quote{
+  margin:18px 0;
+  padding:20px 22px;
+  background:#fcfafb;
+  border:1px solid #eadce0;
+  border-left:6px solid #c97b8a;
+  border-radius:18px;
+  color:#52343d;
+  font-size:17px;
+  line-height:1.75;
+}
+.badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:10px;
+}
+.badges span{
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:700;
+  background:#f2ecee;
+  color:#5b434b;
+}
+.actividad{
+  margin-top:16px;
+  padding:18px 20px;
+  background:#fcfafb;
+  border:1px solid #eadce0;
+  border-radius:18px;
+}
+.biblio p{
+  margin-bottom:10px;
+}
+.biblio ul{
+  margin:10px 0 0 0;
+  padding-left:22px;
+}
+.biblio li{
+  margin-bottom:10px;
+  font-size:15px;
+  line-height:1.7;
+  color:#5b6676;
+}
+.biblio .destacado p{
+  margin-bottom:10px;
+}
+
+/* Acceso a la clase */
+.acceso-box{
+  background:linear-gradient(180deg,#fcf7f8,#f8eef1);
+  border:1px solid #eadce0;
+  border-radius:20px;
+  padding:18px;
+}
+.class-link-card{
+  position:relative;
+  display:block;
+  min-height:290px;
+  border-radius:22px;
+  overflow:hidden;
+  text-decoration:none;
+  background:
+    linear-gradient(rgba(49,18,25,.35), rgba(49,18,25,.52)),
+    url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+  box-shadow:0 14px 28px rgba(15,35,55,.12);
+  transition:transform .22s ease, box-shadow .22s ease;
+}
+.class-link-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 18px 34px rgba(15,35,55,.18);
+}
+.link-overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  gap:14px;
+  padding:26px;
+}
+.link-icon{
+  width:84px;
+  height:84px;
+  border-radius:50%;
+  background:rgba(255,255,255,.94);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  box-shadow:0 10px 24px rgba(0,0,0,.18);
+}
+.link-overlay h4{
+  margin:0;
+  font-size:24px;
+  line-height:1.2;
+  color:#fff;
+  text-shadow:0 2px 10px rgba(0,0,0,.20);
+}
+.link-overlay p{
+  margin:0;
+  color:#f9edf0;
+  max-width:390px;
+  font-size:15px;
+  line-height:1.65;
+}
+.pdf-actions{
+  margin-top:14px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.pdf-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:10px 14px;
+  border-radius:999px;
+  background:#ffffff;
+  border:1px solid #eadce0;
+  color:#7f1f2f;
+  font-size:13px;
+  font-weight:800;
+  text-decoration:none;
+  box-shadow:0 4px 10px rgba(15,35,55,.06);
+  transition:all .2s ease;
+}
+.pdf-button:hover{
+  background:#fcf3f5;
+  border-color:#d7b6bf;
+  transform:translateY(-1px);
+}
+.link-note{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top:14px;
+  padding:8px 12px;
+  border-radius:999px;
+  background:#fff;
+  border:1px solid #eadce0;
+  color:#7f1f2f;
+  font-size:13px;
+  font-weight:800;
+}
+
+.boton-biblio{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin-top:12px;
+  padding:12px 18px;
+  background:var(--acento);
+  color:#fff !important;
+  text-decoration:none;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:900;
+  letter-spacing:.2px;
+  box-shadow:0 8px 18px rgba(159,40,59,.22);
+  transition:all .2s ease;
+}
+.boton-biblio:hover{
+  background:var(--acento-oscuro);
+  transform:translateY(-1px);
+}
+
+@media (max-width:1080px){
+  .layout{grid-template-columns:1fr}
+  .menu{position:relative; top:0}
+  .kpis,.grid-2,.idea-grid,.imagenes-dobles{grid-template-columns:1fr}
+}
+@media (max-width:720px){
+  .wrap{width:100%; margin:0; border-radius:0}
+  .hero{min-height:360px; padding:18px}
+  .hero-panel{padding:18px}
+  .hero-text-box{padding:16px}
+  .layout{padding:16px}
+  .card{padding:18px}
+  .card h2{font-size:24px}
+  .class-link-card{min-height:230px;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="hero-content">
+      <div class="hero-panel">
+        <p class="hero-kicker">CIS · Clase 1 · Unidad 1</p>
+        <h1>La universidad, la vida universitaria y el campus virtual</h1>
+      </div>
+      <div class="hero-text-box">
+        <p class="hero-sub">
+          En esta primera clase abordaremos el sentido de la universidad como institución social, su carácter de derecho y el lugar que ocupa en el contexto actual. Asimismo, comenzaremos a pensar qué implica ser estudiante en la modalidad virtual.
+        </p>
+        <p class="hero-authors">
+          Autores: Cabañas Cinthia Yanina · Casarini Stella Maris · Concina Alberto Fabio · Godoy Viviana Marisol · Lugones Susana · Olivera Claudia Mónica · Souto Marina Mónica
+        </p>
+        <div class="hero-meta">
+          <span>Clase 1</span>
+          <span>Universidad pública</span>
+          <span>Derecho y bien público</span>
+          <span>Modalidad virtual</span>
+          <span>Campus UNQ</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="menu">
+      <h3>Recorrido de la clase</h3>
+      <ul>
+        <li data-target="presentacion">Presentación</li>
+        <li data-target="acceso">Acceso a la clase</li>
+        <li data-target="objetivos">Objetivos</li>
+        <li data-target="universidad">La universidad pública</li>
+        <li data-target="funcion">Ciencia y territorio</li>
+        <li data-target="virtual">Modalidad virtual</li>
+        <li data-target="campus">Campus y organización</li>
+        <li data-target="actividades">Actividades</li>
+        <li data-target="cierre">Cierre</li>
+        <li data-target="bibliografia">Bibliografía</li>
+      </ul>
+    </aside>
+
+    <main class="content">
+
+      <section class="card section" id="presentacion">
+        <h2>Presentación de la clase</h2>
+        <p>
+          El Curso Inicial de Socialización constituye el primer espacio de encuentro con la universidad. Este inicio no implica únicamente comenzar una carrera, sino también incorporarse a una institución con características propias, en la que se organizan de manera particular la enseñanza, el conocimiento y la vida académica.
+        </p>
+        <p>
+          Estás ingresando a la Universidad Nacional de Quilmes, una universidad pública ubicada en el conurbano bonaerense que, a través de su modalidad virtual, amplía sus alcances y posibilita el acceso a estudiantes de distintas regiones del país. Esto forma parte de un proyecto institucional que busca democratizar el conocimiento y reconocer la diversidad de trayectorias de quienes la habitan.
+        </p>
+
+        <div class="quote">
+          Ingresar a la universidad es, al mismo tiempo, una experiencia individual y colectiva. Es una oportunidad para formarse, pero también para comprender el mundo que nos rodea, participar en una comunidad y construir un recorrido propio.
+        </div>
+
+        <div class="kpis">
+          <div class="kpi">
+            <div class="et">Clase</div>
+            <div class="va">1</div>
+          </div>
+          <div class="kpi">
+            <div class="et">Unidad</div>
+            <div class="va">La universidad</div>
+          </div>
+          <div class="kpi">
+            <div class="et">Recorrido</div>
+            <div class="va">Universidad y campus virtual</div>
+          </div>
+          <div class="kpi">
+            <div class="et">Modalidad</div>
+            <div class="va">Asincrónica</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid-2 section" id="acceso">
+        <section class="card acceso-box">
+          <h3>Acceso a la clase</h3>
+          <a class="class-link-card"
+             href="clases/clase1.html"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="Abrir enlace de la clase 1">
+            <div class="link-overlay">
+              <div class="link-icon">↗</div>
+              <h4>Ingresar al contenido de la clase</h4>
+              <p>Accedé al recurso completo de la clase 1 desde este enlace. Se abrirá en una nueva pestaña.</p>
+            </div>
+          </a>
+          <div class="link-note">Enlace externo · Clase 1</div>
+          <div class="pdf-actions">
+            <a class="pdf-button"
+               href="https://drive.google.com/file/d/1U5hc3VSrulBGHRr8qWe26h03QMH8iiMd/view?usp=drive_link"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Descargar versión imprimible en PDF de la clase 1">
+               Descargar versión imprimible en PDF
+            </a>
+          </div>
+        </section>
+
+        <section class="card">
+          <h3>Temas para orientar la lectura</h3>
+          <ul>
+            <li>¿Qué significa pensar la educación superior como derecho humano y bien público social?</li>
+            <li>¿Qué lugar ocupa la universidad pública en la formación, la producción de conocimiento y la vida democrática?</li>
+            <li>¿Qué implica ingresar a una propuesta de formación en modalidad virtual?</li>
+            <li>¿Qué recursos y espacios del campus forman parte de la experiencia estudiantil en la UNQ?</li>
+            <li>¿Qué formas de organización, comunicación y participación se esperan en este entorno?</li>
+          </ul>
+        </section>
+      </section>
+
+      <section class="card section" id="objetivos">
+        <h2>Objetivos</h2>
+        <div class="idea-grid">
+          <article class="idea">
+            <h4>Objetivos de enseñanza</h4>
+            <ul>
+              <li>Presentar la Universidad Nacional de Quilmes y su propuesta de formación bajo entornos virtuales.</li>
+              <li>Introducir a la educación superior como derecho y bien público.</li>
+              <li>Promover la comprensión del rol del estudiante en entornos virtuales.</li>
+            </ul>
+          </article>
+          <article class="idea">
+            <h4>Objetivos de aprendizaje</h4>
+            <ul>
+              <li>Comprender la educación superior como un derecho garantizado socialmente y como bien público.</li>
+              <li>Reconocer las características de la formación bajo entornos virtuales.</li>
+              <li>Identificar su rol como estudiantes en la universidad.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="destacado">
+          La clase propone acompañar el ingreso a la vida universitaria desde una perspectiva amplia: no solo enseñar a usar herramientas, sino situar a la universidad como espacio de formación, derecho, participación y construcción colectiva.
+        </div>
+      </section>
+
+      <section class="card section" id="universidad">
+        <h2>La universidad como derecho y bien público</h2>
+        <p>
+          En Argentina, la educación superior es concebida como un bien público social y un derecho humano. Esto significa que no se trata de un servicio ni de un privilegio individual, sino de una responsabilidad del Estado y de las universidades de generar condiciones para que las personas puedan acceder, sostener sus estudios y graduarse.
+        </p>
+        <p>
+          Sin embargo, esta concepción no ha sido siempre igual ni se presenta hoy como un consenso incuestionado. En el escenario actual, la educación como derecho vuelve a colocarse en el centro del debate público, particularmente en relación con el rol del Estado en su garantía.
+        </p>
+        <p>
+          En este sentido, es importante reconocer que el ingreso a la universidad no depende únicamente de decisiones individuales. Forma parte de procesos sociales más amplios, vinculados con políticas públicas que han ampliado el sistema universitario, diversificado las propuestas de formación y desarrollado modalidades que permiten que la universidad esté presente donde antes no llegaba.
+        </p>
+
+        <div class="badges">
+          <span>Derecho humano</span>
+          <span>Bien público social</span>
+          <span>Universidad pública</span>
+          <span>Trayectorias diversas</span>
+        </div>
+      </section>
+
+      <section class="card section" id="funcion">
+        <h2>La función social de la universidad: ciencia y territorio</h2>
+        <p>
+          Comprender la universidad implica también reconocer que su función no se limita a la formación profesional. Las universidades producen conocimiento, investigan, intervienen en problemáticas sociales y contribuyen a la construcción de sociedades más justas.
+        </p>
+        <p>
+          Tal como plantea la Declaración de la Conferencia Regional de Educación Superior, la universidad no solo forma profesionales, sino que también debe contribuir a la convivencia democrática, promover la cooperación social y participar en la transformación de la realidad.
+        </p>
+        <p>
+          Este compromiso se ha hecho visible en distintos momentos, como durante la pandemia, cuando muchas universidades participaron activamente en el desarrollo de conocimiento aplicado, brindaron apoyo técnico y colaboraron en instancias de detección del COVID-19, mostrando su capacidad de dar respuesta frente a situaciones críticas.
+        </p>
+
+        <div class="imagenes-dobles">
+          <figure class="imagen-card">
+            <img src="img/1.png" />
+          </figure>
+        </div>
+
+        <div class="quote">
+          La formación universitaria no se agota en la preparación de profesionales para el mercado laboral. La universidad pública persigue una finalidad que la trasciende: la formación de ciudadanos y ciudadanas comprometidos con el bienestar colectivo.
+        </div>
+      </section>
+
+      <section class="card section" id="virtual">
+        <h2>Estudiar en la modalidad virtual</h2>
+        <p>
+          La modalidad virtual constituye una de las características distintivas de la Universidad Nacional de Quilmes. Esta propuesta no surge únicamente como una alternativa tecnológica, sino como una política orientada a ampliar el acceso y reconocer la diversidad de situaciones de quienes estudian.
+        </p>
+        <p>
+          Estudiar en esta modalidad implica organizar el tiempo de manera autónoma, sostener una participación activa en el aula virtual y desarrollar formas de comunicación mediadas por las tecnologías. A diferencia de la presencialidad, donde los tiempos suelen estar más estructurados, aquí cada estudiante debe planificar su recorrido y tomar decisiones sobre su formación.
+        </p>
+        <p>
+          Esto no significa estudiar en soledad. Por el contrario, implica integrarse a una comunidad en la que docentes, tutores y estudiantes construyen espacios de intercambio, acompañamiento y aprendizaje.
+        </p>
+
+        <div class="destacado">
+          Ser estudiante universitario no se reduce a cumplir con plazos o manejar herramientas tecnológicas. Implica un proceso que lleva tiempo y requiere adaptación, en el que se van construyendo de manera progresiva nuevas formas de estudiar y participar en la vida académica.
+        </div>
+      </section>
+
+      <section class="card section" id="campus">
+        <h2>Funciones y recursos del campus virtual</h2>
+        <div class="grid-2">
+          <div>
+            <p>
+              El Campus Virtual de la UNQ constituye el entorno central donde se desarrolla la propuesta educativa en modalidad virtual. A través de la plataforma Moodle se organizan las actividades de enseñanza y aprendizaje, promoviendo la interacción entre estudiantes, docentes, tutores y el conjunto de la comunidad académica.
+            </p>
+            <p>
+              En el campus se accede a las aulas virtuales de cada asignatura, donde se encuentran los contenidos, actividades y espacios de intercambio. La cursada se organiza de manera asincrónica, lo que permite administrar los tiempos de estudio con flexibilidad y autonomía.
+            </p>
+            <p>
+              El acompañamiento institucional se realiza a través de las Salas de Tutorías, donde un/a tutor/a académico/a orienta en la organización de la trayectoria, la elección de materias y el uso del campus. A su vez, el Sistema de Autogestión Guaraní permite realizar inscripciones, consultar la historia académica y gestionar trámites administrativos.
+            </p>
+          </div>
+          <div>
+            <div class="idea">
+              <h4>Organización del estudio</h4>
+              <p>
+                La organización del tiempo constituye un aspecto central en el desempeño del rol del estudiante en entornos virtuales. Esto requiere desarrollar estrategias personales de planificación, definición de prioridades, uso de cronogramas y construcción de hábitos de estudio.
+              </p>
+            </div>
+            <div class="idea" style="margin-top:16px;">
+              <h4>Comunicación académica</h4>
+              <p>
+                La comunicación en la UNQ Virtual es un componente fundamental del proceso educativo. Se basa en la interacción entre estudiantes, docentes, tutores y otros actores institucionales, y debe desarrollarse desde el respeto, la convivencia y los valores de la educación pública.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card section" id="actividades">
+        <h2>Actividades de la clase</h2>
+
+        <div class="actividad">
+          <h3>Actividad 1 · Participar en el foro "Me presento"</h3>
+          <p>
+            El objetivo es reconocernos como parte de un grupo diverso, con historias, recorridos y expectativas diferentes, pero que comparten el acceso a la educación superior como un derecho.
+          </p>
+          <p>
+            En este primer foro se invita a presentarse, contar quiénes son, de dónde son, qué carrera eligieron, cómo fue su recorrido hasta llegar a la universidad y qué significa este ingreso para su proceso de formación.
+          </p>
+        </div>
+
+        <div class="actividad">
+          <h3>Actividad 2 · Perfil del campus</h3>
+          <p>
+            Completar el perfil personal y subir una foto.
+          </p>
+        </div>
+
+        <div class="actividad">
+          <h3>Actividades de autodiagnóstico</h3>
+          <ul>
+            <li>Acercamiento al Campus Virtual y a la sala de Tutorías.</li>
+            <li>Uso del correo electrónico institucional.</li>
+            <li>Búsqueda en el repositorio de materiales didácticos.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="card section" id="cierre">
+        <h2>Cierre</h2>
+        <p>
+          Esta primera clase permitió reconocer que la Universidad Nacional de Quilmes no es solo un espacio de formación, sino una institución que garantiza el derecho a la educación superior. Ingresar a la universidad pública implica comprender que el conocimiento es un bien público, atravesado por debates y desafíos actuales.
+        </p>
+        <p>
+          Estudiar en la modalidad virtual supone construir progresivamente el oficio de estudiante, organizar el propio recorrido y participar en una comunidad que produce conocimiento.
+        </p>
+        <p>
+          También se presentaron los principales actores y herramientas del Campus Moodle involucrados en el proceso educativo, así como los diferentes modos de comunicación que pueden existir en el Campus Virtual y específicamente dentro del aula.
+        </p>
+
+        <div class="quote">
+          Esperamos que los temas abordados en esta primera clase les permitan integrarse a nuestra comunidad universitaria. Les damos la bienvenida a la Universidad Nacional de Quilmes y les deseamos un excelente inicio.
+        </div>
+      </section>
+
+      <section class="card biblio section" id="bibliografia">
+        <h2>Bibliografía</h2>
+
+        <p>
+          <strong>Material Didáctico Digital. (2026).</strong>
+        </p>
+
+        <a class="boton-biblio"
+           href="#"
+           onclick="return false;"
+           aria-label="Acceder a la bibliografía de la clase 1">
+           Acceder a la bibliografía
+        </a>
+
+        <div class="destacado">
+          <p><strong>También dialogan con esta clase los siguientes materiales:</strong></p>
+          <ul>
+            <li>Argentina.gob.ar. (2020, 12 de junio). <em>COVID-19: UNSAM y UNQ estiman que para agosto se podrían producir hasta 3 mil kits de testeo por mes</em> [Imagen 1].</li>
+            <li>Conferencia Regional de Educación Superior en América Latina y el Caribe (CRES). (2018). <em>Declaración de la Conferencia Regional de Educación Superior en América Latina y el Caribe</em>. Córdoba, Argentina.</li>
+            <li>CONICET. (s.f.). <em>Científicos del CONICET evalúan estrategias para mejorar la productividad de los pastizales sin amenazar la biodiversidad</em> [Imagen 2].</li>
+          </ul>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<script>
+const menuItems = document.querySelectorAll('.menu li');
+const sections = document.querySelectorAll('.section');
+
+function showSection(id, item){
+  sections.forEach(s => s.classList.remove('active'));
+  menuItems.forEach(i => i.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  item.classList.add('active');
+}
+
+menuItems.forEach(item => {
+  item.addEventListener('click', () => showSection(item.dataset.target, item));
+});
+
+if(menuItems.length){
+  showSection(menuItems[0].dataset.target, menuItems[0]);
+}
+</script>
+</body>
+</html>

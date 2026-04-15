@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clase 4 · Ser estudiante en la era digital</title>
+  <style>
+    body{
+      margin:0;
+      padding:24px;
+      background:#f3eef0;
+      font-family: Arial, Helvetica, sans-serif;
+      color:#3b2f34;
+    }
+    .wrap{
+      max-width:820px;
+      margin:0 auto;
+      background:#ffffff;
+      border:1px solid #e5d7db;
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:0 6px 18px rgba(0,0,0,0.06);
+    }
+    .hero{
+      background: linear-gradient(135deg, #f3dfe4 0%, #fbf5f7 100%);
+      padding: 28px 32px 20px 32px;
+      border-bottom: 1px solid #eadce0;
+    }
+    .kicker{
+      font-size: 13px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: #8a5a66;
+      margin-bottom: 10px;
+    }
+    h1{
+      margin:0;
+      font-size: 30px;
+      line-height: 1.2;
+      color: #7f1f2f;
+      font-weight: 700;
+    }
+    .sub{
+      margin: 10px 0 0 0;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #6f4d56;
+    }
+    .authors{
+      margin: 8px 0 0 0;
+      font-size: 12px;
+      line-height: 1.4;
+      color: #8a6a72;
+      letter-spacing: 0.3px;
+    }
+    .content{
+      padding: 30px 3cm 34px 3cm;
+      background: #ffffff;
+    }
+    h2{
+      margin: 0 0 14px 0;
+      font-size: 20px;
+      line-height:1.3;
+      color:#8a2235;
+    }
+    h3{
+      margin: 26px 0 12px 0;
+      font-size: 18px;
+      line-height:1.3;
+      color:#8a2235;
+    }
+    p{
+      margin: 0 0 18px 0;
+      font-size: 17px;
+      line-height: 1.8;
+      text-align: justify;
+    }
+    .box{
+      margin: 24px 0;
+      padding: 18px 20px;
+      background: #fbf6f7;
+      border-left: 4px solid #9f283b;
+      border-radius: 10px;
+    }
+    .box.white{
+      background:#fdfbfc;
+      border:1px solid #eadce0;
+      border-left:none;
+    }
+    .box-title{
+      font-size: 14px;
+      font-weight: 700;
+      color: #8a2235;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 8px;
+    }
+    .box p:last-child{margin-bottom:0;}
+    ul{
+      margin:0;
+      padding-left:22px;
+    }
+    li{
+      margin-bottom:10px;
+      font-size:16px;
+      line-height:1.8;
+      text-align: justify;
+    }
+    .small{
+      font-size:15px;
+      color:#6b575d;
+    }
+
+    .quote-balloon{
+      position:relative;
+      margin: 28px 0;
+      padding: 24px 24px 22px 24px;
+      background: linear-gradient(135deg, #faf2f4 0%, #fdf9fa 100%);
+      border: 1px solid #eadce0;
+      border-left: 6px solid #9f283b;
+      border-radius: 18px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.04);
+    }
+    .quote-balloon::before{
+      content: "“";
+      position:absolute;
+      top:-8px;
+      left:16px;
+      font-size:58px;
+      line-height:1;
+      color:#9f283b;
+      font-family: Georgia, "Times New Roman", serif;
+      opacity:.95;
+    }
+    .quote-balloon p{
+      margin:0;
+      padding-left:18px;
+      font-size:18px;
+      line-height:1.85;
+      color:#4a3c41;
+      text-align: justify;
+    }
+
+    .data-highlight{
+      margin: 28px 0;
+      padding: 22px 24px;
+      background: linear-gradient(135deg, #faf2f4 0%, #fdf9fa 100%);
+      border: 1px solid #eadce0;
+      border-left: 6px solid #9f283b;
+      border-radius: 18px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.04);
+    }
+    .data-highlight p{
+      margin:0;
+      font-size:18px;
+      line-height:1.8;
+      color:#4a3c41;
+      text-align: justify;
+    }
+
+    .section-divider{
+      margin:32px 0 24px;
+      border:none;
+      border-top:1px solid #eadce0;
+    }
+
+    .button-row{
+      margin: 22px 0 36px 0;
+    }
+    .boton-biblio{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 18px;
+      background:#9f283b;
+      color:#fff !important;
+      text-decoration:none;
+      border-radius:999px;
+      font-size:14px;
+      font-weight:700;
+      letter-spacing:.2px;
+      box-shadow:0 8px 18px rgba(159,40,59,.18);
+      transition:all .2s ease;
+    }
+    .boton-biblio:hover{
+      background:#7f1f2f;
+      transform:translateY(-1px);
+    }
+
+    .ref-figure{
+      margin-top:16px;
+      border:1px solid #eadce0;
+      border-radius:18px;
+      background:#fcfafb;
+      overflow:hidden;
+      box-shadow:0 6px 16px rgba(0,0,0,0.04);
+    }
+    .ref-figure-head{
+      padding:14px 18px;
+      background:linear-gradient(135deg, #f7e9ec 0%, #fcf6f8 100%);
+      border-bottom:1px solid #eadce0;
+      color:#7f1f2f;
+      font-size:14px;
+      font-weight:800;
+      letter-spacing:.3px;
+      text-transform:uppercase;
+    }
+    .ref-figure-body{
+      padding:18px 20px;
+    }
+    .ref-figure-body p{
+      margin:0 0 12px 0;
+      font-size:15px;
+      line-height:1.75;
+      color:#5b6676;
+      text-align:left;
+      padding-left:1.4em;
+      text-indent:-1.4em;
+    }
+    .ref-figure-body p:last-child{
+      margin-bottom:0;
+    }
+    .ref-note{
+      margin-top:14px;
+      font-size:13px;
+      line-height:1.6;
+      color:#7a646b;
+      text-align:left;
+    }
+
+    @media (max-width: 900px){
+      .content{
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <div class="kicker">Clase 4 · Unidad 4</div>
+      <h1>Ser estudiante en la era digital</h1>
+      <p class="sub">Curso Inicial de Socialización</p>
+      <p class="authors">Autores: a completar</p>
+    </div>
+
+    <div class="content">
+      <h2>Objetivos de la clase</h2>
+      <div class="box white">
+        <ul>
+          <li>Identificar las mejores prácticas en relación con la utilización de la inteligencia artificial generativa en el ámbito académico.</li>
+          <li>Analizar el impacto de la IA en la lectura, la escritura y el estudio universitario.</li>
+          <li>Reflexionar sobre los desafíos éticos y las responsabilidades asociadas a la utilización de la IA en el ámbito académico.</li>
+          <li>Comprender la relación entre prácticas digitales, identidad académica y ciudadanía universitaria.</li>
+        </ul>
+      </div>
+
+      <h2>Objetivos de los/as estudiantes</h2>
+      <div class="box white">
+        <p>Se espera que al finalizar la clase las/os estudiantes se encuentren en condiciones de:</p>
+        <ul>
+          <li>Comprender qué es la inteligencia artificial generativa y cómo funciona en términos generales.</li>
+          <li>Reconocer el potencial de la IA como herramienta de apoyo al estudio.</li>
+          <li>Identificar los límites en la utilización de IA, así como también los sesgos y/o errores a los que puede arribar.</li>
+          <li>Utilizar herramientas de IA sin reemplazar su propio proceso de aprendizaje.</li>
+          <li>Formular instrucciones claras (prompts) para interactuar con estas herramientas de IA de forma adecuada.</li>
+          <li>Reflexionar sobre su rol como estudiantes en entornos digitales.</li>
+        </ul>
+      </div>
+
+      <p>En clases previas se desarrolló el tema de la escritura en la universidad, lo que permitió identificar que escribir no es solamente cumplir con una consigna, sino una herramienta fundamental para pensar, organizar ideas y construir conocimiento propio. Escribir permite procesar lo que se lee, establecer relaciones entre conceptos y desarrollar una voz académica propia.</p>
+
+      <p>En esta clase se retomará esa idea para profundizarla en relación con el contexto actual, atravesado por el avance y el uso creciente de tecnologías digitales, especialmente la inteligencia artificial. Con el transcurso de los años, han surgido distintas herramientas capaces de generar textos, resumir información o explicar contenidos en pocos segundos. Esto transforma profundamente las prácticas académicas y plantea nuevos desafíos en torno a las mismas.</p>
+
+      <p>En este marco, resulta necesario preguntarse: ¿qué lugar ocupa la inteligencia artificial en el ámbito universitario?, ¿cómo puede utilizarse sin reemplazar completamente el proceso de aprendizaje?, ¿qué responsabilidades implica su uso?</p>
+
+      <p>El propósito de esta clase gira en torno a comprender nociones básicas sobre inteligencia artificial generativa en el ámbito universitario y reflexionar respecto de su utilización, desde una perspectiva crítica, ética y responsable, entendiendo que su incorporación no solo impacta en cómo se estudia, sino también en cómo se construye la identidad como estudiantes universitarios en entornos digitales.</p>
+
+      <h2>Bibliografía de lectura obligatoria</h2>
+      <p><strong>Bibliografía de la unidad.</strong> <em>A completar con las referencias definitivas.</em></p>
+
+      <div class="button-row">
+        <a class="boton-biblio" href="#" onclick="return false;">Acceder a la bibliografía</a>
+      </div>
+
+      <h2>1. Inteligencia artificial generativa en el ámbito universitario</h2>
+
+      <p>La irrupción de la inteligencia artificial generativa (IAGen) en las distintas actividades de la vida cotidiana y, particularmente, en el ámbito universitario, plantea en la actualidad un gran desafío: aprender a utilizarla de forma adecuada e integrarla de manera significativa en los procesos de enseñanza y aprendizaje. En este ámbito, estas herramientas tecnológicas permiten producir múltiples tipos de contenidos, como ensayos, resúmenes, presentaciones, podcasts o mapas conceptuales. Así, el acceso y la circulación del conocimiento se han visto profundamente transformados en un corto período de tiempo, planteando muchos interrogantes y desafíos en consecuencia.</p>
+
+      <p>La incorporación de estas tecnologías no implica simplemente aprender a utilizarlas desde un punto de vista técnico. Por el contrario, implica desarrollar un nivel de competencias que permitan un uso crítico, creativo y responsable de las mismas. Esto requiere superar una mirada instrumental simplista, centrada únicamente en “para qué sirve”, para avanzar hacia una comprensión más amplia de su utilización que incluya dimensiones éticas, políticas y culturales.</p>
+
+      <p>En términos generales, la IAGen funciona a partir de modelos probabilísticos que le permiten predecir la palabra más probable dentro de una secuencia. Esto significa que no “piensa” ni comprende en sentido humano, sino que produce textos a partir de patrones aprendidos. Como resultado, puede generar respuestas coherentes, pero también cometer errores, incluir información inexacta o reproducir sesgos.</p>
+
+      <div class="quote-balloon">
+        <p>La IA puede producir respuestas verosímiles y bien redactadas, pero eso no garantiza que sean correctas, actualizadas o adecuadas al contexto.</p>
+      </div>
+
+      <p>Por ejemplo, una herramienta de IA puede ayudar a explicar un concepto complejo o a ordenar un texto. En esos casos, la tecnología puede resultar útil como apoyo. No obstante, comprender ese concepto, interpretarlo y poder explicarlo con palabras propias sigue siendo una tarea central del proceso de aprendizaje.</p>
+
+      <p>En este sentido, resulta importante desarmar la idea de la IA como una “caja negra” incuestionable. Comprender cómo funciona, reconocer sus límites y validar la información que produce son aspectos fundamentales para una utilización adecuada y responsable en el ámbito académico.</p>
+
+      <p>También debe considerarse que muchas de estas herramientas han sido desarrolladas en otros contextos, lo que puede invisibilizar realidades locales. Por ello, se vuelve necesario desarrollar un conocimiento situado, es decir, contar con la capacidad de adaptar, contextualizar y enriquecer la información en función de la propia realidad y del entorno en el cual se estudia.</p>
+
+      <div class="box">
+        <div class="box-title">Idea central</div>
+        <p>La IA puede acompañar el estudio, pero no reemplaza la comprensión, la interpretación ni la construcción personal del conocimiento.</p>
+      </div>
+
+      <h2>1.1 Desafíos éticos y usos responsables de la IA</h2>
+
+      <p>Si se parte de la premisa de que estudiar en la universidad implica leer, analizar, escribir y debatir, es decir, comprender y poner en práctica aquello que se estudia, la utilización de la IA plantea interrogantes éticos relevantes. Estas herramientas pueden realizar muchas de las tareas básicas del proceso de aprendizaje, y allí aparece el principal desafío: su utilización no debe derivar en la sustitución del trabajo intelectual del estudiante.</p>
+
+      <p>Por el contrario, resulta fundamental sostener la construcción de respuestas, resoluciones y materiales de autoría propia, evitando prácticas como el copiar y pegar o la reproducción automática de información proporcionada por la IA.</p>
+
+      <p>En este marco, adquiere centralidad el concepto de honestidad intelectual. Cada estudiante es responsable de los trabajos que presenta y, aunque la IA pueda colaborar en la organización de ideas o en la corrección de la redacción, su utilización no debe sustituir bajo ninguna circunstancia la construcción personal del argumento.</p>
+
+      <p>La lectura con intención, la capacidad de análisis de la información, el proceso de escritura y la fundamentación continúan siendo aspectos claves para aprender. Esto permite procesar la teoría, comprenderla y apropiarse del conocimiento para luego implementarlo de forma práctica tanto en el ámbito académico como en el laboral.</p>
+
+      <div class="data-highlight">
+        <p>El uso responsable de la IA supone sostener la honestidad intelectual, verificar la información obtenida y evitar que la herramienta reemplace el trabajo intelectual propio.</p>
+      </div>
+
+      <p>Por otra parte, la utilización de estas tecnologías implica considerar múltiples dimensiones éticas, como la propiedad de los datos, los derechos de autor, la veracidad de la información, los sesgos, la privacidad y las desigualdades en el acceso. En este sentido, no resulta oportuno compartir datos personales o trabajos inéditos en plataformas digitales, así como tampoco utilizar información sin citar adecuadamente las fuentes.</p>
+
+      <h2>1.2 Ingeniería de prompts y formas de interacción con la IA</h2>
+
+      <p>Otro aspecto central es la forma en la que se interactúa con la IA. Para obtener respuestas útiles, resulta necesario formular instrucciones o consignas claras y específicas. Estas se conocen como <em>prompts</em>, y no constituyen simplemente una orden, sino una forma de orientar y precisar la respuesta de la herramienta para que el resultado sea lo más pertinente posible.</p>
+
+      <p>Por ejemplo, no es lo mismo pedir “explicar organización” que indicar “explicar el concepto de organización formal con un ejemplo sencillo”. En este sentido, aprender a formular preguntas se convierte en una habilidad fundamental en el contexto digital actual.</p>
+
+      <div class="box white">
+        <div class="box-title">Algunas claves para formular prompts</div>
+        <ul>
+          <li>Definir con claridad el tema o concepto a trabajar.</li>
+          <li>Precisar el tipo de respuesta que se espera.</li>
+          <li>Solicitar ejemplos o reformulaciones cuando sea necesario.</li>
+          <li>Revisar críticamente la respuesta obtenida.</li>
+        </ul>
+      </div>
+
+      <p>Asimismo, es posible utilizar la IA de manera progresiva, a través de un proceso que incluya una primera instancia de exploración conceptual, una segunda de profundización crítica y una tercera de aplicación, en la que el estudiante produce su propio contenido. De este modo, la herramienta puede funcionar como un apoyo en la reflexión y fomentar la creatividad, sin reemplazar la producción propia.</p>
+
+      <h2>1.3 Hacia una cultura digital responsable</h2>
+
+      <h3>1.3.1 Ciudadanía digital, convivencia en entornos virtuales y accesibilidad</h3>
+
+      <p>La incorporación de la IA en la vida cotidiana y en el ámbito académico también invita a reflexionar sobre la participación en entornos digitales. Cada acción que realiza un estudiante, desde los textos que produce hasta las opiniones que comparte o las fuentes que valida, forma parte de su identidad académica. En este sentido, el uso de la tecnología no es neutral, sino que contribuye a construir una determinada forma de ser estudiante.</p>
+
+      <p>Esto se vincula con el concepto de ciudadanía digital universitaria, que implica ejercer derechos y responsabilidades en entornos virtuales de aprendizaje. No se trata solo de utilizar herramientas, sino de participar de manera respetuosa, crítica y comprometida.</p>
+
+      <p>En este marco, la huella digital académica puede entenderse como el conjunto de producciones, interacciones y decisiones que un estudiante realiza en su trayectoria universitaria. Lejos de ser un simple registro, constituye un elemento central en la construcción de la identidad profesional.</p>
+
+      <p>Para sostener esta participación de manera crítica, resulta necesario desarrollar una alfabetización digital crítica. Esto implica ir más allá de la utilización técnica de las herramientas, reflexionar sobre sus implicancias sociales y políticas, cuestionar el funcionamiento de las tecnologías, analizar sus sesgos y proponer formas de uso más inclusivas y equitativas.</p>
+
+      <p>Por otra parte, los entornos virtuales de aprendizaje no son espacios pasivos, sino ámbitos de producción e intercambio de conocimiento. En ellos, el estudiante deja de ser un receptor para convertirse en un participante activo, capaz de generar contenidos y participar en procesos colaborativos. Esto requiere desarrollar habilidades de autogestión, como la organización del tiempo, la planificación del estudio y la evaluación del propio aprendizaje.</p>
+
+      <div class="quote-balloon">
+        <p>Participar en entornos digitales implica no solo utilizar herramientas, sino también convivir, respetar, cuidar la privacidad y construir una identidad académica responsable.</p>
+      </div>
+
+      <p>La participación en entornos digitales también implica convivir con otras personas. Por ese motivo, resulta fundamental sostener prácticas basadas en el respeto, la responsabilidad y el reconocimiento de la diversidad. Esto incluye evitar situaciones de violencia digital, cuidar la privacidad y promover interacciones constructivas.</p>
+
+      <p>Asimismo, resulta fundamental garantizar condiciones de accesibilidad e inclusión que permitan que todas las personas puedan participar en igualdad de condiciones de los procesos de aprendizaje. La educación superior, en este sentido, debe ser un espacio que promueva el acceso al conocimiento sin reproducir barreras innecesarias.</p>
+
+      <h2>Conclusión</h2>
+
+      <p>La IAGen se ha consolidado como una herramienta con gran potencial para el ámbito universitario, ya que puede facilitar la comprensión de contenidos, la organización de ideas y la producción de textos. Sin embargo, su incorporación plantea desafíos que requieren una mirada crítica y responsable.</p>
+
+      <p>Tal como se trabajó en clases anteriores, escribir en la universidad es una forma de aprender. En este contexto, la IA debe entenderse como un recurso que acompaña ese proceso, pero que no puede reemplazarlo. La construcción del conocimiento sigue siendo responsabilidad del estudiante.</p>
+
+      <p>Al mismo tiempo, la utilización de estas tecnologías se inscribe en un entorno digital en el que cada acción contribuye a la construcción de una identidad académica. Por ello, el desafío no es solo aprender a utilizar herramientas, sino formarse como un estudiante autónomo, crítico y comprometido con el uso ético de la tecnología.</p>
+
+      <div class="data-highlight">
+        <p>Integrar la IA en la vida universitaria implica asumir un rol activo en la producción de conocimiento, sostener la honestidad intelectual y participar de manera responsable en la comunidad académica digital.</p>
+      </div>
+
+      <h2>Actividad integradora</h2>
+
+      <div class="box white">
+        <div class="box-title">Propuesta de trabajo</div>
+        <p>Se podrá proponer una actividad práctica centrada en la construcción de prompts sobre un tema específico, utilizando una herramienta de IA a elección. La consigna podrá orientarse a comparar respuestas obtenidas, ajustar instrucciones para lograr mayor precisión y reflexionar sobre los usos de la IA como apoyo, sin reemplazar el proceso creativo ni el trabajo intelectual propio.</p>
+      </div>
+
+      <h2>Referencias bibliográficas</h2>
+
+      <div class="ref-figure">
+        <div class="ref-figure-head">Referencias bibliográficas</div>
+        <div class="ref-figure-body">
+          <p><em>Completar con las referencias definitivas de la unidad según normas APA.</em></p>
+        </div>
+      </div>
+
+      <p class="ref-note">En el documento base, la bibliografía y la autoría aún no aparecen desarrolladas completamente, por lo que este apartado quedó preparado para su posterior incorporación.</p>
+    </div>
+  </div>
+</body>
+</html>

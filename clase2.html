@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CIS · Clase 2</title>
+<style>
+:root{
+  --fondo:#f4f5f7;
+  --blanco:#ffffff;
+  --texto:#1f2a37;
+  --texto-suave:#5b6676;
+  --borde:#d9dee5;
+  --acento:#9f283b;
+  --acento-oscuro:#7f1f2f;
+  --acento-claro:#f7e9ec;
+  --unidad1:#9f283b;
+  --unidad2:#7a3246;
+  --unidad3:#b15b6b;
+  --unidad4:#c98793;
+  --unidad5:#4f4e50;
+  --sombra:0 8px 24px rgba(15,35,55,.08);
+  --radio:20px;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:"Aptos","Segoe UI",Arial,sans-serif;
+  background:var(--fondo);
+  color:var(--texto);
+}
+.wrap{
+  width:min(1320px, calc(100% - 32px));
+  margin:20px auto;
+  background:var(--blanco);
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:var(--sombra);
+}
+.hero{
+  position:relative;
+  min-height:420px;
+  display:flex;
+  align-items:flex-end;
+  padding:34px;
+  background:
+    linear-gradient(rgba(20,14,16,.54), rgba(20,14,16,.68)),
+    url('https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+}
+.hero-content{
+  max-width:1120px;
+}
+.hero-panel{
+  max-width:900px;
+  background:rgba(159,40,59,.94);
+  color:#fff;
+  padding:22px 24px;
+  box-shadow:0 10px 30px rgba(0,0,0,.18);
+}
+.hero-text-box{
+  margin-top:18px;
+  max-width:1080px;
+  background:rgba(20,14,16,.46);
+  border:1px solid rgba(255,255,255,.16);
+  padding:20px 22px;
+  box-shadow:0 10px 30px rgba(0,0,0,.16);
+  backdrop-filter:blur(3px);
+  -webkit-backdrop-filter:blur(3px);
+}
+.hero-kicker{
+  margin:0 0 10px;
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:.4px;
+  text-transform:uppercase;
+  opacity:.95;
+}
+.hero h1{
+  margin:0;
+  font-size:clamp(34px, 4.8vw, 58px);
+  line-height:1.02;
+  letter-spacing:-1px;
+  font-weight:800;
+}
+.hero-sub{
+  margin-top:16px;
+  max-width:950px;
+  color:#ffffff;
+  font-size:18px;
+  line-height:1.55;
+  text-shadow:0 1px 4px rgba(0,0,0,.25);
+}
+.hero-authors{
+  margin-top:12px;
+  max-width:960px;
+  color:#f9edf0;
+  font-size:13px;
+  line-height:1.5;
+}
+.hero-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:18px;
+}
+.hero-meta span{
+  display:inline-block;
+  padding:10px 16px;
+  background:rgba(255,255,255,.86);
+  border:1px solid rgba(255,255,255,.96);
+  color:#3a1920;
+  font-size:13px;
+  font-weight:700;
+  border-radius:999px;
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  box-shadow:0 2px 8px rgba(0,0,0,.10);
+}
+.layout{
+  display:grid;
+  grid-template-columns:300px 1fr;
+  gap:22px;
+  padding:24px;
+}
+.menu{
+  background:#f4eef0;
+  border-radius:20px;
+  padding:18px;
+  align-self:start;
+  position:sticky;
+  top:16px;
+}
+.menu h3{
+  margin:0 0 14px;
+  font-size:14px;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+  color:#5a3b42;
+}
+.menu ul{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+.menu li{
+  margin-bottom:10px;
+  padding:12px 14px;
+  border-radius:14px;
+  background:#fff;
+  border:1px solid #eadce0;
+  color:#4b3439;
+  font-size:14px;
+  line-height:1.35;
+  cursor:pointer;
+  transition:all .2s ease;
+  font-weight:700;
+}
+.menu li:hover{
+  transform:translateX(2px);
+  border-color:#d7b6bf;
+}
+.menu li.active{
+  background:var(--acento);
+  color:#fff;
+  border-color:var(--acento);
+}
+.content{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+.section{
+  display:none;
+}
+.section.active{
+  display:block;
+}
+.section.grid-2{
+  display:none;
+}
+.section.active.grid-2{
+  display:grid;
+}
+.card{
+  background:#fff;
+  border:1px solid var(--borde);
+  border-radius:20px;
+  padding:26px;
+}
+.card h2{
+  margin:0 0 16px;
+  font-size:30px;
+  line-height:1.1;
+  letter-spacing:-.5px;
+  color:#34171e;
+}
+.card h3{
+  margin:0 0 12px;
+  font-size:22px;
+  line-height:1.2;
+  color:#5a2430;
+}
+.card h4{
+  margin:0 0 10px;
+  font-size:18px;
+  line-height:1.25;
+  color:#6f2c3b;
+}
+.card p{
+  margin:0 0 14px;
+  font-size:16px;
+  line-height:1.72;
+  color:var(--texto-suave);
+}
+.card ul{margin:0; padding-left:20px}
+.card li{
+  margin-bottom:10px;
+  font-size:16px;
+  line-height:1.65;
+  color:var(--texto-suave);
+}
+.destacado{
+  margin-top:16px;
+  padding:18px 20px;
+  border-left:6px solid var(--acento);
+  background:var(--acento-claro);
+  border-radius:14px;
+  font-size:15px;
+  line-height:1.65;
+  color:#5a3942;
+}
+.kpis{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:12px;
+  margin-top:16px;
+}
+.kpi{
+  border:1px solid var(--borde);
+  border-radius:16px;
+  padding:16px;
+  background:#faf8f8;
+}
+.kpi .et{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.4px;
+  color:#7e6670;
+  margin-bottom:8px;
+}
+.kpi .va{
+  font-size:18px;
+  font-weight:800;
+  color:#34171e;
+}
+.grid-2{
+  grid-template-columns:1.08fr .92fr;
+  gap:20px;
+}
+.idea-grid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:16px;
+}
+.idea{
+  border:1px solid #eadce0;
+  background:#fcfafb;
+  border-radius:18px;
+  padding:18px;
+}
+.quote{
+  margin:18px 0;
+  padding:20px 22px;
+  background:#fcfafb;
+  border:1px solid #eadce0;
+  border-left:6px solid #c97b8a;
+  border-radius:18px;
+  color:#52343d;
+  font-size:17px;
+  line-height:1.75;
+}
+.badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:10px;
+}
+.badges span{
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:700;
+  background:#f2ecee;
+  color:#5b434b;
+}
+.actividad{
+  margin-top:16px;
+  padding:18px 20px;
+  background:#fcfafb;
+  border:1px solid #eadce0;
+  border-radius:18px;
+}
+.biblio p{
+  margin-bottom:10px;
+}
+.biblio ul{
+  margin:10px 0 0 0;
+  padding-left:22px;
+}
+.biblio li{
+  margin-bottom:10px;
+  font-size:15px;
+  line-height:1.7;
+  color:#5b6676;
+}
+.biblio .destacado p{
+  margin-bottom:10px;
+}
+
+/* Acceso a la clase */
+.acceso-box{
+  background:linear-gradient(180deg,#fcf7f8,#f8eef1);
+  border:1px solid #eadce0;
+  border-radius:20px;
+  padding:18px;
+}
+.class-link-card{
+  position:relative;
+  display:block;
+  min-height:290px;
+  border-radius:22px;
+  overflow:hidden;
+  text-decoration:none;
+  background:
+    linear-gradient(rgba(49,18,25,.35), rgba(49,18,25,.52)),
+    url('https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+  box-shadow:0 14px 28px rgba(15,35,55,.12);
+  transition:transform .22s ease, box-shadow .22s ease;
+}
+.class-link-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 18px 34px rgba(15,35,55,.18);
+}
+.link-overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  gap:14px;
+  padding:26px;
+}
+.link-icon{
+  width:84px;
+  height:84px;
+  border-radius:50%;
+  background:rgba(255,255,255,.94);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  box-shadow:0 10px 24px rgba(0,0,0,.18);
+}
+.link-overlay h4{
+  margin:0;
+  font-size:24px;
+  line-height:1.2;
+  color:#fff;
+  text-shadow:0 2px 10px rgba(0,0,0,.20);
+}
+.link-overlay p{
+  margin:0;
+  color:#f9edf0;
+  max-width:390px;
+  font-size:15px;
+  line-height:1.65;
+}
+.pdf-actions{
+  margin-top:14px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.pdf-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:10px 14px;
+  border-radius:999px;
+  background:#ffffff;
+  border:1px solid #eadce0;
+  color:#7f1f2f;
+  font-size:13px;
+  font-weight:800;
+  text-decoration:none;
+  box-shadow:0 4px 10px rgba(15,35,55,.06);
+  transition:all .2s ease;
+}
+.pdf-button:hover{
+  background:#fcf3f5;
+  border-color:#d7b6bf;
+  transform:translateY(-1px);
+}
+.link-note{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top:14px;
+  padding:8px 12px;
+  border-radius:999px;
+  background:#fff;
+  border:1px solid #eadce0;
+  color:#7f1f2f;
+  font-size:13px;
+  font-weight:800;
+}
+
+.boton-biblio{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin-top:12px;
+  padding:12px 18px;
+  background:var(--acento);
+  color:#fff !important;
+  text-decoration:none;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:900;
+  letter-spacing:.2px;
+  box-shadow:0 8px 18px rgba(159,40,59,.22);
+  transition:all .2s ease;
+}
+.boton-biblio:hover{
+  background:var(--acento-oscuro);
+  transform:translateY(-1px);
+}
+
+@media (max-width:1080px){
+  .layout{grid-template-columns:1fr}
+  .menu{position:relative; top:0}
+  .kpis,.grid-2,.idea-grid{grid-template-columns:1fr}
+}
+@media (max-width:720px){
+  .wrap{width:100%; margin:0; border-radius:0}
+  .hero{min-height:360px; padding:18px}
+  .hero-panel{padding:18px}
+  .hero-text-box{padding:16px}
+  .layout{padding:16px}
+  .card{padding:18px}
+  .card h2{font-size:24px}
+  .class-link-card{min-height:230px;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="hero-content">
+      <div class="hero-panel">
+        <p class="hero-kicker">CIS · Clase 2 · Unidad 2</p>
+        <h1>Estudiar en la universidad</h1>
+      </div>
+      <div class="hero-text-box">
+        <p class="hero-sub">
+          En esta clase abordaremos estrategias básicas de alfabetización académica en Internet y en Entornos Virtuales de Enseñanza y Aprendizaje (EVEA), con el propósito de fortalecer la lectura crítica, el análisis de fuentes de información y el uso de repositorios institucionales como recursos para el estudio universitario.
+        </p>
+        <p class="hero-authors">
+          Autores: Campanella Nicolás · Giura Vanina · Rodríguez Micaela · Rodríguez Arias Marina
+        </p>
+        <div class="hero-meta">
+          <span>Clase 2</span>
+          <span>Lectura crítica</span>
+          <span>Fuentes académicas</span>
+          <span>Repositorios</span>
+          <span>Estudio en EVEA</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="menu">
+      <h3>Recorrido de la clase</h3>
+      <ul>
+        <li data-target="presentacion">Presentación</li>
+        <li data-target="acceso">Acceso a la clase</li>
+        <li data-target="objetivos">Objetivos</li>
+        <li data-target="lectura">Lectura crítica</li>
+        <li data-target="fuentes">Fuentes de información</li>
+        <li data-target="repositorios">Repositorios y plataformas</li>
+        <li data-target="actividades">Actividades</li>
+        <li data-target="cierre">Cierre</li>
+        <li data-target="bibliografia">Bibliografía</li>
+      </ul>
+    </aside>
+
+    <main class="content">
+
+      <section class="card section" id="presentacion">
+        <h2>Presentación de la clase</h2>
+        <p>
+          Hoy damos inicio a la clase 2 del Curso Inicial de Socialización. En este recorrido trabajaremos algunas estrategias básicas de alfabetización académica en Internet y en Entornos Virtuales de Enseñanza y Aprendizaje (EVEA), con el objetivo de fortalecer la lectura crítica, el análisis de fuentes de información y el uso de repositorios institucionales como recursos para el estudio universitario.
+        </p>
+        <p>
+          En este sentido, resulta fundamental adquirir herramientas que permitan comprender, analizar y utilizar la información de manera crítica. Esto incluye aprender a leer textos académicos en EVEA, reconocer qué fuentes de Internet son confiables y conocer los espacios donde circula el conocimiento producido en el ámbito universitario.
+        </p>
+
+        <div class="quote">
+          Estudiar en la universidad no implica solo acceder a materiales, sino también aprender a leerlos críticamente, evaluar su confiabilidad y utilizarlos de manera reflexiva.
+        </div>
+
+        <div class="kpis">
+          <div class="kpi">
+            <div class="et">Clase</div>
+            <div class="va">2</div>
+          </div>
+          <div class="kpi">
+            <div class="et">Unidad</div>
+            <div class="va">Estudiar</div>
+          </div>
+          <div class="kpi">
+            <div class="et">Recorrido</div>
+            <div class="va">Lectura y fuentes</div>
+          </div>
+          <div class="kpi">
+            <div class="et">Modalidad</div>
+            <div class="va">Asincrónica</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid-2 section" id="acceso">
+        <section class="card acceso-box">
+          <h3>Acceso a la clase</h3>
+          <a class="class-link-card"
+             href="clases/clase2"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="Abrir enlace de la clase 2">
+            <div class="link-overlay">
+              <div class="link-icon">↗</div>
+              <h4>Ingresar al contenido de la clase</h4>
+              <p>Accedé al recurso completo de la clase 2 desde este enlace. Se abrirá en una nueva pestaña.</p>
+            </div>
+          </a>
+          <div class="link-note">Enlace externo · Clase 2</div>
+          <div class="pdf-actions">
+            <a class="pdf-button"
+               href="https://drive.google.com/file/d/1lhoFjHfmkrjUlzAfXal2bvmDwKopWlFa/view?usp=sharing"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Descargar versión imprimible en PDF de la clase 2">
+               Descargar versión imprimible en PDF
+            </a>
+          </div>
+        </section>
+
+        <section class="card">
+          <h3>Temas para orientar la lectura</h3>
+          <ul>
+            <li>¿Qué implica leer críticamente en el ámbito universitario?</li>
+            <li>¿Qué desafíos presenta la lectura en Internet y en los EVEA?</li>
+            <li>¿Cómo evaluar la confiabilidad de las fuentes de información?</li>
+            <li>¿Qué papel cumplen los repositorios institucionales en la circulación del conocimiento académico?</li>
+            <li>¿Cómo desarrollar una participación más autónoma y crítica en la cultura universitaria digital?</li>
+          </ul>
+        </section>
+      </section>
+
+      <section class="card section" id="objetivos">
+        <h2>Objetivos</h2>
+        <div class="idea-grid">
+          <article class="idea">
+            <h4>Objetivos de enseñanza</h4>
+            <ul>
+              <li>Introducir a los y las estudiantes en estrategias básicas de estudio propias del ámbito universitario en entornos virtuales.</li>
+              <li>Orientar el desarrollo de habilidades de lectura crítica para la comprensión y el análisis de textos académicos.</li>
+              <li>Presentar y explicar criterios para evaluar la credibilidad de las fuentes de información disponibles en Internet.</li>
+              <li>Dar a conocer y guiar la exploración de repositorios institucionales y otros espacios académicos de circulación del conocimiento.</li>
+            </ul>
+          </article>
+          <article class="idea">
+            <h4>Objetivos de aprendizaje</h4>
+            <ul>
+              <li>Reconocer la importancia de la lectura crítica en el ámbito universitario.</li>
+              <li>Aplicar técnicas de lectura crítica al material de estudio.</li>
+              <li>Aplicar criterios básicos de credibilidad para evaluar la confiabilidad de diferentes fuentes de información.</li>
+              <li>Distinguir entre fuentes académicas y no académicas en entornos digitales.</li>
+              <li>Identificar y utilizar repositorios institucionales y otros espacios de acceso abierto.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="destacado">
+          Esta clase busca fortalecer herramientas básicas para estudiar en entornos virtuales: leer de manera crítica, evaluar información y localizar materiales confiables para el trabajo académico.
+        </div>
+      </section>
+
+      <section class="card section" id="lectura">
+        <h2>Lectura crítica en Internet y en EVEA</h2>
+        <p>
+          Leer y escribir en la universidad requiere desarrollar estrategias que permitan comprender textos complejos, relacionar ideas, analizar argumentos y construir posicionamientos propios frente al conocimiento. Estas habilidades se desarrollan progresivamente a lo largo de la trayectoria universitaria y constituyen una parte central de la formación académica.
+        </p>
+        <p>
+          En la actualidad, muchas de estas prácticas se realizan dentro de EVEA, donde los materiales de estudio circulan en diferentes formatos. Esta transformación implica nuevos desafíos para los y las estudiantes, ya que leer en pantalla suele involucrar formas de lectura más fragmentadas y no lineales.
+        </p>
+        <p>
+          En este marco, resulta pertinente considerar la noción de hipertexto, que permite avanzar en la lectura y conectar ideas y textos mediante enlaces y recursos externos sin ajustarse a una secuencia lineal. Esto puede favorecer la asociación de contenidos, autores e ideas, pero también generar dispersión si no se desarrollan estrategias de lectura crítica y reflexiva.
+        </p>
+
+        <div class="quote">
+          La lectura crítica consiste en comprender un texto, identificar sus ideas principales, analizar sus argumentos y reflexionar sobre su sentido, su propósito y la perspectiva desde la cual fue escrito.
+        </div>
+
+        <p>
+          Para desarrollar una lectura crítica del material de estudio, resulta útil considerar diferentes momentos del proceso de lectura: antes de leer, durante la lectura y después de leer. En cada uno de estos momentos pueden aplicarse estrategias que faciliten la comprensión, la organización de la información y la reflexión sobre el contenido del texto.
+        </p>
+
+        <div class="destacado">
+          Recurso digital recomendado: Presentación en línea <em>“Lectura y aprendizaje”</em>, disponible en el Material Didáctico Multimedia del CIS.
+        </div>
+      </section>
+
+      <section class="card section" id="fuentes">
+        <h2>Análisis crítico de fuentes de información</h2>
+        <p>
+          En el contexto digital actual, acceder a información es cada vez más sencillo. Sin embargo, ese exceso de información puede afectar la capacidad de discriminar y seleccionar materiales pertinentes para el estudio universitario. Buscar información en Internet implica definir con claridad el tema de interés, delimitarlo adecuadamente y orientar la búsqueda mediante estrategias pertinentes.
+        </p>
+        <p>
+          No toda la información disponible en Internet posee el mismo nivel de confiabilidad o rigurosidad académica. Por este motivo, una de las competencias fundamentales del estudio universitario consiste en aplicar criterios que permitan analizar y evaluar las fuentes de información.
+        </p>
+
+        <div class="idea-grid">
+          <article class="idea">
+            <h4>Criterios para evaluar una fuente</h4>
+            <ul>
+              <li>Autoría del material.</li>
+              <li>Institución que lo respalda.</li>
+              <li>Fecha de publicación.</li>
+              <li>Propósito del texto.</li>
+              <li>Presencia de referencias o evidencias que sustenten la información.</li>
+            </ul>
+          </article>
+          <article class="idea">
+            <h4>Lectura crítica e IA</h4>
+            <p>
+              El uso de herramientas de Inteligencia Artificial Generativa puede resultar valioso para aclarar ideas, contrastar interpretaciones o profundizar contenidos, pero pierde su potencial formativo cuando reemplaza la lectura y la elaboración propia.
+            </p>
+            <p>
+              También es necesario considerar el riesgo de generar información falsa o no verificable, por lo que estudiar con IA exige sostener el control del proceso y evaluar críticamente la credibilidad de los contenidos.
+            </p>
+          </article>
+        </div>
+
+        <div class="destacado">
+          Una actitud crítica frente a la información en línea permite construir conocimientos más sólidos y evitar el uso de contenidos poco confiables o carentes de fundamento académico.
+        </div>
+      </section>
+
+      <section class="card section" id="repositorios">
+        <h2>Circulación del conocimiento académico en plataformas virtuales y repositorios institucionales</h2>
+        <p>
+          El conocimiento producido en la universidad no solo se genera en el aula, sino que también circula a través de distintos espacios y plataformas digitales. Las aulas virtuales constituyen el espacio principal de organización de las actividades de cada asignatura: allí se encuentran los materiales de estudio, las consignas de trabajo, los foros de intercambio y los recursos que orientan el proceso de aprendizaje.
+        </p>
+        <p>
+          Por otra parte, las instituciones académicas y científicas cuentan con repositorios institucionales de acceso abierto, que permiten almacenar, organizar y difundir la producción académica generada dentro de ellas. Estos repositorios reúnen artículos científicos, tesis, libros y diversos materiales que pueden ser consultados por la comunidad académica y por el público en general.
+        </p>
+        <p>
+          En el caso de la UNQ, se cuenta con el Repositorio de Materiales Didácticos disponible dentro del campus, que permite encontrar y descargar la bibliografía obligatoria y las carpetas de trabajos digitalizadas de las asignaturas de las carreras a distancia. Además, se dispone del Repositorio Institucional Digital de Acceso Abierto (RIDAA-UNQ), que facilita el acceso a diferentes producciones académicas y la difusión del conocimiento generado en la universidad.
+        </p>
+
+        <div class="badges">
+          <span>Campus virtual</span>
+          <span>Materiales didácticos</span>
+          <span>RIDAA-UNQ</span>
+          <span>Acceso abierto</span>
+        </div>
+      </section>
+
+      <section class="card section" id="actividades">
+        <h2>Actividades de la clase</h2>
+
+        <div class="actividad">
+          <h3>Actividad 1 · Cuestionario</h3>
+          <p>
+            El propósito de esta actividad es que puedan familiarizarse con el recurso “Cuestionario” del aula virtual a partir de su uso como estudiantes. A través de esta experiencia, podrán reconocer su funcionamiento, dinámica de resolución y tipo de consignas.
+          </p>
+          <p>
+            Se propone la realización de un cuestionario con preguntas vinculadas a los contenidos trabajados en las Clases 1 y 2.
+          </p>
+        </div>
+
+        <div class="actividad">
+          <h3>Actividad 2 · Conformación de grupos</h3>
+          <p>
+            El objetivo es propiciar la organización del trabajo colaborativo mediante la conformación de grupos que favorezcan la participación y la corresponsabilidad.
+          </p>
+          <p>
+            Se solicita que cada estudiante seleccione el grupo en el que desea participar para la realización de la actividad colaborativa que se desarrollará en la Clase 3.
+          </p>
+          <p>
+            <strong>Aclaración:</strong> asegúrense de inscribirse en un único grupo y dentro de los plazos establecidos.
+          </p>
+        </div>
+      </section>
+
+      <section class="card section" id="cierre">
+        <h2>Cierre</h2>
+        <p>
+          A lo largo de esta clase se presentaron algunos criterios básicos y fundamentales para el estudio en EVEA. Desarrollar una lectura crítica, aprender a evaluar la confiabilidad de las fuentes de información que circula en Internet y conocer los espacios donde circula el conocimiento académico son habilidades centrales para la formación universitaria.
+        </p>
+        <p>
+          Estudiar implica no solo acceder a contenidos, sino también analizarlos, interpretarlos y utilizarlos de manera reflexiva. En este sentido, los EVEA y los repositorios institucionales se convierten en recursos clave para acceder a materiales confiables y fortalecer los procesos de aprendizaje.
+        </p>
+        <p>
+          Estas competencias se construyen progresivamente a lo largo de la trayectoria académica. La práctica constante, el intercambio con docentes y compañeros y el uso responsable de las herramientas digitales contribuyen a desarrollar una participación cada vez más autónoma y crítica en la cultura universitaria.
+        </p>
+
+        <div class="quote">
+          En la siguiente clase se abordará el uso del lenguaje en el contexto universitario, con especial atención a la escritura académica, sus características, sus etapas de producción y el uso de normas de citación.
+        </div>
+      </section>
+
+      <section class="card biblio section" id="bibliografia">
+        <h2>Bibliografía</h2>
+
+        <p><strong>Burbules, N. y Callister, T. (2001).</strong> <em>Hipertexto: el conocimiento en la encrucijada</em>. En <em>Educación: Riesgos y promesas de las nuevas tecnologías de la información</em>. Granica.</p>
+
+        <p><strong>Carlino, P. (2005).</strong> <em>Escribir, leer y aprender en la universidad</em>. Fondo de Cultura Económica.</p>
+
+        <p><strong>Chamorro, F.; González, N.; Milillo, C.; Tarasow, F. (2024).</strong> <em>Bailando con la IA en el aula: un vals con ChatGPT</em>. PENT FLACSO Argentina.</p>
+
+        <p><strong>Gutiérrez, E. (2009).</strong> <em>Leer digital: la lectura en el entorno de las nuevas tecnologías de la información y la comunicación</em>. <em>Signo y Pensamiento, 28</em>(54), 144-163.</p>
+
+        <a class="boton-biblio"
+           href="#"
+           onclick="return false;"
+           aria-label="Acceder a la bibliografía de la clase 2">
+           Acceder a la bibliografía
+        </a>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<script>
+const menuItems = document.querySelectorAll('.menu li');
+const sections = document.querySelectorAll('.section');
+
+function showSection(id, item){
+  sections.forEach(s => s.classList.remove('active'));
+  menuItems.forEach(i => i.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  item.classList.add('active');
+}
+
+menuItems.forEach(item => {
+  item.addEventListener('click', () => showSection(item.dataset.target, item));
+});
+
+if(menuItems.length){
+  showSection(menuItems[0].dataset.target, menuItems[0]);
+}
+</script>
+</body>
+</html>
