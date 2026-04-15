@@ -468,7 +468,6 @@ td{
     <aside class="menu">
       <h3>Bloque de inicio</h3>
       <ul>
-        <li data-target="datos">Datos de la comisión</li>
         <li data-target="presentacion">Presentación</li>
         <li data-target="objetivos">Objetivos</li>
         <li data-target="contenidos">Contenidos</li>
@@ -480,36 +479,6 @@ td{
     </aside>
 
     <main class="content">
-
-      <section class="card section" id="datos">
-        <h2>Datos de la comisión</h2>
-
-        <div class="info-editable">
-          <div class="data-box">
-            <label for="docente">Nombre y apellido</label>
-            <input id="docente" type="text" value="Nombre y apellido del/de la docente" />
-          </div>
-          <div class="data-box">
-            <label for="mail">Correo electrónico</label>
-            <input id="mail" type="text" value="correo@uvq.edu.ar" />
-          </div>
-          <div class="data-box">
-            <label for="comision">Comisión</label>
-            <input id="comision" type="text" value="Comisión X" />
-          </div>
-        </div>
-
-        <div class="info-preview">
-          <strong>Datos del docente</strong><br>
-          Docente: <span id="preview-docente">Nombre y apellido del/de la docente</span><br>
-          Correo: <span id="preview-mail">correo@uvq.edu.ar</span><br>
-          Comisión: <span id="preview-comision">Comisión X</span>
-        </div>
-
-        <div class="destacado">
-          Este bloque permite ver la información básica de cada comisión.
-        </div>
-      </section>
 
       <section class="card section" id="presentacion">
         <h2>Presentación del curso</h2>
@@ -783,44 +752,6 @@ if(menuItems.length){
   showSection(menuItems[0].dataset.target, menuItems[0]);
 }
 
-const docente = document.getElementById('docente');
-const mail = document.getElementById('mail');
-const comision = document.getElementById('comision');
-
-const STORAGE_KEYS = {
-  docente: 'cis_bloque0_docente',
-  mail: 'cis_bloque0_mail',
-  comision: 'cis_bloque0_comision'
-};
-
-function loadSavedData(){
-  const savedDocente = localStorage.getItem(STORAGE_KEYS.docente);
-  const savedMail = localStorage.getItem(STORAGE_KEYS.mail);
-  const savedComision = localStorage.getItem(STORAGE_KEYS.comision);
-
-  if(savedDocente !== null) docente.value = savedDocente;
-  if(savedMail !== null) mail.value = savedMail;
-  if(savedComision !== null) comision.value = savedComision;
-}
-
-function saveData(){
-  localStorage.setItem(STORAGE_KEYS.docente, docente.value);
-  localStorage.setItem(STORAGE_KEYS.mail, mail.value);
-  localStorage.setItem(STORAGE_KEYS.comision, comision.value);
-}
-
-function updatePreview(){
-  document.getElementById('preview-docente').textContent = docente.value || '—';
-  document.getElementById('preview-mail').textContent = mail.value || '—';
-  document.getElementById('preview-comision').textContent = comision.value || '—';
-}
-
-[docente, mail, comision].forEach(input => {
-  input.addEventListener('input', () => {
-    saveData();
-    updatePreview();
-  });
-});
 
 const fechas = ['fecha1', 'fecha2', 'fecha3', 'fecha4', 'fecha5'];
 
@@ -843,9 +774,7 @@ fechas.forEach(id => {
   }
 });
 
-loadSavedData();
 loadSavedDates();
-updatePreview();
 </script>
 </body>
 </html>
