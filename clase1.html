@@ -440,6 +440,77 @@ body{
 }
 
 
+.mdm-box{
+  background:linear-gradient(180deg,#fcf7f8,#f8eef1);
+  border:1px solid #eadce0;
+  border-radius:20px;
+  padding:22px;
+}
+.mdm-card{
+  display:block;
+  text-decoration:none;
+  border-radius:22px;
+  padding:26px 24px;
+  background:linear-gradient(rgba(159,40,59,.96), rgba(127,31,47,.96));
+  color:#fff !important;
+  box-shadow:0 14px 28px rgba(159,40,59,.18);
+  transition:all .22s ease;
+}
+.mdm-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 18px 34px rgba(159,40,59,.24);
+}
+.mdm-kicker{
+  margin:0 0 10px 0;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.5px;
+  text-transform:uppercase;
+  opacity:.95;
+  color:#fff !important;
+}
+.mdm-card h3{
+  margin:0 0 10px 0;
+  font-size:28px;
+  line-height:1.15;
+  color:#fff;
+}
+.mdm-card p{
+  margin:0;
+  max-width:760px;
+  color:#fdf4f6;
+  font-size:16px;
+  line-height:1.7;
+}
+.mdm-actions{
+  margin-top:16px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.mdm-button{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 18px;
+  background:#fff;
+  color:#7f1f2f !important;
+  text-decoration:none;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.2px;
+  box-shadow:0 8px 18px rgba(0,0,0,.10);
+}
+.mdm-note{
+  margin-top:14px;
+  font-size:14px;
+  line-height:1.6;
+  color:#6a555d;
+}
+
+
+
 .imagenes-dobles{
   margin:20px 0 8px;
 }
@@ -513,7 +584,7 @@ body{
         <li data-target="campus">Campus y organización</li>
         <li data-target="actividades">Actividades</li>
         <li data-target="cierre">Cierre</li>
-        <li data-target="bibliografia">Bibliografía</li>
+        <li data-target="bibliografia">Material Didáctico Digital</li>
       </ul>
     </aside>
 
@@ -755,18 +826,27 @@ body{
       </section>
 
       <section class="card biblio section" id="bibliografia">
-        <h2>Bibliografía</h2>
+        <h2>Acceso al Material Didáctico Multimedia (MDM)</h2>
 
-        <p>
-          <strong>Material Didáctico Digital. (2026).</strong>
-        </p>
-
-        <a class="boton-biblio"
-           href="#"
-           onclick="return false;"
-           aria-label="Acceder a la bibliografía de la clase 1">
-           Acceder a la bibliografía
-        </a>
+        <div class="mdm-box">
+          <a class="mdm-card"
+             href="https://static.uvq.edu.ar/mdm/cis_mdm/unidad-1.html"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="Abrir el Material Didáctico Multimedia del CIS">
+            <p class="mdm-kicker">Recurso institucional</p>
+            <h3>Ingresar al MDM del CIS</h3>
+            <p>
+              Desde este acceso podrán consultar el Material Didáctico Multimedia del Curso Inicial de Socialización. El recurso se abrirá en una nueva pestaña para facilitar la lectura y el recorrido completo del contenido.
+            </p>
+            <div class="mdm-actions">
+              <span class="mdm-button">Abrir Material Didáctico Multimedia</span>
+            </div>
+          </a>
+          <p class="mdm-note">
+            
+          </p>
+        </div>
 
         <div class="destacado">
           <p><strong>También dialogan con esta clase los siguientes materiales:</strong></p>
