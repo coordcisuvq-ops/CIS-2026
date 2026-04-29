@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clase 3 · Escribir en la universidad</title>
+  <style>
+    body{
+      margin:0;
+      padding:24px;
+      background:linear-gradient(180deg,#f6f0f2 0%,#efe6e9 100%);
+      font-family: Arial, Helvetica, sans-serif;
+      color:#3b2f34;
+    }
+    .wrap{
+      max-width:900px;
+      margin:0 auto;
+      background:#ffffff;
+      border:1px solid #e5d7db;
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow:0 6px 18px rgba(0,0,0,0.06);
+    }
+    .hero{
+      background:
+        linear-gradient(135deg, rgba(243,223,228,.94) 0%, rgba(251,245,247,.96) 100%),
+        url('https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+      padding:36px 42px 28px 42px;
+      border-bottom:1px solid #eadce0;
+    }
+    .kicker{
+      font-size:13px;
+      letter-spacing:1.4px;
+      text-transform:uppercase;
+      color:#8a5a66;
+      margin-bottom:10px;
+    }
+    h1{
+      margin:0;
+      font-size:34px;
+      line-height:1.2;
+      color:#7f1f2f;
+      font-weight:700;
+    }
+    .sub{
+      margin:10px 0 0 0;
+      font-size:17px;
+      line-height:1.75;
+      color:#6f4d56;
+    }
+    .authors{
+      margin:8px 0 0 0;
+      font-size:12px;
+      line-height:1.4;
+      color:#8a6a72;
+      letter-spacing:.3px;
+    }
+    .content{
+      padding:38px 3cm 42px 3cm;
+      background:#ffffff;
+    }
+    h2{
+      margin:0 0 14px 0;
+      font-size:22px;
+      line-height:1.3;
+      color:#8a2235;
+    }
+    h3{
+      margin:24px 0 10px 0;
+      font-size:18px;
+      line-height:1.35;
+      color:#7f1f2f;
+    }
+    p{
+      margin:0 0 18px 0;
+      font-size:17px;
+      line-height:1.85;
+      text-align:justify;
+    }
+    .box{
+      margin:24px 0;
+      padding:18px 20px;
+      background:linear-gradient(135deg,#fbf4f6 0%,#fffafb 100%);
+      border-left:4px solid #9f283b;
+      border-radius:10px;
+    }
+    .box.white{
+      background:linear-gradient(180deg,#fffdfd 0%,#fcf8f9 100%);
+      border:1px solid #eadce0;
+      border-left:none;
+    }
+    .box-title{
+      font-size:14px;
+      font-weight:700;
+      color:#8a2235;
+      text-transform:uppercase;
+      letter-spacing:.8px;
+      margin-bottom:8px;
+    }
+    .box p:last-child{margin-bottom:0;}
+    ul{
+      margin:0;
+      padding-left:22px;
+    }
+    li{
+      margin-bottom:10px;
+      font-size:16px;
+      line-height:1.8;
+      text-align:justify;
+    }
+    .small{
+      font-size:15px;
+      color:#6b575d;
+    }
+    .quote-balloon{
+      position:relative;
+      margin:28px 0;
+      padding:24px 24px 22px 24px;
+      background:linear-gradient(135deg, #faf2f4 0%, #fdf9fa 100%);
+      border:1px solid #eadce0;
+      border-left:6px solid #9f283b;
+      border-radius:18px;
+      box-shadow:0 8px 18px rgba(0,0,0,0.04);
+    }
+    .quote-balloon::before{
+      content:"“";
+      position:absolute;
+      top:-8px;
+      left:16px;
+      font-size:58px;
+      line-height:1;
+      color:#9f283b;
+      font-family:Georgia, "Times New Roman", serif;
+      opacity:.95;
+    }
+    .quote-balloon p{
+      margin:0;
+      padding-left:18px;
+      font-size:18px;
+      line-height:1.85;
+      color:#4a3c41;
+      text-align:justify;
+    }
+    .data-highlight{
+      margin:28px 0;
+      padding:22px 24px;
+      background:linear-gradient(135deg, #faf2f4 0%, #fdf9fa 100%);
+      border:1px solid #eadce0;
+      border-left:6px solid #9f283b;
+      border-radius:18px;
+      box-shadow:0 8px 18px rgba(0,0,0,0.04);
+    }
+    .data-highlight p{
+      margin:0;
+      font-size:18px;
+      line-height:1.8;
+      color:#4a3c41;
+      text-align:justify;
+    }
+    .button-row{
+      margin:18px 0 34px 0;
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+    .boton-biblio{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 18px;
+      background:#9f283b;
+      color:#fff !important;
+      text-decoration:none;
+      border-radius:999px;
+      font-size:14px;
+      font-weight:700;
+      letter-spacing:.2px;
+      box-shadow:0 8px 18px rgba(159,40,59,.18);
+      transition:all .2s ease;
+    }
+    .boton-biblio:hover{
+      background:#7f1f2f;
+      transform:translateY(-1px);
+    }
+    .process-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:14px;
+      margin:22px 0 28px 0;
+    }
+    .process-card{
+      padding:18px 20px;
+      border:1px solid #eadce0;
+      border-radius:16px;
+      background:linear-gradient(180deg,#fffdfd 0%,#fcf8f9 100%);
+      box-shadow:0 6px 14px rgba(0,0,0,0.035);
+    }
+    .process-card strong{
+      display:block;
+      color:#8a2235;
+      font-size:16px;
+      text-transform:uppercase;
+      letter-spacing:.6px;
+      margin-bottom:6px;
+    }
+    .process-card p{
+      margin:0;
+      font-size:16px;
+      line-height:1.75;
+    }
+    figure{
+      margin:28px 0;
+      border:1px solid #eadce0;
+      border-radius:18px;
+      background:#fcfafb;
+      overflow:hidden;
+      box-shadow:0 6px 16px rgba(0,0,0,0.04);
+    }
+    figure img{
+      display:block;
+      width:100%;
+      height:auto;
+      background:#fff;
+    }
+    figcaption{
+      padding:12px 16px 14px 16px;
+      font-size:13px;
+      line-height:1.55;
+      color:#7a646b;
+      background:linear-gradient(135deg, #f7e9ec 0%, #fcf6f8 100%);
+      border-top:1px solid #eadce0;
+      text-align:left;
+    }
+    .caption-note{
+      display:inline-block;
+      margin-top:2px;
+      color:#7a646b;
+    }
+    .values-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      margin:20px 0 28px 0;
+    }
+    .value-card{
+      padding:16px;
+      border-radius:14px;
+      background:#fffdfd;
+      border:1px solid #eadce0;
+    }
+    .value-card strong{
+      color:#8a2235;
+      display:block;
+      margin-bottom:6px;
+    }
+    .value-card p{
+      font-size:15px;
+      line-height:1.65;
+      margin:0;
+      text-align:left;
+    }
+    .activity-meta{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      margin-top:14px;
+    }
+    .meta-item{
+      padding:14px 16px;
+      border:1px solid #eadce0;
+      border-radius:14px;
+      background:#fffdfd;
+    }
+    .meta-item strong{
+      display:block;
+      color:#8a2235;
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:.6px;
+      margin-bottom:4px;
+    }
+    .meta-item span{
+      font-size:15px;
+      line-height:1.6;
+      color:#4a3c41;
+    }
+    .ref-figure{
+      margin-top:16px;
+      border:1px solid #eadce0;
+      border-radius:18px;
+      background:#fcfafb;
+      overflow:hidden;
+      box-shadow:0 6px 16px rgba(0,0,0,0.04);
+    }
+    .ref-figure-head{
+      padding:14px 18px;
+      background:linear-gradient(135deg, #f7e9ec 0%, #fcf6f8 100%);
+      border-bottom:1px solid #eadce0;
+      color:#7f1f2f;
+      font-size:14px;
+      font-weight:800;
+      letter-spacing:.3px;
+      text-transform:uppercase;
+    }
+    .ref-figure-body{
+      padding:18px 20px;
+    }
+    .ref-figure-body p{
+      margin:0 0 12px 0;
+      font-size:15px;
+      line-height:1.75;
+      color:#5b6676;
+      text-align:left;
+      padding-left:1.4em;
+      text-indent:-1.4em;
+    }
+    .ref-figure-body p:last-child{
+      margin-bottom:0;
+    }
+    .ref-note{
+      margin-top:14px;
+      font-size:13px;
+      line-height:1.6;
+      color:#7a646b;
+      text-align:left;
+    }
+    @media (max-width: 900px){
+      body{padding:14px;}
+      .hero{padding:28px 24px 22px 24px;}
+      h1{font-size:28px;}
+      .content{padding:24px;}
+      .values-grid,
+      .activity-meta{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <div class="kicker">Clase 3 · Unidad 3</div>
+      <h1>Escribir en la universidad</h1>
+      <p class="sub">Curso Inicial de Socialización</p>
+      <p class="authors">Calo, Magalí · Casella, Néstor · Consigliere, Aldana · Consigliere, Bárbara · Peuriot, Julieta</p>
+    </div>
+
+    <div class="content">
+      <h2>Objetivos de enseñanza</h2>
+      <div class="box white">
+        <ul>
+          <li>Introducir a los y las estudiantes en los fundamentos de la escritura académica.</li>
+          <li>Comprender las etapas del proceso de producción escrita.</li>
+          <li>Reconocer la importancia de las normas de citación en el ámbito universitario.</li>
+          <li>Identificar y problematizar el plagio y sus implicancias.</li>
+          <li>Analizar el uso de tecnologías en la producción académica.</li>
+          <li>Promover la honestidad intelectual como valor central en la producción de conocimiento.</li>
+        </ul>
+      </div>
+
+      <h2>Objetivos de aprendizaje</h2>
+      <div class="box white">
+        <p>Se espera que los y las estudiantes puedan:</p>
+        <ul>
+          <li>Comprender el proceso de escritura académica en sus distintas etapas.</li>
+          <li>Diferenciar conceptos clave como lengua, lenguaje, enunciado y discurso.</li>
+          <li>Aplicar correctamente normas básicas de citación en formato APA.</li>
+          <li>Reconocer distintas formas de plagio y evitarlas.</li>
+          <li>Utilizar tecnologías de manera ética en la producción académica.</li>
+          <li>Valorar la honestidad intelectual como principio fundamental del trabajo universitario.</li>
+        </ul>
+      </div>
+
+      <p>Hoy damos inicio a la clase 3 del Curso Inicial de Socialización (CIS), dedicada a la escritura en la universidad. En esta instancia abordaremos la escritura académica como una práctica central de la vida universitaria, vinculada con la construcción de ideas, el diálogo con otras voces, el uso responsable de fuentes y la producción de conocimiento.</p>
+
+      <p>Escribir en la universidad no consiste únicamente en expresar una opinión personal. Implica planificar, seleccionar información, construir argumentos, revisar lo producido y reconocer los aportes de otros autores y autoras. Por eso, esta clase propone un recorrido por las principales etapas de la producción escrita, las normas básicas de citación y referencia, el problema del plagio, el uso ético de tecnologías y la honestidad intelectual como principio de trabajo académico.</p>
+
+      <div class="data-highlight">
+        <p>Esta clase propone una primera aproximación a una idea central: escribir en la universidad es producir conocimiento de manera clara, fundamentada, responsable y honesta.</p>
+      </div>
+
+      <h2>Material Didáctico Multimedia</h2>
+      <p><strong>Material Didáctico Digital (MDM).</strong> (2026).</p>
+
+      <div class="button-row">
+        <a class="boton-biblio" href="../pdf/U3.pdf" target="_blank" rel="noopener noreferrer">Acceder al MDM</a>
+      </div>
+
+      <p class="small">El Material Didáctico Multimedia de esta unidad se encuentra disponible en formato PDF dentro de la carpeta <strong>pdf</strong>.</p>
+
+      <h2>1. La escritura académica como proceso</h2>
+
+      <p>La escritura en el ámbito universitario constituye una práctica fundamental para la construcción y transmisión del conocimiento. A diferencia de otros contextos de escritura, en la universidad no alcanza con presentar ideas personales: es necesario ponerlas en relación con teorías, autores, evidencias y marcos conceptuales.</p>
+
+      <p>En este sentido, la escritura académica permite desarrollar el pensamiento crítico, organizar argumentos y participar de una conversación más amplia con el conocimiento producido por otras personas. Cada texto universitario se inscribe en ese entramado de lecturas, interpretaciones y discusiones.</p>
+
+      <div class="quote-balloon">
+        <p>Escribir académicamente implica transformar una idea inicial en un texto claro, organizado y fundamentado, capaz de dialogar con otros saberes y de sostener una posición propia.</p>
+      </div>
+
+      <p>Para producir un texto académico es útil reconocer distintas etapas. Aunque no siempre se desarrollan de manera lineal, estas instancias permiten ordenar el trabajo y mejorar progresivamente la escritura.</p>
+
+      <div class="process-grid">
+        <div class="process-card">
+          <strong>La idea</strong>
+          <p>Todo texto comienza con una inquietud, una pregunta o una idea inicial. En esta primera instancia se define qué se quiere comunicar y cuál será el punto de partida del trabajo.</p>
+        </div>
+        <div class="process-card">
+          <strong>La planificación</strong>
+          <p>Planificar supone delimitar el tema, definir el propósito del texto, anticipar quién será el lector, organizar los ejes principales y seleccionar las fuentes que permitirán fundamentar el desarrollo.</p>
+        </div>
+        <div class="process-card">
+          <strong>El borrador</strong>
+          <p>El borrador es una versión inicial del texto. Permite comenzar a plasmar ideas, organizar argumentos y ensayar una primera estructura, sin buscar todavía una versión definitiva.</p>
+        </div>
+        <div class="process-card">
+          <strong>La revisión</strong>
+          <p>Revisar implica volver sobre lo escrito para mejorar la claridad, la coherencia, la organización y la precisión conceptual. En esta etapa se ajustan ideas, párrafos, citas y formas de expresión.</p>
+        </div>
+        <div class="process-card">
+          <strong>La mejora del texto</strong>
+          <p>La versión final requiere pulir el escrito, cuidar la presentación, verificar las referencias y asegurar que el texto comunique de manera clara aquello que se propuso desarrollar.</p>
+        </div>
+      </div>
+
+      <p>Durante este proceso también resulta importante comprender que el lenguaje no es un simple instrumento neutro. La lengua, el lenguaje, los enunciados y los discursos forman parte de los modos en que se construyen sentidos en una comunidad académica. Por eso, escribir en la universidad supone aprender a participar de determinadas formas de comunicación, con reglas, estilos y expectativas propias.</p>
+
+      <div class="box">
+        <div class="box-title">Para tener presente</div>
+        <p>La claridad es una condición central de la escritura académica. Un texto universitario no busca “sonar difícil”, sino comunicar ideas con precisión, ordenar argumentos y facilitar la comprensión del lector.</p>
+      </div>
+
+      <h2>2. Normas básicas de citación y referencia en el ámbito académico</h2>
+
+      <p>En el ámbito universitario, la escritura académica implica no solo desarrollar ideas propias, sino también dialogar con el conocimiento producido por otras personas. En este marco, las normas de citación y referencia adquieren un papel central, ya que permiten reconocer las fuentes utilizadas, evitar el plagio y otorgar sustento teórico a los textos.</p>
+
+      <p>Lejos de ser una exigencia meramente formal, citar correctamente constituye una práctica académica y ética fundamental. Permite mostrar de dónde provienen las ideas, habilita la consulta de las fuentes y contribuye a la construcción responsable y colectiva del conocimiento.</p>
+
+      <h3>Tipos de citas en APA</h3>
+      <p>Dentro de los distintos estilos de citación existentes, uno de los más utilizados en las ciencias sociales es el propuesto por las normas APA. Este sistema establece criterios para incorporar citas dentro del texto y para elaborar la lista de referencias al final del trabajo.</p>
+
+      <p>Las citas directas reproducen de manera textual las palabras de un autor. Cuando tienen menos de 40 palabras, se incorporan dentro del párrafo y entre comillas. Cuando superan esa extensión, se presentan en un bloque independiente, sin comillas y con sangría. En ambos casos, se debe incluir el apellido del autor, el año de publicación y el número de página.</p>
+
+      <figure>
+        <img src="../img/Imagen1.png" alt="Citas directas en formato APA" />
+        <figcaption><strong>Figura 1.</strong><br><em>Citas directas en formato APA.</em><br><span class="caption-note">Nota. Elaboración propia en Canva (2026).</span></figcaption>
+      </figure>
+
+      <p>Por su parte, las citas indirectas, también llamadas paráfrasis, expresan con palabras propias una idea tomada de otra fuente. En estos casos no se utilizan comillas, pero igualmente debe indicarse el apellido del autor y el año de publicación. Cambiar la redacción de una idea no elimina la necesidad de citarla.</p>
+
+      <figure>
+        <img src="../img/Imagen2.png" alt="Citas indirectas en formato APA" />
+        <figcaption><strong>Figura 2.</strong><br><em>Citas indirectas en formato APA.</em><br><span class="caption-note">Nota. Elaboración propia en Canva (2026).</span></figcaption>
+      </figure>
+
+      <p>Asimismo, las citas pueden incorporarse de dos formas dentro del texto. La cita narrativa integra el nombre del autor en la oración, mientras que la cita parentética ubica los datos entre paréntesis al final de la idea. Ambas formas son correctas; la elección depende del énfasis que se quiera dar al autor o al contenido.</p>
+
+      <h3>Referencias según el tipo de fuente</h3>
+      <p>Además de las citas dentro del texto, todo trabajo académico debe incluir una lista de referencias al final, donde se detallan de manera completa las fuentes utilizadas. Este apartado permite identificar y localizar cada uno de los materiales citados, garantizando la transparencia del proceso de escritura.</p>
+
+      <p>El formato de las referencias varía según el tipo de fuente. En los libros se indica el apellido del autor, la inicial de su nombre, el año de publicación, el título de la obra y la editorial. En los artículos de revista se agrega el nombre de la revista, el volumen, el número y las páginas. En las páginas web se incluye el autor o la institución responsable, el año, el título del contenido y la dirección electrónica correspondiente.</p>
+
+      <p>También existen formatos específicos para documentos en PDF, videos, imágenes, tablas o publicaciones en redes sociales. Aunque cada fuente presenta particularidades, todas las referencias comparten un mismo propósito: brindar la información necesaria para reconocer y consultar el material utilizado.</p>
+
+      <div class="box white">
+        <div class="box-title">Presentación de información en trabajos académicos</div>
+        <ul>
+          <li><strong>Tablas:</strong> organizan datos en filas y columnas. Deben numerarse, titularse y mencionar la fuente cuando los datos no son propios.</li>
+          <li><strong>Figuras:</strong> incluyen gráficos, diagramas, imágenes o ilustraciones. Deben numerarse, titularse y, cuando corresponda, indicar su fuente.</li>
+          <li><strong>Notas al pie:</strong> permiten agregar aclaraciones sin interrumpir la lectura. No reemplazan a las citas, ya que en APA las fuentes se señalan mediante el sistema autor-fecha.</li>
+        </ul>
+      </div>
+
+      <p>Comprender cómo y por qué citar mejora la calidad de los trabajos académicos y promueve una actitud crítica y responsable frente al conocimiento. Escribir en la universidad implica reconocer que toda producción se inscribe en una trama colectiva de ideas previas y aportes nuevos.</p>
+
+      <h2>3. Uso asistido de tecnologías y prácticas indebidas</h2>
+
+      <p>En el contexto universitario actual, atravesado por la expansión de tecnologías digitales y, especialmente, por el desarrollo de la inteligencia artificial, resulta necesario diferenciar entre el uso legítimo de herramientas tecnológicas como apoyo al aprendizaje y su uso indebido como forma de fraude académico.</p>
+
+      <p>El uso asistido de tecnologías refiere a la utilización de herramientas digitales como apoyo para estudiar, organizar ideas, revisar textos o acceder a información, sin reemplazar la producción intelectual del estudiante. La tecnología puede acompañar el aprendizaje, pero no debe sustituir la comprensión, la lectura, la reflexión ni la elaboración propia.</p>
+
+      <figure>
+        <img src="../img/Imagen3.png" alt="Esquema conceptual sobre inteligencia artificial en educación" />
+        <figcaption><strong>Figura 3.</strong><br><em>Rol de la inteligencia artificial en la educación.</em><br><span class="caption-note">Nota. Elaboración propia (2026).</span></figcaption>
+      </figure>
+
+      <div class="box">
+        <div class="box-title">Uso asistido de tecnologías</div>
+        <p>La tecnología puede ser una aliada cuando se utiliza para revisar la escritura, organizar ideas, buscar información, comprender contenidos o mejorar una producción propia. Su valor formativo depende de que el estudiante mantenga el control del proceso.</p>
+      </div>
+
+      <figure>
+        <img src="../img/Imagen4.png" alt="Características de usos válidos de la tecnología" />
+        <figcaption><strong>Figura 4.</strong><br><em>Características de los usos válidos de la tecnología.</em><br><span class="caption-note">Nota. Elaboración propia (2026).</span></figcaption>
+      </figure>
+
+      <figure>
+        <img src="../img/Imagen5.png" alt="Ejemplos de utilización pedagógica de tecnologías" />
+        <figcaption><strong>Figura 5.</strong><br><em>Ejemplos de utilización pedagógica de tecnologías.</em><br><span class="caption-note">Nota. Elaboración propia (2026).</span></figcaption>
+      </figure>
+
+      <p>En cambio, las prácticas indebidas se vinculan con usos que afectan la integridad, la responsabilidad y la honestidad de la producción intelectual. Estas prácticas pueden implicar la sustitución del pensamiento propio, la simulación de aprendizajes o la presentación como propio de un trabajo generado por otra persona o por una herramienta tecnológica.</p>
+
+      <figure>
+        <img src="../img/Imagen6.png" alt="Utilización indebida de tecnologías" />
+        <figcaption><strong>Figura 6.</strong><br><em>Utilización indebida de tecnologías.</em><br><span class="caption-note">Nota. Elaboración propia (2026).</span></figcaption>
+      </figure>
+
+      <div class="data-highlight">
+        <p>La utilización de tecnología en el ámbito educativo no constituye un problema en sí misma. El problema aparece cuando su uso reemplaza la elaboración propia, debilita el pensamiento crítico o afecta la validez de una evaluación.</p>
+      </div>
+
+      <figure>
+        <img src="../img/Imagen7.png" alt="Síntesis sobre usos posibles de tecnologías en educación" />
+        <figcaption><strong>Figura 7.</strong><br><em>Síntesis sobre usos posibles de tecnologías en educación.</em><br><span class="caption-note">Nota. Elaboración propia (2026).</span></figcaption>
+      </figure>
+
+      <h2>4. Honestidad intelectual y responsabilidad en la producción de conocimiento</h2>
+
+      <p>La honestidad intelectual puede entenderse como un compromiso activo con la verdad, con el reconocimiento de las fuentes utilizadas y con la responsabilidad sobre aquello que se produce y se comunica. En el ámbito universitario, este principio resulta fundamental para sostener la confianza en el conocimiento y en las prácticas académicas.</p>
+
+      <p>De acuerdo con el Centro Internacional para la Integridad Académica, la integridad académica se apoya en valores como la honestidad, la confianza, la equidad, el respeto, la responsabilidad y la valentía. Estos valores orientan tanto las decisiones individuales como las condiciones institucionales necesarias para promover una cultura académica responsable.</p>
+
+      <div class="values-grid">
+        <div class="value-card">
+          <strong>Honestidad</strong>
+          <p>Implica decir la verdad, reconocer el trabajo ajeno, presentar evidencias y evitar el engaño.</p>
+        </div>
+        <div class="value-card">
+          <strong>Confianza</strong>
+          <p>Permite colaborar, compartir ideas y sostener vínculos académicos basados en trabajos genuinos.</p>
+        </div>
+        <div class="value-card">
+          <strong>Equidad</strong>
+          <p>Supone actuar de manera justa, respetar las consignas y reconocer adecuadamente las fuentes utilizadas.</p>
+        </div>
+        <div class="value-card">
+          <strong>Respeto</strong>
+          <p>Se expresa en la escucha, el intercambio cuidado, la apertura a otros puntos de vista y la comunicación responsable.</p>
+        </div>
+        <div class="value-card">
+          <strong>Responsabilidad</strong>
+          <p>Consiste en asumir las propias decisiones académicas y cumplir con las pautas de trabajo y evaluación.</p>
+        </div>
+        <div class="value-card">
+          <strong>Valentía</strong>
+          <p>Implica defender la integridad académica, incluso cuando hacerlo exige asumir riesgos o revisar prácticas propias.</p>
+        </div>
+      </div>
+
+      <p>Estos valores no se aprenden de una vez y para siempre: se construyen en la práctica cotidiana. En las aulas virtuales, en los foros, en las actividades grupales y en las evaluaciones, la honestidad intelectual se expresa en decisiones concretas: leer, citar, escribir con palabras propias, revisar, pedir orientación cuando sea necesario y reconocer el aporte de otras personas.</p>
+
+      <h2>Actividad obligatoria</h2>
+
+      <div class="box white">
+        <div class="box-title">Actividad grupal · Escribir en la universidad</div>
+        <p>Se solicita la elaboración, en grupos, de un texto breve de entre 400 y 500 palabras sobre uno de los temas trabajados en la Clase 3.</p>
+        <p>Podrán elegir, por ejemplo, alguno de los siguientes ejes:</p>
+        <ul>
+          <li>la escritura académica en la universidad;</li>
+          <li>la importancia de citar fuentes;</li>
+          <li>el plagio y sus implicancias;</li>
+          <li>el uso ético de tecnologías en la producción académica;</li>
+          <li>la honestidad intelectual en el trabajo universitario.</li>
+        </ul>
+      </div>
+
+      <p>El texto deberá desarrollar una idea central de manera clara y ordenada, y estar redactado con un registro adecuado al ámbito universitario. Asimismo, deberá incluir al menos una cita en formato APA, ya sea directa o indirecta, y la referencia completa de la fuente utilizada al final del trabajo.</p>
+
+      <p>Para finalizar, deberán incorporar un breve párrafo en el que se explicite cómo fue la organización del trabajo grupal y qué decisiones tomaron para evitar el plagio y sostener la honestidad intelectual durante la elaboración del texto.</p>
+
+      <div class="box white">
+        <div class="box-title">Se tendrá en cuenta</div>
+        <ul>
+          <li>la claridad de la idea central;</li>
+          <li>la organización y coherencia del texto;</li>
+          <li>la adecuación al registro académico;</li>
+          <li>el uso correcto de la cita incorporada;</li>
+          <li>la presentación de la referencia;</li>
+          <li>la reflexión final sobre el trabajo realizado.</li>
+        </ul>
+        <div class="activity-meta">
+          <div class="meta-item">
+            <strong>Fecha límite de entrega</strong>
+            <span>Hasta el 7 de mayo a las 23:55 hs.</span>
+          </div>
+          <div class="meta-item">
+            <strong>Formato de entrega</strong>
+            <span>Archivo Word. No se solicita PDF.</span>
+          </div>
+        </div>
+      </div>
+
+      <h3>¿Cómo se realiza la entrega?</h3>
+      <p>El trabajo deberá realizarse en grupo, pero la entrega deberá efectuarse de manera individual. Cada estudiante deberá subir el archivo Word en este mismo espacio, haciendo clic en el botón <strong>“Agregar entrega”</strong>.</p>
+
+      <p>Luego, deberá arrastrar el archivo al recuadro correspondiente o hacer clic en la opción <strong>“Agregar”</strong>, ubicada en el margen superior izquierdo del recuadro. Una vez insertado el archivo, deberá seleccionar <strong>“Guardar cambios”</strong>. De este modo, la entrega quedará completada.</p>
+
+      <h2>Conclusión</h2>
+
+      <p>La escritura en la universidad es un proceso complejo que va mucho más allá de la simple redacción de textos. Implica la construcción de ideas, el uso consciente del lenguaje, la planificación y revisión del trabajo, y el diálogo con el conocimiento existente.</p>
+
+      <p>A lo largo de esta clase se recorrió el pasaje desde una idea inicial hasta la producción final de un texto académico, incorporando herramientas fundamentales como las normas de citación, la comprensión del plagio y el uso ético de las tecnologías.</p>
+
+      <p>Asimismo, se destacó la importancia de la honestidad intelectual como base para la producción de conocimiento. Este valor no solo fortalece la calidad académica, sino que también contribuye a la formación de profesionales responsables y comprometidos con la sociedad.</p>
+
+      <div class="quote-balloon">
+        <p>Aprender a escribir en la universidad no es únicamente adquirir una técnica: también implica asumir una posición ética frente al conocimiento.</p>
+      </div>
+
+      <h2 id="referencias"> </h2>
+
+      <div class="ref-figure">
+        <div class="ref-figure-head">Referencias bibliográficas</div>
+        <div class="ref-figure-body">
+          <p>Bretag, T. (Ed.). (2016). <em>Handbook of academic integrity</em>. Springer. https://doi.org/10.1007/978-981-287-098-8</p>
+
+          <p>Carson, T. (2010). <em>Lying and deception. Theory and practice</em>. Oxford University Press.</p>
+
+          <p>International Center for Academic Integrity. (2025). <em>About</em>. https://www.academicintegrity.org/aws/ICAI/pt/sp/about</p>
+
+          <p>Normas APA. (2023). <em>Guía completa de citación en APA 7.ª edición</em>. https://normas-apa.org/</p>
+
+          <p>Puche Villalobos, D. J. (2025). La inteligencia artificial y el fraude académico en el contexto universitario. <em>Revista Digital de Investigación y Postgrado, 6</em>(11), 73–93. https://doi.org/10.59654/kg944e15</p>
+        </div>
+      </div>
+
+      <p class="ref-note">Estas referencias acompañan los contenidos y recursos trabajados en la clase.</p>
+    </div>
+  </div>
+</body>
+</html>
