@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CIS · Plan de trabajo</title>
+<style>
+:root{
+  --fondo:#f4f5f7;
+  --blanco:#ffffff;
+  --texto:#1f2a37;
+  --texto-suave:#5b6676;
+  --borde:#d9dee5;
+  --acento:#9f283b;
+  --acento-oscuro:#7f1f2f;
+  --acento-claro:#f7e9ec;
+  --u1:#9f283b;
+  --u2:#7a3246;
+  --u3:#b15b6b;
+  --u4:#c98793;
+  --sombra:0 8px 24px rgba(15,35,55,.08);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:"Aptos","Segoe UI",Arial,sans-serif;
+  background:var(--fondo);
+  color:var(--texto);
+}
+.wrap{
+  width:min(1160px, calc(100% - 32px));
+  margin:24px auto;
+  background:var(--blanco);
+  border:1px solid var(--borde);
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:var(--sombra);
+}
+.header{
+  padding:30px 32px;
+  border-top:10px solid var(--acento);
+  background:linear-gradient(180deg,#fff,#fcfafb);
+}
+.kicker{
+  margin:0 0 8px;
+  color:var(--acento);
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+h1{
+  margin:0;
+  color:#34171e;
+  font-size:clamp(30px, 4vw, 44px);
+  line-height:1.1;
+}
+.lead{
+  margin:14px 0 0;
+  color:var(--texto-suave);
+  font-size:17px;
+  line-height:1.65;
+}
+.content{
+  padding:26px 30px 34px;
+}
+.table-wrap{
+  overflow:auto;
+  border:1px solid var(--borde);
+  border-radius:18px;
+  background:#fff;
+}
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:980px;
+}
+th{
+  text-align:left;
+  background:#f4e8eb;
+  color:#5a2b34;
+  padding:16px;
+  font-size:13px;
+  text-transform:uppercase;
+  letter-spacing:.45px;
+}
+td{
+  padding:18px 16px;
+  border-top:1px solid var(--borde);
+  vertical-align:top;
+  font-size:15px;
+  line-height:1.55;
+  color:var(--texto-suave);
+}
+td.clase, td.fecha{
+  width:86px;
+  color:#4d5866;
+  font-size:17px;
+}
+td.material{
+  width:210px;
+  font-size:17px;
+}
+td.actividades{
+  width:260px;
+}
+.unit{
+  display:inline-block;
+  padding:8px 14px;
+  margin-bottom:10px;
+  border-radius:999px;
+  color:#fff;
+  font-size:14px;
+  font-weight:800;
+}
+.u1{background:var(--u1)}
+.u2{background:var(--u2)}
+.u3{background:var(--u3)}
+.u4{background:var(--u4); color:#432028}
+.topic{
+  display:block;
+  margin-bottom:4px;
+  color:#4d5866;
+  font-size:18px;
+  font-weight:800;
+}
+.activity-title{
+  display:block;
+  color:#4d5866;
+  font-weight:800;
+  font-size:17px;
+  margin-top:4px;
+}
+.deadline{
+  display:inline-block;
+  margin-top:16px;
+  padding:10px 14px;
+  border-radius:999px;
+  background:#fff7e8;
+  border:1px solid #ecd1a1;
+  color:#8a5a00;
+  font-weight:800;
+  line-height:1.35;
+}
+em{color:#4d5866}
+@media (max-width:720px){
+  .wrap{width:100%; margin:0; border-radius:0; border-left:0; border-right:0}
+  .header,.content{padding:22px 18px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="header">
+    <p class="kicker">Curso Inicial de Socialización</p>
+    <h1>Plan de trabajo</h1>
+    <p class="lead">El siguiente plan de trabajo organiza el recorrido del Curso Inicial de Socialización según el cronograma adjunto.</p>
+  </header>
+
+  <main class="content">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Clase</th>
+            <th>Fecha</th>
+            <th>Contenidos</th>
+            <th>Material didáctico multimedia</th>
+            <th>Actividades obligatorias</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="clase">1</td>
+            <td class="fecha">18/6</td>
+            <td>
+              <span class="unit u1">Unidad 1</span>
+              <span class="topic">La universidad.</span>
+              Historia, organización y proyecto institucional en la Universidad Nacional de Quilmes. La Educación Superior como derecho humano y bien público social. Campus virtual, organización del estudio y comunicación académica en entornos virtuales.
+            </td>
+            <td class="material">Unidad 1: <em>La universidad</em></td>
+            <td class="actividades">
+              <span class="activity-title">Actividad 1 ·</span>
+              Participar en el foro “Me presento”
+              <br><br>
+              <span class="activity-title">Actividad 2 ·</span>
+              Perfil del campus<br>
+              Completar el perfil personal y subir una foto.
+              <br>
+              <span class="deadline">Fecha límite de entrega: 25/6</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="clase">2</td>
+            <td class="fecha">25/6</td>
+            <td>
+              <span class="unit u2">Unidad 2</span>
+              <span class="topic">Estudiar en la universidad.</span>
+              La lectura crítica en entornos virtuales de enseñanza y aprendizaje. Fuentes de información en el ámbito académico. Circulación del conocimiento académico en plataformas virtuales.
+            </td>
+            <td class="material">Unidad 2: <em>Estudiar en la universidad</em></td>
+            <td class="actividades">
+              <span class="activity-title">Actividad 1 ·</span>
+              Cuestionario
+              <br><br>
+              <span class="activity-title">Actividad 2 ·</span>
+              Conformación de grupos
+              <br>
+              <span class="deadline">Fecha límite de entrega: 2/7</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="clase">3</td>
+            <td class="fecha">2/7</td>
+            <td>
+              <span class="unit u3">Unidad 3</span>
+              <span class="topic">Escribir en la universidad.</span>
+              La escritura académica como proceso. Lenguaje académico y producción discursiva en el ámbito universitario. Normas básicas de citación y referencia en trabajos académicos. Diferencias entre uso asistido con tecnologías y prácticas indebidas.
+            </td>
+            <td class="material">Unidad 3: <em>Escribir en la universidad</em></td>
+            <td class="actividades">
+              <span class="activity-title">Actividad 1 ·</span>
+              Agregar entrega del trabajo grupal al recurso Tarea
+              <br>
+              <span class="deadline">Fecha límite de entrega: 9/7</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="clase">4</td>
+            <td class="fecha">9/7</td>
+            <td>
+              <span class="unit u4">Unidad 4</span>
+              <span class="topic">Ciudadanía universitaria digital.</span>
+              Tecnologías emergentes, inteligencia artificial y prácticas académicas. Usos responsables de la inteligencia artificial y desafíos éticos. Identidad y huella digital. Participación, autogestión y convivencia en entornos virtuales. Accesibilidad, inclusión y prevención de violencias digitales.
+            </td>
+            <td class="material">Unidad 4: <em>Ciudadanía universitaria digital</em></td>
+            <td class="actividades">
+              <span class="activity-title">Actividad 1 ·</span>
+              Participar en el foro de cierre
+              <br>
+              <span class="deadline">Fecha límite de entrega: 15/7</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+</body>
+</html>
