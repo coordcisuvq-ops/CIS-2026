@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Clase 1 · Curso Inicial de Socialización</title>
+<style>
+
+:root{
+  --brand:#9f283b;
+  --brand-dark:#7e2230;
+  --bg:#f3f1f2;
+  --paper:#ffffff;
+  --ink:#2f2c2d;
+  --muted:#5d5759;
+  --line:#e4dde0;
+  --soft:#faf7f8;
+  --soft-2:#f8f5f6;
+  --accent:#f4ecef;
+  --max:1100px;
+  --text:1.04rem;
+  --shadow:0 18px 42px rgba(55,37,41,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:radial-gradient(circle at top left, rgba(159,40,59,.07), transparent 20%), linear-gradient(180deg,#f6f4f5 0%, var(--bg) 100%);
+  color:var(--ink);
+  font-family:Arial, Helvetica, sans-serif;
+  line-height:1.72;
+}
+a{color:inherit}
+.page{max-width:var(--max); margin:26px auto; background:var(--paper); border:1px solid var(--line); box-shadow:var(--shadow)}
+.cover{position:relative; padding:52px 68px 56px; background:radial-gradient(circle at 82% 18%, rgba(159,40,59,.07), transparent 23%), linear-gradient(180deg,#fff,#fcfbfb 75%,#fff); border-bottom:1px solid var(--line)}
+.cover::before{content:""; position:absolute; left:0; right:0; top:0; height:12px; background:var(--brand)}
+.topline{display:flex; align-items:flex-start; justify-content:space-between; gap:24px; margin:8px 0 44px}
+.brandlock{display:flex; gap:16px; align-items:center}
+.brandmark{width:58px; height:58px; flex:0 0 58px; display:grid; place-items:center; background:var(--brand); border-radius:2px}
+.brandmark img{width:26px; height:auto; display:block}
+.kicker{max-width:520px; color:var(--muted); text-transform:uppercase; font-size:.74rem; letter-spacing:.14em; line-height:1.55}
+.series{color:var(--brand); font-size:.82rem; text-transform:uppercase; letter-spacing:.16em; border-bottom:1px solid var(--line); padding-bottom:10px; white-space:nowrap}
+.cover-grid{display:grid; grid-template-columns:minmax(0,1fr) 300px; gap:40px; align-items:center}
+h1{margin:0 0 18px; font-family:Georgia, "Times New Roman", serif; font-size:3.45rem; line-height:1.02; letter-spacing:-.03em; color:#2e2b2c}
+.subtitle-program{margin:10px 0 6px; font-size:1.18rem; color:var(--brand-dark); font-weight:700; letter-spacing:.01em}
+.subtitle-university{margin:0 0 18px; font-size:1rem; text-transform:uppercase; letter-spacing:.08em; color:var(--muted)}
+.cover-year{display:inline-block; margin:2px 0 22px; padding:7px 14px 6px; border:1px solid rgba(159,40,59,.18); background:linear-gradient(180deg,#fcf7f8,#f7eff1); color:var(--brand); font-size:.84rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; border-radius:999px; box-shadow:0 8px 20px rgba(159,40,59,.08)}
+.hero-illustration{width:100%; max-width:280px; margin:0 auto; background:linear-gradient(180deg,#fbfbfb,#f6f4f5); border:1px solid var(--line); padding:22px; display:grid; place-items:center; min-height:240px}
+.hero-illustration .hero-svg{width:190px; max-width:100%; height:auto; display:block}
+.hero-illustration .svg-soft{fill:#f4ecef}
+.hero-illustration .svg-line{fill:none; stroke:#9f283b; stroke-width:3; stroke-linecap:round; stroke-linejoin:round}
+.hero-illustration .svg-fill{fill:#9f283b}
+.hero-illustration .svg-muted{fill:#cfa5af}
+.cover-footer{display:grid; grid-template-columns:repeat(2,minmax(280px,1fr)); gap:22px; margin-top:36px; padding-top:24px; border-top:1px solid var(--line)}
+.cover-card{padding:22px 24px; border:1px solid var(--line); background:linear-gradient(180deg,#fff,#faf8f9)}
+.cover-card .label{display:block; margin-bottom:10px; color:var(--brand); text-transform:uppercase; letter-spacing:.14em; font-size:.72rem; font-weight:700}
+.cover-card p{margin:0; color:var(--muted)}
+.content{padding:38px 68px 84px}
+.toc{margin-bottom:30px; padding:24px 26px 20px; border:1px solid var(--line); background:linear-gradient(180deg,#fff,#fbfafb)}
+.toc h2{margin:0 0 14px; color:var(--brand); text-transform:uppercase; letter-spacing:.14em; font-size:.76rem}
+.toc ol{margin:0; padding-left:1.35rem; font-size:1rem}.toc li{margin:9px 0}.toc a{text-decoration:none; border-bottom:1px solid transparent}.toc a:hover{color:var(--brand); border-bottom-color:var(--brand)}
+h2.section{margin:46px 0 16px; padding-top:18px; border-top:1px solid var(--line); font-family:Georgia, "Times New Roman", serif; font-size:2rem; line-height:1.12; letter-spacing:-.02em}
+h3{margin:28px 0 10px; color:var(--brand); font-size:1.08rem}
+p{margin:12px 0; font-size:var(--text)}
+.mdm-box{margin:20px 0 28px; padding:18px 20px; border:2px solid var(--brand); border-left:10px solid #d6452f; background:#fff; box-shadow:0 8px 22px rgba(55,37,41,.04)}
+.mdm-title{margin:0 0 10px; color:var(--brand-dark); font-weight:700; font-size:1.04rem}
+mark{
+  background:none;
+  color:inherit;
+  padding:0;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  font-weight:700;
+}
+
+
+.mdm-preview-link{
+  position:relative;
+  color:var(--brand);
+  text-decoration:none;
+  border-bottom:1px solid rgba(159,40,59,.35);
+  font-weight:700;
+}
+.mdm-preview-link:hover{
+  color:var(--brand-dark);
+  border-bottom-color:var(--brand-dark);
+}
+.mdm-preview-link::after{
+  content:"Repositorio UVQ · Material Didáctico Digital\A Abrir MDM en una nueva pestaña";
+  white-space:pre-line;
+  position:absolute;
+  left:0;
+  bottom:135%;
+  width:290px;
+  padding:14px 16px;
+  background:#fff;
+  color:var(--ink);
+  border:1px solid var(--line);
+  box-shadow:0 14px 28px rgba(55,37,41,.14);
+  border-radius:6px;
+  font-size:.88rem;
+  line-height:1.45;
+  font-weight:400;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(8px);
+  transition:opacity .18s ease, transform .18s ease, visibility .18s ease;
+  z-index:20;
+}
+.mdm-preview-link::before{
+  content:"";
+  position:absolute;
+  left:22px;
+  bottom:118%;
+  border:8px solid transparent;
+  border-top-color:#fff;
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .18s ease, visibility .18s ease;
+  z-index:21;
+}
+.mdm-preview-link:hover::after,
+.mdm-preview-link:hover::before,
+.mdm-preview-link:focus::after,
+.mdm-preview-link:focus::before{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+
+
+.author-line{
+  margin:6px 0 0;
+  color:var(--muted);
+  font-size:.94rem;
+  line-height:1.65;
+}
+
+.author-list{
+  margin:6px 0 0;
+  padding-left:1.15rem;
+  color:var(--muted);
+  font-size:.94rem;
+  line-height:1.55;
+}
+.author-list li{
+  margin:2px 0;
+}
+.update-note{
+  margin:16px 0 0;
+  padding-top:12px;
+  border-top:1px solid var(--line);
+  color:var(--muted);
+  font-size:.92rem;
+  line-height:1.5;
+}
+
+@media (max-width:880px){
+  .mdm-preview-link::after,
+  .mdm-preview-link::before{
+    display:none;
+  }
+}
+
+.tour-card{
+  margin:24px 0 30px;
+  padding:24px 26px;
+  border:1px solid var(--line);
+  background:linear-gradient(180deg,#fff,#faf7f8);
+  box-shadow:0 10px 24px rgba(55,37,41,.05);
+}
+.tour-card h3{
+  margin:0 0 8px;
+  color:var(--brand);
+  font-size:1.12rem;
+}
+.tour-card p{
+  margin:8px 0 18px;
+  color:var(--muted);
+}
+.tour-button{
+  display:inline-block;
+  padding:11px 18px;
+  background:var(--brand);
+  color:#fff;
+  text-decoration:none;
+  border-radius:999px;
+  font-weight:700;
+  line-height:1.2;
+  box-shadow:0 8px 18px rgba(159,40,59,.16);
+}
+.tour-button:hover{
+  background:var(--brand-dark);
+}
+
+.tour-button{
+  position:relative;
+}
+.tour-button::after{
+  content:"Tour 360° del campus UNQ\A Abrir recorrido virtual en una nueva pestaña";
+  white-space:pre-line;
+  position:absolute;
+  left:0;
+  bottom:135%;
+  width:300px;
+  padding:14px 16px;
+  background:#fff;
+  color:var(--ink);
+  border:1px solid var(--line);
+  box-shadow:0 14px 28px rgba(55,37,41,.14);
+  border-radius:6px;
+  font-size:.88rem;
+  line-height:1.45;
+  font-weight:400;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(8px);
+  transition:opacity .18s ease, transform .18s ease, visibility .18s ease;
+  z-index:20;
+}
+.tour-button::before{
+  content:"";
+  position:absolute;
+  left:22px;
+  bottom:118%;
+  border:8px solid transparent;
+  border-top-color:#fff;
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .18s ease, visibility .18s ease;
+  z-index:21;
+}
+.tour-button:hover::after,
+.tour-button:hover::before,
+.tour-button:focus::after,
+.tour-button:focus::before{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+@media (max-width:880px){
+  .tour-button::after,
+  .tour-button::before{
+    display:none;
+  }
+}
+
+
+.text-link{color:var(--brand); text-decoration:none; border-bottom:1px solid rgba(159,40,59,.35); transition:all .18s ease; overflow-wrap:anywhere; word-break:break-word}.text-link:hover{color:var(--brand-dark); border-bottom-color:var(--brand-dark)}
+.reference-group{margin:20px 0 0; padding:18px 20px 8px; border:1px solid var(--line); background:linear-gradient(180deg,#fff,#faf8f9)}
+.ref-list{list-style:none; padding-left:0; margin:10px 0 0}.ref-list li{margin:12px 0; padding-left:1.4em; text-indent:-1.4em; overflow-wrap:anywhere; word-break:break-word; hyphens:auto}
+.back-top{margin:28px 0 0; font-size:.92rem; color:var(--muted)}.back-top a{text-decoration:none; color:var(--muted); border-bottom:1px solid transparent}.back-top a:hover{color:var(--brand); border-bottom-color:var(--brand)}
+.site-footer{margin-top:56px; padding:0 24px 30px; color:var(--muted)}.site-footer-shell{border:1px solid var(--line); background:linear-gradient(180deg,#fff 0%, #fbf8f9 100%); box-shadow:0 10px 24px rgba(55,37,41,.04)}.site-footer-grid{display:grid; grid-template-columns:minmax(0,1.45fr) 1px minmax(260px,.85fr); gap:0 22px; align-items:stretch; padding:18px 20px}.site-footer-divider{width:1px; background:linear-gradient(180deg,rgba(166,143,148,.18),rgba(166,143,148,.55),rgba(166,143,148,.18))}.site-footer-label{margin:0 0 10px; color:var(--brand); text-transform:uppercase; letter-spacing:.18em; font-size:.78rem; font-weight:700; line-height:1.4}.site-footer-note{margin:0; font-size:.95rem; line-height:1.72; color:var(--muted)}.site-footer-author{margin:0; color:var(--ink); font-weight:700; font-size:.98rem; line-height:1.55}.site-footer-role{margin:4px 0 0; color:var(--muted); font-size:.94rem; line-height:1.55}
+@media (max-width:880px){.page{margin:0; border:none; box-shadow:none}.cover,.content{padding:28px 22px 42px}.topline{flex-direction:column; align-items:flex-start; gap:14px; margin-bottom:28px}.cover-grid,.cover-footer{grid-template-columns:1fr}h1{font-size:2.45rem}.series{white-space:normal}.site-footer{padding:0 16px 24px}.site-footer-grid{grid-template-columns:1fr; gap:14px 0; padding:16px}.site-footer-divider{width:100%; height:1px}.ref-list li{padding-left:1.1em; text-indent:-1.1em; font-size:.98rem}}
+@media print{body{background:#fff}.page{margin:0; border:none; box-shadow:none; max-width:none}.toc,.back-top{display:none}}
+
+</style>
+</head>
+<body>
+<div class="page" id="top">
+<section class="cover">
+  <div class="topline">
+    <div class="brandlock">
+      <div class="brandmark"><img alt="UNQ" src="data:image/png;base64,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"/></div>
+      <div class="kicker">Universidad Nacional de Quilmes · Curso Inicial de Socialización</div>
+    </div>
+    <div class="series">Clase inicial · Modalidad virtual</div>
+  </div>
+  <div class="cover-grid">
+    <div class="cover-copy">
+      <h1>Clase 1</h1>
+      <p class="subtitle-program">Curso Inicial de Socialización</p>
+      <p class="subtitle-university">Universidad Nacional de Quilmes (UNQ)</p>
+      <div class="cover-year">Eje temático 1 y 2</div>
+    </div>
+    <figure aria-label="Ilustración de una computadora con birrete universitario" class="hero-illustration">
+      <svg class="hero-svg" viewBox="0 0 220 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="hero-title">
+        <title id="hero-title">Ingreso a la universidad virtual</title>
+        <circle class="svg-soft" cx="110" cy="88" r="76"/>
+        <rect x="48" y="66" width="124" height="78" rx="8" fill="#fff" stroke="#9f283b" stroke-width="3"/>
+        <path class="svg-line" d="M72 92h76M72 112h50M72 130h68"/>
+        <path class="svg-line" d="M86 158h48M101 144v14h18v-14"/>
+        <path class="svg-fill" d="M110 28 62 48l48 20 48-20-48-20Z"/>
+        <path class="svg-muted" d="M80 58v22c0 10 14 19 30 19s30-9 30-19V58l-30 13-30-13Z"/>
+        <path class="svg-line" d="M158 49v34"/>
+        <circle class="svg-fill" cx="158" cy="88" r="5"/>
+      </svg>
+    </figure>
+  </div>
+  <div class="cover-footer">
+    <div class="cover-card"><span class="label">Recorrido</span><p>Universidad, derecho a la educación superior y modalidad virtual.</p></div>
+    <div class="cover-card"><span class="label">Campus virtual</span><p>Organización del estudio, comunicación académica y espacios institucionales.</p></div>
+  </div>
+</section>
+<main class="content">
+<section class="toc" id="indice">
+<h2>Índice</h2>
+<ol>
+<li><a href="#eje1">Eje temático 1</a></li>
+<li><a href="#eje2">Eje temático 2 -  Uso del campus virtual y Entornos Virtuales.</a></li>
+<li><a href="#conclusion">Conclusión</a></li>
+<li><a href="#referencia">Referencia Bibliográfica</a></li>
+<li><a href="#bibliografia-ampliatoria">Bibliografía Ampliatoria</a></li>
+</ol>
+</section>
+<h2 class="section" id="eje1">Eje temático 1</h2>
+<h3>Introducción</h3>
+<p>El Curso Inicial de Socialización constituye tu primer espacio de encuentro con la universidad. Comenzar a estudiar una carrera de grado implica incorporarte a una institución educativa en la que se organizan de manera particular y contextualizada la enseñanza, el conocimiento y la vida académica. La Universidad Nacional de Quilmes (UNQ) es una institución pública ubicada en el conurbano bonaerense que, en su modalidad virtual, posibilita el acceso a estudiantes de distintas regiones del país como parte de un proyecto que busca democratizar el conocimiento y reconocer la diversidad de quienes la habitan.</p>
+<div class="tour-card">
+  <h3>Recorrido virtual por la UNQ</h3>
+  <p>Antes de avanzar con la clase, te proponemos recorrer virtualmente algunos espacios de la universidad. Este recurso permite empezar a reconocer la institución de la que comenzás a formar parte.</p>
+  <a class="tour-button" href="https://dsc.unq.edu.ar/tour-virtual-unq/" target="_blank" rel="noopener">Iniciar recorrido virtual</a>
+</div>
+<div class="mdm-box">
+<p class="mdm-title">Para ampliar en el MDM - Sección 1.1</p>
+<p>En el <a class="mdm-preview-link" href="https://repositorio.uvq.edu.ar/detail/8394/" target="_blank" rel="noopener">Material Didáctico Digital (MDM)</a> encontrarás la historia fundacional de la UNQ, su proyecto pedagógico institucional y los principios que orientan su propuesta de formación. Te recomendamos leer esa sección antes de continuar con esta clase. Podrás acceder al MDM desde el repositorio de materiales didácticos.</p>
+</div>
+<h3>La universidad como derecho y bien público social</h3>
+<p><mark>En Argentina, la educación superior es concebida como un bien público social y un derecho humano. Esto significa que no se trata de un servicio ni de un privilegio individual, sino de una responsabilidad del Estado y de las universidades de generar condiciones para que las personas puedan acceder, sostener sus estudios y graduarse.</mark></p>
+<p>En este sentido, es importante reconocer que el ingreso a la universidad no depende únicamente de decisiones individuales. Forma parte de procesos sociales más amplios, vinculados con políticas públicas que han ampliado el sistema universitario, diversificando las propuestas de formación y desarrollando nuevas modalidades que permiten que la universidad esté presente donde antes no llegaba. Una forma sencilla de comenzar a pensar esto es mirar nuestra propia historia: ¿Cuántas personas de tu familia accedieron a estudios universitarios?</p>
+<div class="mdm-box">
+<p class="mdm-title">Para ampliar en el MDM - Sección 1.3</p>
+<p>En este apartado se desarrolla en detalle el marco normativo que sustenta la educación superior como derecho: la Ley de Educación Superior Nº 24.521 y su modificatoria Ley Nº 27.204 (2015), que establecen la responsabilidad indelegable del Estado en garantizar el acceso a la universidad con igualdad de oportunidades.</p>
+</div>
+<p>Más allá de la formación profesional, las universidades producen conocimiento, investigan e intervienen en problemáticas sociales. Tal como establece la Declaración de la Conferencia Regional de Educación Superior (CRES, 2018), la universidad debe contribuir a la convivencia democrática, promover la cooperación social y participar en la transformación de la realidad. En un contexto atravesado por el conocimiento, la ciencia y la tecnología —incluso frente a debates sobre el impacto de la inteligencia artificial—, la educación superior adquiere un papel central para el progreso social, la reducción de desigualdades y la construcción de identidades culturales.</p>
+<p>Al mismo tiempo, el actual escenario plantea desafíos para las universidades. En un contexto en el que cada vez más estudiantes acceden a la educación superior con trayectorias diversas, atravesadas por expectativas, incertidumbres y el deseo de construir un futuro con mayores oportunidades. Sostener la enseñanza, acompañar esas trayectorias y, al mismo tiempo, responder a demandas sociales más amplias, forma parte de las tensiones propias del sistema universitario actual.</p>
+<p>En la actualidad, por ejemplo, circulan discursos que cuestionan el sentido de estudiar, señalando que las tecnologías digitales y la inteligencia artificial podrían reemplazar ciertas tareas humanas. Frente a estas afirmaciones, resulta necesario comprender que se trata de transformaciones que atraviesan a la sociedad en su conjunto, y que también interpelan a las instituciones educativas.</p>
+<p><mark>En este marco, la educación superior adquiere un papel central. En sociedades cada vez más atravesadas por el conocimiento, la ciencia y la tecnología, su desarrollo y fortalecimiento resultan fundamentales para el progreso social, la generación de riqueza, la construcción de identidades culturales, la reducción de desigualdades y la promoción de sociedades más justas. (CRES, 2018).</mark></p>
+<h3>Estudiar en la modalidad virtual</h3>
+<p>La modalidad virtual constituye una de las características distintivas de la Universidad Nacional de Quilmes. Esta propuesta de formación no surge únicamente como una alternativa tecnológica, sino como una política orientada a ampliar el acceso y reconocer la diversidad de las situaciones de quienes estudian.</p>
+<div class="mdm-box">
+<p class="mdm-title">Para ampliar en el MDM - Sección 1.2</p>
+<p>Aquí se describe en profundidad cómo funciona la modalidad a distancia en la UNQ: el marco normativo del SIED (Sistema Institucional de Educación a Distancia), la plataforma Moodle, la lógica de asincronía y el rol del Campus Virtual. Te recomendamos consultarla para comprender cómo se organiza tu cursada.</p>
+</div>
+<p>Estudiar bajo esta modalidad implica organizar el tiempo de manera autónoma, sostener una participación activa en el aula virtual y desarrollar formas de comunicación mediadas por las tecnologías. Esto no significa estudiar en soledad. Por el contrario, implica integrarse a una comunidad en la que docentes, tutores y estudiantes construyen espacios de intercambio, acompañamiento y aprendizaje.</p>
+<h3>Ser estudiante en la universidad virtual</h3>
+<p>Finalmente, es importante señalar que ser estudiante universitario no se reduce a cumplir con plazos o manejar herramientas tecnológicas. <mark>Implica un proceso que lleva tiempo y requiere adaptación, en el que se van construyendo de manera progresiva nuevas formas de estudiar y participar en la vida académica. Ingresar a la universidad es, al mismo tiempo, una experiencia individual y colectiva.</mark> Es una oportunidad para formarse, pero también para comprender al mundo que nos rodea, participar en una comunidad y construir un recorrido propio.</p>
+<div class="mdm-box">
+<p class="mdm-title">Para ampliar en el MDM - Sección 1.4</p>
+<p>En el mismo se desarrollan los derechos y deberes de las y los estudiantes en la UNQ, así como la organización institucional de la universidad (principios de autonomía y cogobierno). Conocer ese marco te permite comprender cómo participar activamente en tu comunidad universitaria.</p>
+</div>
+<p>Hoy no sólo iniciás una carrera, comenzás a formar parte de una comunidad universitaria. Esto implica involucrarte, participar y construir este espacio junto a otros y otras, desde el respeto y el compromiso. La universidad es también un lugar que podés hacer propio.</p>
+<h2 class="section" id="eje2">Eje temático 2 -  Uso del campus virtual y Entornos Virtuales.</h2>
+<h3>Funciones y recursos del campus virtual como entorno institucional de aprendizaje</h3>
+<p>El Campus Virtual de la UNQ constituye el entorno central donde se desarrolla la propuesta educativa en modalidad virtual, basada en un modelo de formación integrador que utiliza las Tecnologías de la Información y la Comunicación (TIC) para facilitar el acceso al conocimiento. A través de la plataforma Moodle 3 se organizan las actividades de enseñanza y aprendizaje, promoviendo la interacción entre estudiantes, docentes, tutores y el conjunto de la comunidad académica. Es fundamental para el correcto desempeño académico poder acceder al campus periódicamente.</p>
+<p>En el Campus se accede a las aulas virtuales de cada asignatura, donde se encuentran los contenidos, actividades y espacios de intercambio. <mark>La cursada se organiza de manera asincrónica, lo que permite administrar los tiempos de estudio con flexibilidad y autonomía. Esta modalidad asincrónica implica una forma de estudiar y de comunicarse no simultánea, sin coincidencia de actores en tiempo real con la posibilidad de acceder al entorno en cualquier lugar y dispositivo, fomentando la flexibilidad y demandando autodisciplina para organizar tiempos y cumplir con los requerimientos académicos</mark>. Además, el entorno ofrece un repositorio de materiales didácticos que centraliza la bibliografía de las materias y facilita su búsqueda y descarga.</p>
+<p>El acompañamiento institucional se realiza a través de las Salas de Tutorías, donde un/a tutor/a académico/a orienta en la organización de la trayectoria, la elección de materias y el uso del campus, además de brindar información relevante sobre la vida universitaria. A su vez, el Sistema de Autogestión Guaraní permite realizar inscripciones, consultar la historia académica y gestionar trámites administrativos.</p>
+<p>Para una comprensión más completa de las herramientas, recursos y dinámicas de uso del Campus Virtual, es indispensable la lectura del material didáctico digital correspondiente a este eje.</p>
+<h3>Estrategias de organización del estudio en Entornos Virtuales de Educación</h3>
+<p><mark>La organización del tiempo constituye un aspecto central en el desempeño del rol del estudiante en entornos virtuales</mark>, ya que se trata de un recurso limitado que debe ser administrado de manera eficiente para sostener una trayectoria académica productiva. En este sentido, <mark>el aprendizaje implica no sólo la apropiación de contenidos, sino también el desarrollo de estrategias personales de planificación del tiempo</mark>. Asimismo, la optimización del tiempo de estudio requiere la incorporación de hábitos y prácticas como la definición de prioridades, el uso de cronogramas, y diseño de estrategias personales que apunten a fortalecer el cumplimiento de objetivos académicos.</p>
+<p>Existen diversas técnicas que permiten organizar, comprender y retener la información, tales como la lectura comprensiva, el uso de códigos de color, etc. Cada una de estas herramientas contribuye a procesar los contenidos de manera activa y significativa, por lo que es importante que cada estudiante identifique aquellas que mejor se adapten a su forma de aprender. Podrán encontrar diversas técnicas de estudios que pueden incorporar en su trayectoria en el material didáctico digital.</p>
+<h3>Comunicación académica en espacios institucionales virtuales desde una perspectiva de convivencia y respeto de derechos</h3>
+<p><mark>La comunicación en la UNQ Virtual es un componente fundamental del proceso educativo, ya que se basa en la interacción entre estudiantes, docentes, tutores y otros actores institucionales</mark> en el marco del diálogo didáctico mediado propio de la educación a distancia. Este intercambio permite sostener el aprendizaje en entornos virtuales y construir una experiencia formativa compartida.</p>
+<p><mark>Como en toda Institución, la comunicación debe adecuarse a determinadas normas preestablecidas que promueven un uso responsable de los espacios de comunicación, las mismas se detallan en el Código de Convivencia del Campus UVQ.</mark>  Estas interacciones se desarrollan sobre la base del respeto por la diversidad de opiniones, la libertad de expresión y los valores de la educación pública, como la democracia y los derechos humanos. En este sentido, la comunicación académica implica no solo el intercambio de contenidos, sino también la construcción de vínculos respetuosos dentro de la comunidad universitaria. Se sugiere profundizar en estos principios a partir del material del eje.</p>
+<h2 class="section" id="conclusion">Conclusión</h2>
+<p>Esta primera clase permitió reconocer que la Universidad Nacional de Quilmes no es solo un espacio de formación, sino una institución que garantiza el derecho a la educación superior. Ingresar a la universidad pública implica comprender que el conocimiento es un bien público, atravesado por debates y desafíos actuales.</p>
+<p>Estudiar en la modalidad virtual supone construir progresivamente el oficio de estudiante, organizar el propio recorrido y participar en una comunidad que produce conocimiento.</p>
+<p>Asimismo, se presentó el modelo pedagógico en el cual se enmarca la UNQ Virtual; indicando los principales actores y herramientas del Campus Moodle involucrados en el proceso educativo. El conocimiento de los diferentes espacios del campus podrá potenciar su desempeño académico.</p>
+<p>También se mostraron los diferentes modos de comunicación que pueden existir en el Campus Virtual y específicamente dentro del aula, presentando brevemente la utilidad de cada uno de ellos, no sólo para permitir mantener una comunicación multidireccional dentro del campus virtual, sino también como espacios de construcción colectiva y colaborativa del conocimiento.</p>
+<p>Esperamos que los temas abordados en esta primera clase les permitan integrarse a nuestra comunidad universitaria. Les damos la bienvenida a la Universidad Nacional de Quilmes y les deseamos un excelente inicio.</p>
+<h2 class="section" id="referencia">Referencia Bibliográfica</h2>
+<div class="reference-group"><ul class="ref-list">
+<li>Conferencia Regional de Educación Superior en América Latina y el Caribe (CRES). (2018). Declaración de la Conferencia Regional de Educación Superior en América Latina y el Caribe. Córdoba, Argentina.</li>
+</ul></div>
+<h2 class="section" id="bibliografia-ampliatoria">Bibliografía Ampliatoria</h2>
+<div class="reference-group"><ul class="ref-list">
+<li>Amador, J. C. (2015). Aprendizaje transmedia en la era de la convergencia cultural interactiva. Revista Educación Y Ciudad, (25), 11-24. Recuperado de <a class="text-link" href="https://doi.org/10.36737/01230425.v.n25.2013.50" target="_blank" rel="noopener">https://doi.org/10.36737/01230425.v.n25.2013.50</a></li>
+<li>Becerra, M. (2005). Cambios y continuidad: servicio público y educación superior en entornos virtuales. En Flores, Jorge. Becerra, Martín (Comp). La educación superior en entornos virtuales. El caso del programa Universidad Virtual de Quilmes. Universidad Nacional de Quilmes.</li>
+<li>Castro V. (2004). Marta Mena: La evolución de la educación a distancia. En Portal Educ.ar. Ministerio de Educación, Cultura, Ciencia y Deportes. Recuperado de: <a class="text-link" href="https://www.educ.ar/recursos/120603/marta-mena-la-evolucion-de-la-educacion-a-distanciag" target="_blank" rel="noopener">https://www.educ.ar/recursos/120603/marta-mena-la-evolucion-de-la-educacion-a-distanciag</a></li>
+<li>Fainholc, Beatriz. Pensar una ciudadanía para la sociedad del conocimiento con la formación y práctica del socio constructivismo crítico de las TICs. En: Tecnología y comunicación educativas. 2008, No.47-48, p. 63-71.</li>
+<li>Flores, J. (2005). La Universidad Nacional de Quilmes y el Programa de educación no          presencial “Universidad Virtual de Quilmes”: una retrospectiva para una nueva agenda de investigación. En J. Flores, M. Becerra (Comp). La educación superior en entornos virtuales. El caso del programa Universidad Virtual de Quilmes. Universidad Nacional de Quilmes.</li>
+<li>García Aretio, L. (2007). De la educación a distancia a la educación virtual: De la teoría a la práctica.  Ariel S.A, 1a ed.</li>
+<li>García Aretio, L. (2008). Diálogo didáctico mediado. Recuperador de: <a class="text-link" href="https://drive.google.com/file/d/1r9389KbwwEHJzpdxmTDGn_Wz-Cm7dOgf/view?usp=sharing" target="_blank" rel="noopener">https://drive.google.com/file/d/1r9389KbwwEHJzpdxmTDGn_Wz-Cm7dOgf/view?usp=sharing</a></li>
+<li>Gutiérrez, Eduardo (2009). Leer digital: la lectura en el entorno de las nuevas tecnologías de la información y la comunicación. Signo y Pensamiento, XXVIII [fecha de Consulta 20 de Octubre de 2020]. ISSN: 0120-4823. Disponible en: <a class="text-link" href="https://drive.google.com/file/d/18pVt535HhAbr4JB_VZU677eLgrGPLQqO/view?usp=sharing" target="_blank" rel="noopener">https://drive.google.com/file/d/18pVt535HhAbr4JB_VZU677eLgrGPLQqO/view?usp=sharing</a></li>
+<li>Ley N° 23.749. Creación de la Universidad Nacional de Quilmes. Información</li>
+<li>Portal UNQ. Noticias (s. f.). Bimodalidad: un camino hacia la innovación. Recuperado de: <a class="text-link" href="https://www.unq.edu.ar/noticias/2973-bimodalidad-un-camino-hacia-la-innovacion/" target="_blank" rel="noopener">https://www.unq.edu.ar/noticias/2973-bimodalidad-un-camino-hacia-la-innovacion/</a></li>
+<li>Zapata Ros, M. (2002). Las buenas maneras en Internet. En Revista de Educación a Distancia,  Núm. 5. Universidad de Murcia.  Recuperado de: <a class="text-link" href="http://www.um.es/ead/red/5/red5.html" target="_blank" rel="noopener">http://www.um.es/ead/red/5/red5.html</a></li>
+</ul></div>
+<div class="back-top"><a href="#top">↑ Volver arriba</a></div>
+</main>
+<footer class="site-footer">
+  <div class="site-footer-shell">
+    <div class="site-footer-grid">
+      <div><p class="site-footer-label">Curso Inicial de Socialización</p><p class="site-footer-note">Material de clase elaborado para orientar el ingreso y la participación en la vida universitaria.</p></div>
+      <div class="site-footer-divider"></div>
+      <div>
+  <p class="site-footer-author">Universidad Nacional de Quilmes</p>
+  <p class="site-footer-role">Modalidad virtual</p>
+  <p class="site-footer-label" style="margin-top:16px;">Autoría</p>
+  <p class="author-line">Cabañas, C.; Casarini, S.; Comito, R.; Concina, A.; Godoy, M.; Gomez, N.; Lugones, S.; Vespasiano, Mariana.</p>
+  <p class="update-note">Última actualización: junio de 2026</p>
+</div>
+    </div>
+  </div>
+</footer>
+</div>
+</body>
+</html>
