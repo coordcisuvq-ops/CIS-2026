@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Clase 4 · Ciudadanía universitaria digital</title>
+<style>
+
+:root{
+  --brand:#9f283b;
+  --brand-dark:#7e2230;
+  --bg:#f3f1f2;
+  --paper:#ffffff;
+  --ink:#2f2c2d;
+  --muted:#5d5759;
+  --line:#e4dde0;
+  --soft:#faf7f8;
+  --soft-2:#f8f5f6;
+  --accent:#f4ecef;
+  --max:1100px;
+  --text:1.04rem;
+  --shadow:0 18px 42px rgba(55,37,41,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:radial-gradient(circle at top left, rgba(159,40,59,.07), transparent 20%), linear-gradient(180deg,#f6f4f5 0%, var(--bg) 100%);
+  color:var(--ink);
+  font-family:Arial, Helvetica, sans-serif;
+  line-height:1.72;
+}
+a{color:inherit}
+.page{max-width:var(--max); margin:26px auto; background:var(--paper); border:1px solid var(--line); box-shadow:var(--shadow)}
+.cover{position:relative; padding:52px 68px 56px; background:radial-gradient(circle at 82% 18%, rgba(159,40,59,.07), transparent 23%), linear-gradient(180deg,#fff,#fcfbfb 75%,#fff); border-bottom:1px solid var(--line)}
+.cover::before{content:""; position:absolute; left:0; right:0; top:0; height:12px; background:var(--brand)}
+.topline{display:flex; align-items:flex-start; justify-content:space-between; gap:24px; margin:8px 0 44px}
+.brandlock{display:flex; gap:16px; align-items:center}
+.brandmark{width:58px; height:58px; flex:0 0 58px; display:grid; place-items:center; background:var(--brand); border-radius:2px}
+.brandmark img{width:26px; height:auto; display:block}
+.kicker{max-width:520px; color:var(--muted); text-transform:uppercase; font-size:.74rem; letter-spacing:.14em; line-height:1.55}
+.series{color:var(--brand); font-size:.82rem; text-transform:uppercase; letter-spacing:.16em; border-bottom:1px solid var(--line); padding-bottom:10px; white-space:nowrap}
+.cover-grid{display:grid; grid-template-columns:minmax(0,1fr) 300px; gap:40px; align-items:center}
+h1{margin:0 0 18px; font-family:Georgia, "Times New Roman", serif; font-size:3.45rem; line-height:1.02; letter-spacing:-.03em; color:#2e2b2c}
+.subtitle-program{margin:10px 0 6px; font-size:1.18rem; color:var(--brand-dark); font-weight:700; letter-spacing:.01em}
+.subtitle-university{margin:0 0 18px; font-size:1rem; text-transform:uppercase; letter-spacing:.08em; color:var(--muted)}
+.cover-year{display:inline-block; margin:2px 0 22px; padding:7px 14px 6px; border:1px solid rgba(159,40,59,.18); background:linear-gradient(180deg,#fcf7f8,#f7eff1); color:var(--brand); font-size:.84rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; border-radius:999px; box-shadow:0 8px 20px rgba(159,40,59,.08)}
+.hero-illustration{width:100%; max-width:280px; margin:0 auto; background:linear-gradient(180deg,#fbfbfb,#f6f4f5); border:1px solid var(--line); padding:22px; display:grid; place-items:center; min-height:240px}
+.hero-illustration .hero-svg{width:190px; max-width:100%; height:auto; display:block}
+.hero-illustration .svg-soft{fill:#f4ecef}
+.hero-illustration .svg-line{fill:none; stroke:#9f283b; stroke-width:3; stroke-linecap:round; stroke-linejoin:round}
+.hero-illustration .svg-fill{fill:#9f283b}
+.hero-illustration .svg-muted{fill:#cfa5af}
+.cover-footer{display:grid; grid-template-columns:repeat(2,minmax(280px,1fr)); gap:22px; margin-top:36px; padding-top:24px; border-top:1px solid var(--line)}
+.cover-card{padding:22px 24px; border:1px solid var(--line); background:linear-gradient(180deg,#fff,#faf8f9)}
+.cover-card .label{display:block; margin-bottom:10px; color:var(--brand); text-transform:uppercase; letter-spacing:.14em; font-size:.72rem; font-weight:700}
+.cover-card p{margin:0; color:var(--muted)}
+.content{padding:38px 68px 84px}
+.content p{text-align:justify; text-justify:inter-word}
+.toc{margin-bottom:30px; padding:24px 26px 20px; border:1px solid var(--line); background:linear-gradient(180deg,#fff,#fbfafb)}
+.toc h2{margin:0 0 14px; color:var(--brand); text-transform:uppercase; letter-spacing:.14em; font-size:.76rem}
+.toc ol{margin:0; padding-left:1.35rem; font-size:1rem}.toc li{margin:9px 0}.toc a{text-decoration:none; border-bottom:1px solid transparent}.toc a:hover{color:var(--brand); border-bottom-color:var(--brand)}
+h2.section{margin:46px 0 16px; padding-top:18px; border-top:1px solid var(--line); font-family:Georgia, "Times New Roman", serif; font-size:2rem; line-height:1.12; letter-spacing:-.02em}
+h3{margin:28px 0 10px; color:var(--brand); font-size:1.08rem}
+p{margin:12px 0; font-size:var(--text)}
+.mdm-box{margin:20px 0 28px; padding:18px 20px; border:2px solid var(--brand); border-left:10px solid #d6452f; background:#fff; box-shadow:0 8px 22px rgba(55,37,41,.04)}
+.mdm-title{margin:0 0 10px; color:var(--brand-dark); font-weight:700; font-size:1.04rem}
+mark{
+  background:none;
+  color:inherit;
+  padding:0;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  font-weight:700;
+}
+
+
+.mdm-preview-link{
+  position:relative;
+  color:var(--brand);
+  text-decoration:none;
+  border-bottom:1px solid rgba(159,40,59,.35);
+  font-weight:700;
+}
+.mdm-preview-link:hover{
+  color:var(--brand-dark);
+  border-bottom-color:var(--brand-dark);
+}
+.mdm-preview-link::after{
+  content:"Repositorio UVQ · Material Didáctico Digital\A Abrir MDM en una nueva pestaña";
+  white-space:pre-line;
+  position:absolute;
+  left:0;
+  bottom:135%;
+  width:290px;
+  padding:14px 16px;
+  background:#fff;
+  color:var(--ink);
+  border:1px solid var(--line);
+  box-shadow:0 14px 28px rgba(55,37,41,.14);
+  border-radius:6px;
+  font-size:.88rem;
+  line-height:1.45;
+  font-weight:400;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(8px);
+  transition:opacity .18s ease, transform .18s ease, visibility .18s ease;
+  z-index:20;
+}
+.mdm-preview-link::before{
+  content:"";
+  position:absolute;
+  left:22px;
+  bottom:118%;
+  border:8px solid transparent;
+  border-top-color:#fff;
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .18s ease, visibility .18s ease;
+  z-index:21;
+}
+.mdm-preview-link:hover::after,
+.mdm-preview-link:hover::before,
+.mdm-preview-link:focus::after,
+.mdm-preview-link:focus::before{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+
+
+.author-line{
+  margin:6px 0 0;
+  color:var(--muted);
+  font-size:.94rem;
+  line-height:1.65;
+}
+
+.author-list{
+  margin:6px 0 0;
+  padding-left:1.15rem;
+  color:var(--muted);
+  font-size:.94rem;
+  line-height:1.55;
+}
+.author-list li{
+  margin:2px 0;
+}
+.update-note{
+  margin:16px 0 0;
+  padding-top:12px;
+  border-top:1px solid var(--line);
+  color:var(--muted);
+  font-size:.92rem;
+  line-height:1.5;
+}
+
+@media (max-width:880px){
+  .mdm-preview-link::after,
+  .mdm-preview-link::before{
+    display:none;
+  }
+}
+
+.tour-card{
+  margin:24px 0 30px;
+  padding:24px 26px;
+  border:1px solid var(--line);
+  background:linear-gradient(180deg,#fff,#faf7f8);
+  box-shadow:0 10px 24px rgba(55,37,41,.05);
+}
+.tour-card h3{
+  margin:0 0 8px;
+  color:var(--brand);
+  font-size:1.12rem;
+}
+.tour-card p{
+  margin:8px 0 18px;
+  color:var(--muted);
+}
+.tour-button{
+  display:inline-block;
+  padding:11px 18px;
+  background:var(--brand);
+  color:#fff;
+  text-decoration:none;
+  border-radius:999px;
+  font-weight:700;
+  line-height:1.2;
+  box-shadow:0 8px 18px rgba(159,40,59,.16);
+}
+.tour-button:hover{
+  background:var(--brand-dark);
+}
+
+.tour-button{
+  position:relative;
+}
+.tour-button::after{
+  content:"Tour 360° del campus UNQ\A Abrir recorrido virtual en una nueva pestaña";
+  white-space:pre-line;
+  position:absolute;
+  left:0;
+  bottom:135%;
+  width:300px;
+  padding:14px 16px;
+  background:#fff;
+  color:var(--ink);
+  border:1px solid var(--line);
+  box-shadow:0 14px 28px rgba(55,37,41,.14);
+  border-radius:6px;
+  font-size:.88rem;
+  line-height:1.45;
+  font-weight:400;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(8px);
+  transition:opacity .18s ease, transform .18s ease, visibility .18s ease;
+  z-index:20;
+}
+.tour-button::before{
+  content:"";
+  position:absolute;
+  left:22px;
+  bottom:118%;
+  border:8px solid transparent;
+  border-top-color:#fff;
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .18s ease, visibility .18s ease;
+  z-index:21;
+}
+.tour-button:hover::after,
+.tour-button:hover::before,
+.tour-button:focus::after,
+.tour-button:focus::before{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+@media (max-width:880px){
+  .tour-button::after,
+  .tour-button::before{
+    display:none;
+  }
+}
+
+
+.text-link{color:var(--brand); text-decoration:none; border-bottom:1px solid rgba(159,40,59,.35); transition:all .18s ease; overflow-wrap:anywhere; word-break:break-word}.text-link:hover{color:var(--brand-dark); border-bottom-color:var(--brand-dark)}
+.reference-group{margin:20px 0 0; padding:18px 20px 8px; border:1px solid var(--line); background:linear-gradient(180deg,#fff,#faf8f9)}
+.ref-list{list-style:none; padding-left:0; margin:10px 0 0}.ref-list li{margin:12px 0; padding-left:1.4em; text-indent:-1.4em; overflow-wrap:anywhere; word-break:break-word; hyphens:auto}
+.back-top{margin:28px 0 0; font-size:.92rem; color:var(--muted)}.back-top a{text-decoration:none; color:var(--muted); border-bottom:1px solid transparent}.back-top a:hover{color:var(--brand); border-bottom-color:var(--brand)}
+.site-footer{margin-top:56px; padding:0 24px 30px; color:var(--muted)}.site-footer-shell{border:1px solid var(--line); background:linear-gradient(180deg,#fff 0%, #fbf8f9 100%); box-shadow:0 10px 24px rgba(55,37,41,.04)}.site-footer-grid{display:grid; grid-template-columns:minmax(0,1.45fr) 1px minmax(260px,.85fr); gap:0 22px; align-items:stretch; padding:18px 20px}.site-footer-divider{width:1px; background:linear-gradient(180deg,rgba(166,143,148,.18),rgba(166,143,148,.55),rgba(166,143,148,.18))}.site-footer-label{margin:0 0 10px; color:var(--brand); text-transform:uppercase; letter-spacing:.18em; font-size:.78rem; font-weight:700; line-height:1.4}.site-footer-note{margin:0; font-size:.95rem; line-height:1.72; color:var(--muted)}.site-footer-author{margin:0; color:var(--ink); font-weight:700; font-size:.98rem; line-height:1.55}.site-footer-role{margin:4px 0 0; color:var(--muted); font-size:.94rem; line-height:1.55}
+@media (max-width:880px){.page{margin:0; border:none; box-shadow:none}.cover,.content{padding:28px 22px 42px}.topline{flex-direction:column; align-items:flex-start; gap:14px; margin-bottom:28px}.cover-grid,.cover-footer{grid-template-columns:1fr}h1{font-size:2.45rem}.series{white-space:normal}.site-footer{padding:0 16px 24px}.site-footer-grid{grid-template-columns:1fr; gap:14px 0; padding:16px}.site-footer-divider{width:100%; height:1px}.ref-list li{padding-left:1.1em; text-indent:-1.1em; font-size:.98rem}}
+@media print{body{background:#fff}.page{margin:0; border:none; box-shadow:none; max-width:none}.toc,.back-top{display:none}}
+
+
+
+.guide-preview-link{
+  position:relative;
+  color:var(--brand);
+  text-decoration:none;
+  border-bottom:1px solid rgba(159,40,59,.35);
+  font-weight:700;
+}
+.guide-preview-link:hover{
+  color:var(--brand-dark);
+  border-bottom-color:var(--brand-dark);
+}
+.guide-preview-link::after{
+  content:"Guía institucional sobre el uso de IAGEN\A Abrir recurso institucional en una nueva pestaña";
+  white-space:pre-line;
+  position:absolute;
+  left:0;
+  bottom:135%;
+  width:330px;
+  padding:14px 16px;
+  background:#fff;
+  color:var(--ink);
+  border:1px solid var(--line);
+  box-shadow:0 14px 28px rgba(55,37,41,.14);
+  border-radius:6px;
+  font-size:.88rem;
+  line-height:1.45;
+  font-weight:400;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(8px);
+  transition:opacity .18s ease, transform .18s ease, visibility .18s ease;
+  z-index:20;
+}
+.guide-preview-link::before{
+  content:"";
+  position:absolute;
+  left:22px;
+  bottom:118%;
+  border:8px solid transparent;
+  border-top-color:#fff;
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .18s ease, visibility .18s ease;
+  z-index:21;
+}
+.guide-preview-link:hover::after,
+.guide-preview-link:hover::before,
+.guide-preview-link:focus::after,
+.guide-preview-link:focus::before{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+.guide-card{
+  margin:24px 0 30px;
+  padding:24px 26px;
+  border:1px solid var(--line);
+  background:linear-gradient(180deg,#fff,#faf7f8);
+  box-shadow:0 10px 24px rgba(55,37,41,.05);
+}
+.guide-card h3{margin:0 0 8px; color:var(--brand); font-size:1.12rem}
+.guide-card p{margin:8px 0 18px; color:var(--muted)}
+.guide-button{display:inline-block; padding:11px 18px; background:var(--brand); color:#fff; text-decoration:none; border-radius:999px; font-weight:700; line-height:1.2; box-shadow:0 8px 18px rgba(159,40,59,.16); position:relative}
+.guide-button:hover{background:var(--brand-dark)}
+.guide-button::after{content:"Guía IA · UNQ\A Abrir recurso institucional en una nueva pestaña"; white-space:pre-line; position:absolute; left:0; bottom:135%; width:300px; padding:14px 16px; background:#fff; color:var(--ink); border:1px solid var(--line); box-shadow:0 14px 28px rgba(55,37,41,.14); border-radius:6px; font-size:.88rem; line-height:1.45; font-weight:400; opacity:0; visibility:hidden; transform:translateY(8px); transition:opacity .18s ease, transform .18s ease, visibility .18s ease; z-index:20}
+.guide-button::before{content:""; position:absolute; left:22px; bottom:118%; border:8px solid transparent; border-top-color:#fff; opacity:0; visibility:hidden; transition:opacity .18s ease, visibility .18s ease; z-index:21}
+.guide-button:hover::after,.guide-button:hover::before,.guide-button:focus::after,.guide-button:focus::before{opacity:1; visibility:visible; transform:translateY(0)}
+@media (max-width:880px){.guide-preview-link::after,.guide-preview-link::before,.guide-button::after,.guide-button::before{display:none}}
+</style>
+</head>
+<body>
+<div class="page" id="top">
+<section class="cover">
+  <div class="topline">
+    <div class="brandlock">
+      <div class="brandmark"><img alt="UNQ" src="data:image/png;base64,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"/></div>
+      <div class="kicker">Universidad Nacional de Quilmes · Curso Inicial de Socialización</div>
+    </div>
+    <div class="series">Clase 4 · Modalidad virtual</div>
+  </div>
+  <div class="cover-grid">
+    <div class="cover-copy">
+      <h1>Clase 4</h1>
+      <p class="subtitle-program">Ciudadanía universitaria digital</p>
+      <p class="subtitle-university">Universidad Nacional de Quilmes (UNQ)</p>
+      <div class="cover-year">Inteligencia Artificial Generativa (IAGEN) · Ética · Participación digital</div>
+    </div>
+    
+<figure aria-label="Ilustración de ciudadanía digital universitaria" class="hero-illustration">
+  <svg class="hero-svg" viewBox="0 0 220 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="hero-title">
+    <title id="hero-title">Ciudadanía universitaria digital e inteligencia artificial</title>
+    <circle class="svg-soft" cx="110" cy="90" r="76"/>
+    <rect x="48" y="62" width="124" height="84" rx="9" fill="#fff" stroke="#9f283b" stroke-width="3"/>
+    <path class="svg-line" d="M70 88h48M70 108h70M70 128h42"/>
+    <path class="svg-line" d="M88 158h44M103 146v12h14v-12"/>
+    <path class="svg-fill" d="M152 35c-18 5-30 12-30 12v26c0 23 30 36 30 36s30-13 30-36V47s-12-7-30-12Z" opacity=".95"/>
+    <path d="M139 70l9 10 19-24" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle class="svg-muted" cx="74" cy="43" r="13"/>
+    <circle class="svg-fill" cx="74" cy="43" r="5"/>
+    <circle class="svg-muted" cx="107" cy="34" r="8"/>
+    <circle class="svg-fill" cx="107" cy="34" r="3"/>
+    <path class="svg-line" d="M82 41l17-5M86 48l24 14M119 62l22-12"/>
+    <path d="M40 42h21c8 0 15 6 15 14s-7 14-15 14h-9l-11 11 3-11h-4c-8 0-15-6-15-14s7-14 15-14Z" fill="#fff" stroke="#9f283b" stroke-width="3" stroke-linejoin="round"/>
+    <path class="svg-line" d="M43 55h18M43 64h11"/>
+  </svg>
+</figure>
+  </div>
+  <div class="cover-footer">
+    <div class="cover-card"><span class="label">Recorrido</span><p>Inteligencia artificial generativa, escritura académica y construcción de conocimiento propio.</p></div>
+    <div class="cover-card"><span class="label">Ciudadanía digital</span><p>Uso responsable de tecnologías, honestidad intelectual e identidad académica en entornos virtuales.</p></div>
+  </div>
+</section>
+<main class="content">
+<section class="toc" id="indice">
+<h2>Índice</h2>
+<ol>
+<li><a href="#introduccion">Introducción</a></li>
+<li><a href="#ia-generativa">Inteligencia artificial generativa en el ámbito universitario</a></li>
+<li><a href="#desafios-eticos">Desafíos éticos y usos responsables de la IAGEN</a></li>
+<li><a href="#prompts">Ingeniería de prompts y formas de interacción con la IAGEN</a></li>
+<li><a href="#cultura-digital">Hacia una cultura digital responsable</a></li>
+<li><a href="#conclusiones">Conclusiones</a></li>
+<li><a href="#referencias">Referencias bibliográficas</a></li>
+<li><a href="#bibliografia-ampliatoria">Bibliografía ampliatoria</a></li>
+</ol>
+</section>
+<h2 class="section" id="introduccion">Introducción</h2>
+<p>En clases previas se desarrolló el tema de la escritura en la universidad, lo que permitió identificar que escribir no es solamente cumplir con una consigna, sino una herramienta fundamental para pensar, organizar ideas y construir conocimiento propio (Viñas, et al., 2023). Escribir permite procesar lo que leemos, establecer relaciones entre conceptos y desarrollar una voz académica propia.</p>
+<p>En esta clase se retomará esa idea para profundizar la misma en relación con el contexto actual, atravesado por el avance y uso creciente de tecnologías digitales, especialmente la Inteligencia Artificial Generativa (IAGEN). Con el transcurso de los años, han surgido distintas herramientas capaces de generar textos, resumir información o explicar contenidos en pocos segundos. Esto transforma profundamente las prácticas académicas y plantea nuevos desafíos en torno a las mismas.</p>
+<p>En este marco, resulta necesario preguntarse: ¿qué lugar ocupa la inteligencia artificial en el ámbito universitario?, ¿cómo puede utilizarse sin reemplazar completamente el proceso de aprendizaje?, ¿qué responsabilidades implica su uso?</p>
+<p><strong>El propósito de esta clase gira en torno a comprender las nociones básicas sobre IAGEN en el ámbito universitario y reflexionar respecto de su utilización, desde una perspectiva crítica, ética y responsable, entendiendo que su incorporación no solo impacta en cómo estudiamos, sino también en cómo construimos nuestra identidad como estudiantes universitarios en entornos digitales.</strong></p>
+<div class="back-top"><a href="#indice">↑ Volver al índice</a></div>
+<h2 class="section" id="ia-generativa">1. Inteligencia artificial generativa en el ámbito universitario</h2>
+<p>La irrupción de la IAGEN en las distintas actividades de la vida cotidiana y, particularmente, en el ámbito universitario, plantea en la actualidad un gran desafío: aprender a utilizarla de forma adecuada e integrarla de manera significativa en los procesos de enseñanza y aprendizaje. Según las orientaciones de la Organización de las Naciones Unidas para la Educación, la Ciencia y la Cultura (UNESCO, 2024), estas herramientas no solo clasifican datos, sino que aprenden estructuras estadísticas para producir contenidos nuevos como ensayos, código, resúmenes, presentaciones y podcasts. Así el acceso y la circulación del conocimiento se han visto profundamente transformados en un corto período de tiempo, planteando muchos interrogantes y desafíos en consecuencia.</p>
+<p><strong>La incorporación de estas tecnologías no implica simplemente aprender a utilizarlas desde un punto de vista técnico. Por el contrario, implica desarrollar un nivel de competencias que permitan un uso crítico, creativo y responsable de las mismas.</strong> Esto requiere superar una mirada instrumental simplista, centrada únicamente en “para qué sirve”, para avanzar hacia una comprensión más amplia de su utilización que incluya dimensiones éticas, políticas y culturales.</p>
+<p>En términos generales, la IAGEN funciona a partir de modelos probabilísticos que le permiten predecir la palabra más probable dentro de una secuencia. Esto significa que no “piensa” ni comprende en sentido humano, sino que produce textos a partir de patrones aprendidos. Como resultado, puede generar respuestas coherentes, pero también cometer errores, incluir información inexacta o reproducir sesgos.</p>
+<p>Por ejemplo, un estudiante puede pedirle a una herramienta de IAGEN que le explique un concepto complejo o que le ayude a ordenar un texto. En estos casos, la tecnología puede resultar útil como apoyo. No obstante, comprender ese concepto, interpretarlo y poder explicarlo con palabras propias sigue siendo una tarea central del proceso de aprendizaje de cada estudiante.</p>
+<p>En este sentido, es importante desarmar la idea de la IAGEN como una “caja negra” incuestionable. Comprender cómo funciona, reconocer sus límites y validar la información que produce son aspectos fundamentales para una utilización adecuada y responsable en el ámbito académico. En este sentido, se debe considerar que una respuesta puede estar bien redactada, pero contener datos desactualizados o incorrectos, lo que exige una revisión crítica por parte del estudiante respecto de las fuentes consultadas por la herramienta para arribar a dicha respuesta.</p>
+<p>A su vez, debe considerarse que muchas de estas herramientas han sido desarrolladas en otros contextos, lo que puede invisibilizar realidades locales. Por ello, se vuelve necesario <strong>desarrollar un conocimiento situado, es decir, contar con la capacidad de adaptar, contextualizar y enriquecer la información en función de la propia realidad y el entorno en el cual nos encontramos.</strong> Por ejemplo, un análisis económico generado por una IAGEN puede requerir ser ajustado con datos específicos del contexto argentino o latinoamericano.</p>
+<h3 id="desafios-eticos">1.1 Desafíos éticos y usos responsables de la IAGEN</h3>
+<p>Si se parte de la premisa de que estudiar en la universidad implica leer, analizar, escribir y debatir, es decir, comprender y poner en práctica aquello que se estudia, la utilización de la IAGEN plantea interrogantes éticos relevantes. Estas herramientas pueden realizar muchas de las tareas básicas del proceso de aprendizaje y aquí el principal desafío: su utilización no debe derivar en la sustitución del trabajo intelectual del estudiante. Por el contrario, es fundamental sostener la construcción de resoluciones, respuestas y/o materiales de autoría propia y evitar prácticas como el copiar y pegar o la reproducción automática de información proporcionada por la IAGEN.</p>
+<p>En este marco,<strong> adquiere centralidad el concepto de honestidad intelectual. Cada estudiante es responsable de los trabajos que presenta, y aunque la IAGEN puede ser una gran aliada para resolver cuestiones como la organización de ideas o la corrección de la redacción, su utilización no debe sustituir </strong><strong>en ninguna circunstancia</strong><strong> la construcción personal del argumento.</strong> La lectura con intención y la capacidad de análisis de la información, como así también el proceso de escritura y fundamentación, siguen siendo aspectos claves para aprender. Esto permite procesar la teoría, comprender y, en consecuencia, apropiarse del conocimiento para luego implementarlo de forma práctica tanto en el ámbito académico como en el laboral.</p>
+<p>Por otra parte, la utilización de estas tecnologías implica considerar múltiples dimensiones éticas, como la propiedad de los datos, los derechos de autor, la veracidad de la información, los sesgos, la privacidad y las desigualdades en el acceso (Urías Rivas, et al., 2026). En este sentido, por ejemplo, no se considera oportuno compartir datos personales o trabajos inéditos en plataformas digitales, así como tampoco utilizar información sin citar adecuadamente las fuentes. Este último aspecto se relaciona con cuestiones de derechos de autor, que toma relevancia al momento de escribir, ya que debe considerarse los que establecen ciertas normas, como las Normas APA, para no incurrir en plagio al mencionar ideas o fragmentos tomados de fuentes de información secundarias.</p>
+<h3 id="prompts">1.2 Ingeniería de prompts y formas de interacción con la IAGEN</h3>
+<p>Otro aspecto central es la forma en la que se interactúa con la IAGEN<strong>. Para obtener respuestas útiles, es necesario formular instrucciones/consignas claras y específicas. Estas se conocen como prompts, y no constituyen simplemente una orden, sino una forma de orientar y precisar la respuesta de la herramienta</strong>, de manera que el resultado emitido sea lo más pertinente posible.</p>
+<p>Por ejemplo, si vamos al ámbito de la administración y los negocios, no es lo mismo solicitar a la IAGEN “explicar organización” que indicarle “explicar el concepto de organización formal con un ejemplo sencillo”. En este sentido, aprender a formular preguntas se convierte en una habilidad fundamental en el contexto digital actual, tomando relevancia el concepto de Ingeniería de prompts, que refiere al diseño y optimización de las instrucciones para arribar a respuestas precisas y útiles.</p>
+<p>Un modelo que forma parte de este tipo de ingeniería es el modelo RITA (Rol - Información - Tarea - Adaptabilidad), propuesto por de Haro (2024) y que está diseñado específicamente para crear prompts educativos eficaces. En este modelo, la IAGEN asume un rol, solicita información detallada al usuario antes de proceder y adapta la tarea a las necesidades específicas de la actividad.</p>
+<p>Asimismo, es posible utilizar la IAGEN de manera progresiva, a través de un proceso que incluya una primera instancia de exploración conceptual, una segunda de profundización crítica y una tercera de aplicación en la que el estudiante produce su propio contenido. De este modo, la herramienta funciona como un apoyo en la reflexión, fomentando la creatividad, sin reemplazar la producción propia.</p>
+<h3 id="cultura-digital">1.3 Hacia una cultura digital responsable</h3>
+<p>La incorporación de la IAGEN en la vida cotidiana y el ámbito académico también invita a reflexionar sobre la participación en entornos digitales. Cada acción que realiza un estudiante, desde los textos que produce, las opiniones que comparte hasta las fuentes que valida, forma parte y construye su identidad académica. En este sentido, el uso de la tecnología no es neutral, sino que contribuye a construir una determinada forma de ser estudiante.</p>
+<p>Esto se vincula con el concepto de <strong>ciudadanía digital universitaria, que implica ejercer derechos y responsabilidades en entornos virtuales de aprendizaje.</strong> No se trata solo de utilizar herramientas, sino de participar de manera respetuosa, crítica y comprometida. <strong>En este marco, la Universidad Nacional de Quilmes pone a disposición de sus estudiantes la <a class="guide-preview-link" href="https://dsc.unq.edu.ar/guia-ia/" target="_blank" rel="noopener">Guía institucional sobre el uso de inteligencia artificial generativa</a>, un recurso institucional elaborado para ofrecer criterios que permitan comprender, problematizar y orientar la utilización de estas tecnologías en el ámbito universitario.</strong> La guía promueve un uso crítico, responsable y transparente de la IAGEN, invita a reflexionar sobre sus alcances y limitaciones, advierte sobre los cuidados que deben considerarse al utilizarla y brinda orientaciones sobre cómo reconocer, citar y referenciar su uso en las producciones académicas. Asimismo, constituye un material de referencia que acompaña las trayectorias estudiantiles, ofreciendo recomendaciones para incorporar estas herramientas de manera adecuada, sin reemplazar las consignas específicas definidas por cada docente o espacio curricular.</p>
+<p>En este contexto, <strong>la huella digital académica puede entenderse como el conjunto de producciones, interacciones y decisiones que un estudiante realiza en su trayectoria universitaria.</strong> Cada participación en un foro, cada trabajo entregado, las consultas realizadas y la forma en que se utilizan herramientas como la IAGEN contribuyen a conformar esa huella. <strong>Lejos de ser un simple registro, constituye un elemento central en la construcción de la identidad profesional.</strong></p>
+<p>Para sostener esta participación de manera crítica, es necesario desarrollar lo que se denomina alfabetización digital crítica (ADC). Esto implica ir más allá de la utilización técnica de las herramientas, reflexionando sobre sus implicancias sociales y políticas. Al respecto, Dussel (2012) sostiene que la escuela y la universidad deben enseñar a &quot;leer las interfaces&quot;. No basta con saber &quot;cliquear&quot; o tener habilidades instrumentales; es fundamental entender la lógica de las plataformas. Supone cuestionar el funcionamiento de las tecnologías, analizar sus sesgos y proponer formas de uso más inclusivas y equitativas.</p>
+<p>Por otra parte, los entornos virtuales de aprendizaje no son espacios pasivos, sino ámbitos de producción e intercambio de conocimiento. En ellos, <strong>el estudiante deja de ser un receptor para convertirse en un participante activo, capaz de generar contenidos y participar en procesos colaborativos. Esto requiere desarrollar habilidades de autogestión, como la organización del tiempo, la planificación del estudio y la evaluación del propio aprendizaje.</strong></p>
+<p>La participación en entornos digitales también implica convivir con otras personas. Por ese motivo, es fundamental sostener prácticas basadas en el respeto, la responsabilidad y el reconocimiento de la diversidad. Esto incluye evitar situaciones de violencia digital, cuidar la privacidad y promover interacciones constructivas.</p>
+<p>Asimismo, resulta fundamental garantizar condiciones de accesibilidad e inclusión que permitan que todas las personas puedan participar en igualdad de condiciones de los procesos de aprendizaje. La educación superior, en este sentido, debe ser un espacio que promueva el acceso al conocimiento en igualdad de condiciones.</p>
+<div class="back-top"><a href="#indice">↑ Volver al índice</a></div>
+<h2 class="section" id="conclusiones">Conclusiones</h2>
+<p>La IAGEN se ha consolidado como una herramienta con gran potencial para el ámbito universitario, ya que puede facilitar la comprensión de contenidos, la organización de ideas y la producción de textos. Sin embargo, su incorporación plantea desafíos que requieren una mirada crítica y responsable.</p>
+<p>Tal como se trabajó en clases anteriores, escribir en la universidad es una forma de aprender. En este contexto, la IAGEN debe entenderse como un recurso que acompaña ese proceso, pero que no puede reemplazarlo. La construcción del conocimiento sigue siendo responsabilidad del estudiante.</p>
+<p>Al mismo tiempo, la utilización de estas tecnologías se inscribe en un entorno digital en el que cada acción contribuye a la construcción de una identidad académica. Por ello, el desafío no es solo aprender a utilizar herramientas, sino formarse como un estudiante autónomo, crítico y comprometido con el uso ético de la tecnología.</p>
+<p>En definitiva, integrar la IAGEN en la vida universitaria implica asumir un rol activo en la producción de conocimiento, sostener la honestidad intelectual y participar de manera responsable en la comunidad académica digital.</p>
+<div class="back-top"><a href="#indice">↑ Volver al índice</a></div>
+<h2 class="section" id="referencias">Referencias bibliográficas</h2>
+<div class="reference-group"><ul class="ref-list">
+<li>De Haro, J. J. (2024). Prompts educativos creados con el modelo R.I.T.A. Bilateria Educación.</li>
+<li>Dussel, I. (2012). La formación docente y la cultura digital: métodos y saberes en una nueva época. En A. Birgin (Comp.), Más allá de la capacitación: Debates acerca de la formación de los docentes en ejercicio (en prensa). Buenos Aires: Paidós.</li>
+<li>Organización de las Naciones Unidas para la Educación, la Ciencia y la Cultura (UNESCO), &amp; Instituto Internacional de la UNESCO para la Educación Superior en América Latina y el Caribe (IESALC). (2023). ChatGPT e inteligencia artificial en la educación superior: Guía de inicio rápido. <a class="text-link" href="https://unesdoc.unesco.org/ark:/48223/pf0000385146_spa" target="_blank" rel="noopener">https://unesdoc.unesco.org/ark:/48223/pf0000385146_spa</a></li>
+<li>Urías Rivas, M. O., Lugo Hernández, L. T., Rivera Obregón, M. L., Fonseca Bojórquez, C., y Díaz Huicho, D. V. (2026). Impacto del uso de la inteligencia artificial en la educación superior. Revista Latinoamericana de Estudios Educativos (RLEE), 56(1), 189-214</li>
+<li>Viñas, R., Secul Giusti, C., Viñas, M., &amp; Cammertoni, M. (2023). La escritura académica y el rol de la inteligencia artificial (IAGEN). Ponencia presentada en el Primer Congreso Internacional WEDUCI de Wikimedia, Educación y Culturas Digitales, Universidad Nacional de La Plata, La Plata, Argentina.</li>
+</ul></div>
+<div class="back-top"><a href="#indice">↑ Volver al índice</a></div>
+<h2 class="section" id="bibliografia-ampliatoria">Bibliografía ampliatoria</h2>
+<div class="reference-group"><ul class="ref-list">
+<li>Ramírez Morán, D. (2023). La huella medioambiental de la IA. En Dialnet (Capítulo de libro / Documento de análisis). <a class="text-link" href="https://www.defensa.gob.es/documents/2073105/2320762/la_huella_medioambiental_de_la_ia_2025_dieeea07.pdf/a284d761-226d-2e90-d429-b1be4ae34d73?t=1737540351190" target="_blank" rel="noopener">https://www.defensa.gob.es/documents/2073105/2320762/la_huella_medioambiental_de_la_ia_2025_dieeea07.pdf/a284d761-226d-2e90-d429-b1be4ae34d73?t=1737540351190</a></li>
+</ul></div>
+<div class="back-top"><a href="#indice">↑ Volver al índice</a></div>
+<div class="back-top"><a href="#top">↑ Subir al inicio</a></div>
+</main>
+<footer class="site-footer">
+  <div class="site-footer-shell">
+    <div class="site-footer-grid">
+      <div><p class="site-footer-label">Curso Inicial de Socialización</p><p class="site-footer-note">Material de clase elaborado para acompañar la participación crítica y responsable en la vida universitaria digital.</p></div>
+      <div class="site-footer-divider"></div>
+      <div>
+        <p class="site-footer-label">Docentes editores</p>
+        <ul class="author-list">
+          <li>Wendy Tavernise</li>
+          <li>Carina Spinelli</li>
+          <li>Melissa Caligiuri</li>
+          <li>Soledad Medina</li>
+          <li>Nicolás Campanella</li>
+          <li>Victor Emanuel Castaño</li>
+        </ul>
+        <p class="update-note">Última actualización: julio de 2026</p>
+      </div>
+    </div>
+  </div>
+</footer>
+</div>
+</body>
+</html>
